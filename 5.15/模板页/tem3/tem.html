@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title>模拟投币模板管理</title>
+    <link rel="stylesheet" href="./base.css"/>
+    <link rel="stylesheet" href="./tem.css"/>
+    <link rel="stylesheet" href="./dist/css/mui.min.css"/>
+    <script src="./jquery.js"></script>
+    <script src="./dist/js/mui.min.js"></script>
+    <script src="./tem.js"></script>
+</head>
+<body>
+    <div class="tem">
+        <div class="list-div">
+            <li>
+                <div class="title">
+                    <p>模板名称：<span>系统投币模板</span></p>
+                </div>
+                <ul class="mui-table-view">
+                    <li class="mui-table-view-cell">
+                        <p>显示名称：<span>1元</span></p>
+                        <p>投币个数：<span>1 <b>个</b></span></p>
+                        <p>付款金额：<span>1 <b>元</b></span></p>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <p>显示名称：<span>2元</span></p>
+                        <p>投币个数：<span>2 <b>个</b></span></p>
+                        <p>付款金额：<span>2 <b>元</b></span></p>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <p>显示名称：<span>3元</span></p>
+                        <p>投币个数：<span>3 <b>个</b></span></p>
+                        <p>付款金额：<span>3 <b>元</b></span></p>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <p>显示名称：<span>4元</span></p>
+                        <p>投币个数：<span>4 <b>个</b></span></p>
+                        <p>付款金额：<span>4 <b>元</b></span></p>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <p>显示名称：<span>5元</span></p>
+                        <p>投币个数：<span>5 <b>个</b></span></p>
+                        <p>付款金额：<span>5 <b>元</b></span></p>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <ol class="ol-red">注:</ol>
+                        <ol><span>投币个数：</span> 指投币的数量（单位为元）</ol>
+                        <ol><span>付款金额：</span> 该金额为用户实际支付的金额（即商户收到的金额）</ol>
+                    </li>
+                </ul>
+            </li>
+        </div>
+        <div class="list-div">
+            <li>
+                <div class="title">
+                    <p>模板名称：<span>脉冲模板一</span></p>
+                    <p>品牌名称：<span>测试</span></p>
+                    <p>售后电话：<span>15666666666</span></p>
+                    <p>是否支持退费：<span class="span-green">是</span></p>
+                    <p>是否钱包强制支付：<span class="span-red">否</span></p>
+                    <div>
+                        <button type="button" class="mui-btn mui-btn-success tem-title-edit">编辑</button>
+                        <button type="button" class="mui-btn mui-btn-success tem-title-delete">删除</button>
+                    </div>
+                </div>
+                <ul class="mui-table-view">
+                    <li class="mui-table-view-cell">
+                        <p>显示名称：<span>1元一个币</span></p>
+                        <p>投币个数：<span>1<b>个</b></span></p>
+                        <p>付款金额：<span>1 <b>元</b></span></p>
+                        <div>
+                            <button type="button" class="mui-btn mui-btn-success tem-edit">编辑</button>
+                            <button type="button" class="mui-btn mui-btn-success tem-delete">删除</button>
+                        </div>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <p>显示名称：<span>2元两个币</span></p>
+                        <p>投币个数：<span>2<b>个</b></span></p>
+                        <p>付款金额：<span>2 <b>元</b></span></p>
+                        <div>
+                            <button type="button" class="mui-btn mui-btn-success tem-edit">编辑</button>
+                            <button type="button" class="mui-btn mui-btn-success tem-delete">删除</button>
+                        </div>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <p>显示名称：<span>3元三个币</span></p>
+                        <p>投币个数：<span>3<b>个</b></span></p>
+                        <p>付款金额：<span>3 <b>元</b></span></p>
+                        <div>
+                            <button type="button" class="mui-btn mui-btn-success tem-edit">编辑</button>
+                            <button type="button" class="mui-btn mui-btn-success tem-delete">删除</button>
+                        </div>
+                    </li>
+                    <li class="mui-table-view-cell bottom">
+                        <button type="button" class="mui-btn mui-btn-success mui-btn-outlined addBut">添加</button>
+                    </li>
+                </ul>
+            </li>
+        </div>
+
+        <nav class="mui-bar mui-bar-tab">
+            <div>
+                <button type="button" class="mui-btn mui-btn-success">首页</button>
+                <button type="button" class="mui-btn mui-btn-success addTemplate">添加模板</button>
+            </div>
+        </nav>
+    </div>
+    <div class="tem-mask2">
+        <div class="list-center2">
+            <span class="mui-icon mui-icon-closeempty close"></span>
+            <h3>新增投币模板</h3>
+            <form action="#">
+                <div class="inp">
+                    <label for="temNmae">模板名称</label>
+                    <br/>
+                    <input type="text" id="temNmae" name="temNmae" placeholder="请填写模板名称"/>
+                </div>
+                <div class="inp">
+                    <label for="brandName">品牌名称</label>
+                    <br/>
+                    <input type="text" id="brandName" name="brandName" placeholder="请填写品牌名称"/>
+                </div>
+                <div class="inp">
+                    <label for="telephone">售后电话</label>
+                    <br/>
+                    <input type="text" id="telephone" name="telephone" placeholder="请填写售后电话"/>
+                </div>
+                <div class="inp radio-inp">
+                    <h5>是否支持退费</h5>
+                    <br/>
+                    <label>
+                        <input type="radio" name="isRef" value="1" />是
+                    </label>
+                    <label>
+                        <input type="radio" name="isRef" value="0" />否
+                    </label>
+                </div>
+                <div class="inp radio-inp">
+                    <h5>是否钱包强制支付</h5>
+                    <br/>
+                    <label>
+                        <input type="radio" name="isWalletPay" value="1" />是
+                    </label>
+                    <label>
+                        <input type="radio" name="isWalletPay" value="0" />否
+                    </label>
+                </div>
+            </form>
+            <div class="bottom">
+                <button type="button" class="mui-btn mui-btn-success close2">关闭</button>
+                <button type="button" class="mui-btn mui-btn-success submit">提交</button>
+            </div>
+        </div>
+    </div>
+    <div class="tem-mask1">
+        <div class="list-center1">
+            <span class="mui-icon mui-icon-closeempty close"></span>
+            <h3>修改投币子模板</h3>
+            <form action="#">
+                <div class="inp">
+                    <label for="name2">显示名称</label>
+                    <br/>
+                    <input type="text" id="name2" name="name" placeholder="请填写显示名称"/>
+                </div>
+                <div class="inp">
+                    <label for="coinNum">投币个数</label>
+                    <br/>
+                    <input type="text" id="coinNum" name="coinNum" placeholder="请填写投币个数"/>
+                    <div class="btn">个</div>
+                </div>
+                <div class="inp">
+                    <label for="totalParse">付款金额</label>
+                    <br/>
+                    <input type="text" id="totalParse" name="totalParse" placeholder="请填写付款金额"/>
+                    <div class="btn">元</div>
+                </div>
+                <div class="inp">
+                    <ol class="ol-red">注:</ol>
+                    <ol><span>投币个数：</span> 指投币的数量（单位为元）</ol>
+                    <ol><span>付款金额：</span> 该金额为用户实际支付的金额（即商户收到的金额）</ol>
+                </div>
+
+            </form>
+            <div class="bottom">
+                <button type="button" class="mui-btn mui-btn-success close2">关闭</button>
+                <button type="button" class="mui-btn mui-btn-success submit">提交</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

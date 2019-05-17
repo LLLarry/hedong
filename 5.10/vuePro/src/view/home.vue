@@ -1,0 +1,149 @@
+<template>
+    <div class="app">
+        <header>
+            <div class="top">
+                    <p>今日收益</p>
+                    <span><span>&yen;&nbsp;</span>999.00</span>
+            </div>
+            <div class="bottom">
+                <div><span>线上收益</span><span>569</span></div>
+                <div><span>未提现</span><span>125</span></div>
+                <div><span>投币收益</span><span>365</span></div>
+                <div><span>今日投币收益</span><span>30</span></div>
+            </div>
+        </header>
+        <main>
+            <ul>
+                <li><a href="javascript:;"><span>设备管理</span> <span class="online">在线<b>32/88</b></b>台</span></a></li>
+                <li><a href="javascript:;">设备绑定</a></li>
+                <li><a href="javascript:;">历史收益</a></li>
+            </ul>
+        </main>
+        
+    </div>
+</template>
+
+<script>
+export default {
+    data(){
+        return {
+            selected: ""
+        }
+    },
+
+}
+</script>
+
+<style>
+    * {
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            list-style: none;
+        }
+        .app {
+
+        }
+        header {
+            background-color: #44AF3D;
+            padding-bottom: 20px;
+        }
+        header .top{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+        }
+        header .top p {
+            margin-top: 39px;
+            font-size: 16px;
+        }
+        header .top span {
+            margin-top: 25px;
+            font-size: 47px;
+            font-weight: 700;
+            /* font-family: Symbol, sans-serif; */
+            /* font-family: Garamond, serif; */
+            /* font-family: 'Trebuchet MS', Helvetica, sans-serif; */
+            font-family:  "黑体","楷体_GB2312";
+        }
+        header .top span>span {
+           font-size: 25px;
+           font-weight: 500;
+           position: relative;
+           top: -12px;
+           font-family: none;
+        }
+        header .bottom {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 29px;
+        }
+        header .bottom>div { 
+            width: 49%;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            color: #fff; 
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        header .bottom>div>span:last-child{
+            font-weight: 700;
+            margin-top: 14px;
+            font-size: 16px;
+            /* font-family: 'Trebuchet MS', Helvetica, sans-serif; */
+            font-family:  "黑体","楷体_GB2312";
+        }
+        header .bottom>div:nth-child(2n-1) {
+            border-right: 1px solid rgba(225,225,225,.3);
+        }
+        main ul {
+            margin-top: 9px;
+            overflow: hidden;
+            background-color: #fff;
+            padding-bottom: 45px;
+        }
+        main ul li {
+            float: left;
+            width: 33%;
+            height: 113px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        main ul li:nth-child(3){
+            border-right: none;
+        }
+        main ul li a {
+            display: block;
+            width: 90%;
+            height: 65%;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 15px;
+            border-radius: 10px;
+            background-color: #44AF3D;
+            position: relative;
+        }
+        main ul li a .online {
+            font-size: 12px;
+            color: #333333e8;
+            position: absolute;
+            bottom: 8px;
+        }
+        main ul li a .online b {
+            font-weight: 400;
+            color: #e7e8e9;
+        }
+        .mint-tabbar {
+           
+        }
+</style>

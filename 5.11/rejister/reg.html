@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title>Document</title>
+    <link rel="stylesheet" href="./dist/css/mui.min.css"/>
+    <link rel="stylesheet" href="./register.css"/>
+    <script src="./dist/js/mui.min.js"></script>
+</head>
+<body>
+    <div class="register">
+        <div class="top">
+            <img src="./logo.png" alt="自助充电平台"/>
+            <h1>自助充电平台</h1>
+        </div>
+        <div class="content">
+            <input type="hidden" id="paramstate" value="${paramstate}">
+            <input type="hidden" id="existuser" value="${existuser}">
+
+            <div class="formdiv">
+                <form id="formht" class="mui-input-group inputgroup">
+                    <input type="hidden" name="statuere" value="1">
+                    <input type="hidden" name="time" id="time" value="">
+                    <input type="hidden" name="captchaNum" id="captchaNum" value="">
+                    <div class="mui-input-row inputrow inp">
+                        <label class="muiabel">手机号：</label>
+                        <input id="mobile" name="mobile"  type="text" class="mui-input-clear" placeholder="请输入手机号">
+                    </div>
+                    <div class="mui-input-row inputrow inp" id="getNum">
+                        <label class="muiabel">验证码：</label>
+                        <input id="captcha" name="captcha" type="text" class="mui-input-clear verification" placeholder="请输入验证码">
+                        <b class="reNum">获取验证码</b>
+                        <b style="display: none" class="bTime">倒计时120s</b>
+                    </div>
+                    <!--<div class="mui-button-row inputrow">-->
+                        <!--<button id="captchabur" name="captchabur" type="button" class="mui-btn mui-btn-success sendcode"  onClick="CaptchaSend();">发送验证码</button>-->
+                    <!--</div>-->
+                    <div class="mui-button-row inputrow sbumit-button">
+                        <button id="register_btn">登录</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="./jquery.js"></script>
+    <script src="./register.js"></script>
+</body>
+</html>

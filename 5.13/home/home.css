@@ -1,0 +1,11 @@
+ .app {
+     width: 100vw;
+     min-height: 100vw;
+     background-color: #f8f8f8;
+ }
+ #ct1,#ct2,#ct3,#ct4 {
+     width: 400px;
+     height: 600px;
+     border: 1px solid #ccc;
+     margin: 0 auto;
+ }

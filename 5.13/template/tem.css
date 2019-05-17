@@ -1,0 +1,180 @@
+
+.tem {
+    padding: 15px;
+
+}
+.tem .top>ul>li {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background-color: #fff;
+}
+.tem .top>ul>li a {
+    height: 42px;
+    line-height: 42px;
+    border-bottom: 1px solid #ccc;
+    color: #666;
+    font-size: 12px;
+    padding: 0 10px;
+    background-color: #F5F5F5;
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+}
+
+.mui-icon-arrowright {
+    padding-top: 5px;
+}
+.mui-icon-arrowright:before {
+    color: #666;
+    font-size: 16px;
+}
+
+.tem .top>ul>li .hd {
+    width: 100%;
+    /*background-color: #fff;*/
+    margin-top: 10px;
+    display: none;
+}
+.tem .top>ul>li .hd > div {
+    width: 100%;
+    height: 35px;
+    /*border: 1px solid #ccc;*/
+    line-height: 35px;
+    font-size: 12px;
+    color: #666;
+    position: relative;
+}
+.tem .top>ul>li .hd > div>span {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+}
+.tem .top>ul>li .hd > div>.bt {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 10px;
+    display: flex;
+    align-items: center;
+}
+.tem .top>ul>li .hd > div>.bt .mui-btn-success {
+    padding: 2px 5px;
+    margin-right: 5px;
+    font-size: 12px;
+    border-radius: 5px;
+}
+.tem .top>ul>li .hd > .last-div {
+    line-height: 35px;
+    text-align: center;
+}
+.tem .top>ul>li .hd > .last-div button {
+    width: 20%;
+    height: 80%;
+    display: inline-block;
+}
+.tem .bottom-btn {
+    text-align: center;
+    /*background-color: pink;*/
+}
+.tem .bottom-btn button {
+    padding: 4px 6px;
+    margin-left: 5px;
+}
+.tem-mask,.tem-mask2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .3);
+    z-index: 8;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*flex-direction: column;*/
+    /*align-items: center;*/
+    display: none;
+}
+.list-center ,.list-center2 {
+    z-index: 9;
+    width: 80vw;
+    background-color: #fff;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.list-center,.list-center2 {
+    padding: 15px;
+}
+.list-center h3 {
+    margin: 0 auto;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #DCDFE6;
+}
+.list-center form,.list-center2 form {
+    font-size: 14px;
+    color: #666;
+    padding-top: 10px;
+}
+.list-center form .inp ,.list-center2 form .inp {
+    margin-bottom: 15px;
+}
+.list-center form input , .list-center2 form input {
+    margin-top: 5px;
+    height: 33px;
+    border-radius: 6px;
+    width: 80%;
+    margin-bottom: 0;
+    font-size: 12px;
+}
+.list-center form input::-webkit-input-placeholder , .list-center2 form input::-webkit-input-placeholder{
+    color: #c0c0c0;
+    font-size: 12px;
+}    /* 使用webkit内核的浏览器 */
+.list-center form input:-moz-placeholder , .list-center2 form input:-moz-placeholder{
+    color: #c0c0c0;
+    font-size: 12px;
+}                  /* Firefox版本4-18 */
+.list-center form input::-moz-placeholder , .list-center2 form input::-moz-placeholder{
+    color: #c0c0c0;
+    font-size: 12px;
+}                  /* Firefox版本19+ */
+.list-center form input:-ms-input-placeholder , .list-center2 form input:-ms-input-placeholder{
+    color: #c0c0c0;
+    font-size: 12px;
+}           /* IE浏览器 */
+.list-center form .inp , .list-center2 form .inp{
+    position: relative;
+}
+.list-center form .btn , .list-center2 form .btn {
+    position: absolute;
+    right: 15px;
+    bottom: 5px;
+    color: #4cd964;
+}
+.list-center .bottom , .list-center2 .bottom{
+    width: 100%;
+    margin: 20px 0 0 0;
+    display: flex;
+    justify-content: flex-end;
+}
+.list-center .bottom .mui-btn-success , .list-center2 .bottom .mui-btn-success {
+    font-size: 14px;
+    padding: 3px 6px;
+    margin-right: 5px;
+}
+.list-center .close , .list-center2 .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #666;
+}

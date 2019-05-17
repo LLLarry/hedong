@@ -1,0 +1,44 @@
+ body {
+	 /* background: url(../images/bg1.jpg) no-repeat; */
+	 background-color: #1F627E;
+ }
+ header {
+	width: 100%;
+	margin-top: 35px;
+}
+header h1,h5 {
+	font-size: 30px;
+	/* background-image: -webkit-gradient(linear, center top, center bottom, from(rgb(0, 0, 0)), to(rgb(1, 152, 216))); */
+	background-image: -webkit-gradient(linear, center top, center bottom, from(rgb(244, 115, 120)), to(rgb(255, 255, 255)));
+    -webkit-background-clip: text; /*必需加前缀 -webkit- 才支持这个text值 */
+    -webkit-text-fill-color: transparent; /*text-fill-color会覆盖color所定义的字体颜色： */ 
+	text-align: center;
+	margin-bottom: 5px;
+}
+header,h5 {
+	font-size: 12px;
+}
+section {
+	position: absolute;
+	/* background-color: pink; */
+	bottom: 0;
+	right: 0;
+	left: 0;
+	top: 100px;
+	padding: 20px;
+}
+section .top, section .bottom {
+	height: 50%;
+	/* background-color: #f8f8f8; */
+}
+section .top {
+	text-align: center;
+}
+.ct1,.ct2,.ct3 {
+	width: 32%;
+	height: 100%;
+	/* border: 1px solid #ccc; */
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	display: inline-block;
+}
