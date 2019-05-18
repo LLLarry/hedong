@@ -1,0 +1,127 @@
+
+@font-face {
+	font-family: MyFontName;;
+	src: url(../font/ds_digital/DS-DIGI.TTF)
+}
+
+body {
+	  background: url(../images/4.png) no-repeat;
+	  background-position: center center;
+	  background-size: 100% 100%;
+	 /*background-color: #1F627E;*/
+	/*min-width: 1500px;*/
+ }
+ header {
+	width: 100%;
+	margin-top: 13px;
+}
+header h1,h5 {
+	font-size: 30px;
+	/* background-image: -webkit-gradient(linear, center top, center bottom, from(rgb(0, 0, 0)), to(rgb(1, 152, 216))); */
+	background-image: -webkit-gradient(linear, center top, center bottom, from(rgb(244, 115, 120)), to(rgb(255, 255, 255)));
+    -webkit-background-clip: text; /*必需加前缀 -webkit- 才支持这个text值 */
+    -webkit-text-fill-color: transparent; /*text-fill-color会覆盖color所定义的字体颜色： */ 
+	text-align: center;
+	margin-bottom: 5px;
+}
+header,h5 {
+	font-size: 12px;
+}
+nav {
+	width: 100%;
+	text-align: center;
+	margin: 18px 0
+}
+ nav  div {
+	 /*background-color: #fff;*/
+	 /*float: left;*/
+	 display: inline-block;
+	 margin: 0 2.6%;
+	 background: url(../images/nav_border_03.png) no-repeat;
+	 background-size: 100% 100%;
+	 background-position: center center;
+ }
+
+ nav  div a {
+	 font-family: MyFontName;
+	 display: inline-block;
+	 /*background-color: pink;*/
+	 padding: 7px 10px;
+	 margin: 10px 20px;
+	 color: #fff;
+	 font-weight: 600;
+	 letter-spacing: 5px;
+	 /*background-color: #94D8F6;*/
+	 /*filter: blur(5px);*/
+ }
+ .disData ul{
+	 width: 100%;
+	 text-align: center;
+ }
+.disData ul li {
+	display: inline-block;
+	margin: 0 2.08%;
+}
+.disData ul li a {
+	display: block;
+	height: 50px;
+	/*background-color: #fff;*/
+	color: #fff;
+	padding: 0 10px;
+	text-decoration: none;
+}
+.disData ul li a span {
+	display: block;
+	line-height: 25px;
+}
+.disData ul li a span:first-child{
+	font-size: 30px;
+	font-weight: 600;
+	font-family: MyFontName;
+	background-image: -webkit-gradient(linear, left center, right center, from(rgb(190, 222, 231)), to(rgb(0, 180, 255)));
+	-webkit-background-clip: text; /*必需加前缀 -webkit- 才支持这个text值 */
+	-webkit-text-fill-color: transparent; /*text-fill-color会覆盖color所定义的字体颜色： */
+}
+.disData ul li a span:last-child {
+	margin-top: 3px;
+	font-size: 12px;
+}
+section {
+	position: absolute;
+	/* background-color: pink; */
+	bottom: 0;
+	right: 0;
+	left: 0;
+	top: 210px;
+	padding: 20px;
+}
+section .top {
+	height: 60%;
+	/* background-color: #f8f8f8; */
+}
+section .bottom {
+	height: 40%;
+}
+section .top,section .bottom {
+	text-align: center;
+	display: grid;
+	grid-template-columns: 28% auto 28%;
+}
+section .top>div,section .bottom>div {
+
+}
+.ct1,.ct3,.ct4{
+	/*width: 32%;*/
+	height: 100%;
+	/* border: 1px solid #ccc; */
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	display: inline-block;
+	background: url(../images/3.png) no-repeat;
+	background-size: 100% 100%;
+}
+/*.ct2 {*/
+	/*background: none;*/
+	/*height: 100%;*/
+/*}*/
+
