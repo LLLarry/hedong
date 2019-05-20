@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="./css/base.css">
+	<link rel="stylesheet" href="./css/index.css">
+	<title>首页</title>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=wvGuSDMA4xjj0t1dPqEtibPvXY5gyN4U"></script>
+	<script src="./lib/echarts.js"></script>
+	<script src="./js/mapJs/chinaMap.js"></script>
+	<script src="./js/mapJs/BmapLib.js"></script>
+	<script src="./js/mapJs/data.js"></script>
+	<script src="./js/mapJs/echarts.js"></script>
+	<script src="./lib/jquery.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+
+	// 路径配置
+	require.config({
+		paths: {
+			echarts: 'http://echarts.baidu.com/build/dist'
+		}
+	});
+	require(
+			[
+				'echarts',
+				'echarts/chart/map'
+			],
+			function (ec) {
+				var myChart2 = ec.init(document.querySelector('.ct2'));
+				$('.ct2 div').on('mousewheel',function(e){
+					return false
+				})
+				option2 = {
+//					backgroundColor: '#000',
+					color: [
+						'rgba(255, 255, 255, 0.5)',
+						'rgba(14, 241, 242, 0.5)',
+						'rgba(37, 140, 249, 0.5)'
+					],
+					title: {
+						text: '销售区域分布',
+//						subtext: '历史最高访客量：230987643',
+						x: 'center',
+						textStyle: {
+							color: '#fff'
+						}
+					},
+					legend: {
+						orient: 'vertical',
+						x: 'left',
+						data: ['强', '中', '弱'],
+						textStyle: {
+							color: '#fff'
+						}
+					},
+					toolbox: {
+						show: false
+					},
+					series: [
+						{
+							name: '弱',
+							type: 'map',
+							mapType: 'china',
+							itemStyle: {
+								normal: {
+									borderColor: 'rgba(100,149,237,1)',
+									borderWidth: 1.5,
+									areaStyle: {
+//										color: '#1b1b1b'
+//										color: 'transparent'
+										color:'rgba(0,0,0,.1)'
+									}
+								}
+							},
+							data: [],
+							markPoint: {
+								symbolSize: 2,
+								large: true,
+								effect: {
+									show: true
+								},
+								data: (function () {
+									var data = [];
+									var len = 3000;
+									var geoCoord
+									while (len--) {
+										geoCoord = placeList[len % placeList.length].geoCoord;
+										var x = geoCoord[0] + Math.random() * 1 - 0.5;
+										var y = geoCoord[1] + Math.random() * 2 - 0;
+										if (ptInPolygon(x, y)) {
+											data.push({
+												name: placeList[len % placeList.length].name + len,
+												value: 50,
+												geoCoord: [
+													x,
+													y
+												]
+											})
+										}
+									}
+									return data;
+								})()
+							}
+						},
+						{
+							name: '中',
+							type: 'map',
+							mapType: 'china',
+							data: [],
+							markPoint: {
+								symbolSize: 3,
+								large: true,
+								effect: {
+									show: true
+								},
+								data: (function () {
+									var data = [];
+									var len = 1000;
+									var geoCoord
+									while (len--) {
+										geoCoord = placeList[len % placeList.length].geoCoord;
+										var x = geoCoord[0] + Math.random() * 5 - 2.5;
+										var y = geoCoord[1] + Math.random() * 3 - 1.5;
+										if (ptInPolygon(x, y)) {
+											data.push({
+												name: placeList[len % placeList.length].name + len,
+												value: 50,
+												geoCoord: [
+													x,
+													y
+												]
+											})
+										}
+									}
+									return data;
+								})()
+							}
+						},
+						{
+							name: '强',
+							type: 'map',
+							mapType: 'china',
+							hoverable: false,
+							roam: true,
+							data: [],
+							markPoint: {
+								symbol: 'diamond',
+								symbolSize: 6,
+								large: true,
+								effect: {
+									show: true
+								},
+								data: (function () {
+									var data = [];
+									var len = placeList.length;
+									while (len--) {
+										data.push({
+											name: placeList[len].name,
+											value: 90,
+											geoCoord: placeList[len].geoCoord
+										})
+									}
+									return data;
+								})()
+							}
+						}
+					]
+				};
+				myChart2.setOption(option2);
+			}
+	);
+
+	//判断点在多边形内还是外
+	function ptInPolygon(lng, lat) {
+		var pts = CreateChinaMapLine();
+
+		var ply = new BMap.Polygon(pts);
+
+		var pt = new BMap.Point(lng, lat);
+
+		var result = BMapLib.GeoUtils.isPointInPolygon(pt, ply);
+
+		if (result == true) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+</script>
+	<div class="app">
+		<header>
+			<h1>测试公司标题</h1>
+			<h5>CE SHI GONG SI BIAO TI</h5>
+		</header>
+		<nav>
+			<div><a href="javascript:;">测试标题</a></div>
+			<div><a href="javascript:;">测试标题</a></div>
+			<div><a href="javascript:;">测试标题</a></div>
+			<div><a href="javascript:;">测试标题</a></div>
+			<div><a href="javascript:;">测试标题</a></div>
+		</nav>
+		<div class="disData">
+			<ul>
+				<li>
+					<a href="javascript:;">
+						<span>2949.00</span>
+						<span>资金总额</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<span>2816.00</span>
+						<span>微信支付总额</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<span>133.00</span>
+						<span>支付宝支付总额</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<span>401.80</span>
+						<span>微信退费总额</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<span>130.00</span>
+						<span>支付宝退费总额</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<span>38401.00</span>
+						<span>累计提现</span>
+					</a>
+				</li>
+		
+				
+			</ul>
+		</div>
+		<section>
+			<div class="left">
+				<div class="ct1"></div>
+				<div class="ct3"></div>
+			</div>
+			<div class="center">
+				<div class="ct2"></div>
+			</div>
+			<div class="right">
+				<div class="ct4"></div>
+				<div class="ct5"></div>
+			</div>
+		</section>
+		<!-- <div class="time">
+			<span><b class="year">2019</b>年<b class="month">5</b>月<b class="day">17</b>日</span><span> <b class="time_hms">16:55:12</b></span>
+		</div> -->
+	</div>
+	<script src="./js/main.js"></script>
+</body>
+</html>
