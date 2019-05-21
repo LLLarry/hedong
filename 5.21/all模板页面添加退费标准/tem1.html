@@ -207,26 +207,23 @@
     <div id="popover">
       <ul class="mui-table-view">
         <li class="mui-table-view-cell">
-           退费标准
-        </li>
-        <li class="mui-table-view-cell">
             <label>
-                 <input type="radio" name="refReg" value="1" checked  id="refReg1"/>时间和电量最小
+                 <input type="radio" name="isWalletPay" value="1" checked />根据时间
             </label>
         </li>
         <li class="mui-table-view-cell">
             <label>
-                 <input type="radio" name="refReg" value="2" id="refReg2"/>根据时间
+                 <input type="radio" name="isWalletPay" value="2" />根据电量
             </label>
         </li>
         <li class="mui-table-view-cell">
             <label>
-                 <input type="radio" name="refReg" value="3" id="refReg3" />根据电量
+                 <input type="radio" name="isWalletPay" value="3" />时间和电量最小
             </label>
         </li>
-         <li class="mui-table-view-cell lastButton">
-           <button type="button" class="mui-btn mui-btn-success" id="exitBut">关闭</button>
-           <button type="button" class="mui-btn mui-btn-success" id="confirmBut">确定</button>
+        <li class="mui-table-view-cell" class="lastBut">
+            <button type="button" class="mui-btn mui-btn-success ">取消</button>
+            <button type="button" class="mui-btn mui-btn-success ">确定</button>
         </li>
       </ul>
     </div>

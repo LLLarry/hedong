@@ -276,24 +276,12 @@ ol {
     height: 18px;
     margin-right: 10px;
 }
-#popover label {
-  color: #666;
+#popover ul li.lastBut {
+    padding: 0;
 }
-#popover .lastButton button:first-child{
-    float: left;
-    position: initial;
+
+#popover ul .lastBut button {
+    transform: none;
     -webkit-transform: none;
-    transform:none;
-    padding: 4px 6px;
-    font-size: 12px;
-    margin-left: 15%;
-}
-#popover .lastButton button:last-child{
-    float: right;
     position: initial;
-    -webkit-transform: none;
-    transform:none;
-    padding: 4px 6px;
-    font-size: 12px;
-    margin-right: 15%;
 }

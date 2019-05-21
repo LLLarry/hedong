@@ -5,17 +5,8 @@ $(function () {
    function tem1(){
          var targetEle= null
     $('#isRefInp').click(function(){
-        // $('#popover input').removeAttr('checked')
-        // $('#refReg3').attr('checked','checked')
        $('#popover').fadeIn()
     })
-    $('#exitBut').click(function(){
-        $('#popover').fadeOut()
-    })
-     $('#confirmBut').click(function(){
-        $('#popover').fadeOut()
-    })
-
     // =============
     $('.tem1 .tem').click(function (e) {
         e =e || window.event
@@ -259,8 +250,7 @@ $(function () {
         var telephoneVal= $('.tem1 .list-center2 input[name=telephone]').val().trim()
         var isRefVal= $('.tem1 .list-center2 input[name="isRef"]:checked').val()
         var isWalletPayVal= $('.tem1 .list-center2 input[name="isWalletPay"]:checked').val()
-        var refReg= $('.tem1 input[name="refReg"]:checked').val() //退费标准
-        console.log(refReg)
+
         var permit= parseInt(isRefVal) === 0 ? 2 :  parseInt(isRefVal)
         var walletpay = parseInt(isWalletPayVal) === 0 ? 2 :  parseInt(isWalletPayVal)
         if(temNmaeVal.length <= 0){
@@ -279,7 +269,6 @@ $(function () {
         if(flag){ // 修改充电模板
             //发送ajax将修改的数据传输到服务器=====================
             // 获取id
-           // 在这里判断下,知否支持退费，支持退费的话，再决定是否上传
             var id= parseInt($(targetEle).attr('data-id'))
             $.ajax({
                 data:{
