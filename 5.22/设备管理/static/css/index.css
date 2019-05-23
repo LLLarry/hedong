@@ -1,0 +1,123 @@
+.dm {
+	color: #666;
+	font-size: 12px;
+	padding: 10px;
+	/*background-color: #f8f8f8;*/
+}
+.ceil {
+	position: relative;
+	left: -10px;
+	width: 100vw;
+	height: 15px;
+	background-color: #EFEFF4;
+}
+.dm .top{
+	border: 1px solid #ccc;
+	background-color: #f5f7fa;
+	border-radius: 6px;
+	box-shadow: 4px 4px 8px #888888;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+/*.dm header {
+	border-radius: 6px 6px 0 0;
+	overflow: hidden;
+}*/
+.dm header ul {
+	border-bottom: 1px solid #ccc;
+}
+.dm header li{
+	float: left;
+	width: 33.33%;
+	text-align: center;
+	height: 35px;
+	line-height: 35px;
+	font-size: 13px;
+	/*background-color: #f5f7fa;*/
+	border-bottom: 1px solid transparent;
+}
+.dm header li.active {
+	border-bottom: 2px solid #22B14C;
+	color: #22B14C;
+}
+.dm .search {
+	padding:20px 0 10px 0;
+	/*background-color: #f5f7fa;*/
+	/*border-radius: 0 0 6px 6px;
+	overflow: hidden;
+*/
+}
+.dm .search ol{
+	height: 34px;
+	line-height: 34px;
+}
+.dm .search .deviceName {
+	float: left;
+	width: 25%;
+}
+.dm .search .searchInp {
+	float: right;
+	width: 74%;
+
+}
+.dm .search .searchInp input {
+	width: 70%;
+	margin-right: 5%;
+	margin-bottom: 0;
+	background-color: transparent;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.dm .search .searchInp input::-webkit-input-placeholder{
+	font-size: 12px;
+	color: #999;
+}    /* 使用webkit内核的浏览器 */
+.dm .search .searchInp input:-moz-placeholder{
+	font-size: 12px;
+	color: #999;
+	}                  /* Firefox版本4-18 */
+.dm .search .searchInp input::-moz-placeholder{
+	font-size: 12px;
+	color: #999;
+	}                  /* Firefox版本19+ */
+.dm .search .searchInp input:-ms-input-placeholder{
+	font-size: 12px;
+	color: #999;
+	}           /* IE浏览器 */
+.dm .search .searchInp button {
+	font-size: 12px;
+	margin-top: 1px;
+}
+.dm main li {
+	padding: 3%;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	overflow: hidden;
+	background-color: #f8f8f8;
+	box-shadow: 4px 4px 8px #888888;
+	margin-bottom: 15px;
+
+}
+.dm main li>p {
+	line-height: 30px;
+}
+.dm main li>p:nth-child(1){
+	width: 50%;
+	float: left;
+} 
+
+.dm main li>p:nth-child(2){
+	width: 50%;
+	float: right;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+} 
+.bottomBut {
+	display: flex;
+	justify-content: flex-end;
+}
+.bottomBut button {
+	margin-right: 5px;
+}

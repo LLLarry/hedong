@@ -60,6 +60,11 @@
 .tem .list-div>li .title> p:nth-child(2n){
     width: 45%;
 }
+/*tem1 是否支持退费*/
+.tem1 .tem .list-div>li .title> p:nth-child(4){ 
+    width: 100%;
+}
+/**/
 .tem .list-div>li .title> p>span {
     margin-left: 5px;
     color: #999;

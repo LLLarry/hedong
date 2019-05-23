@@ -13,7 +13,16 @@ $(function () {
         $('#popover').fadeOut()
     })
      $('#confirmBut').click(function(){
-        $('#popover').fadeOut()
+         // $('#spanList').text(str)
+         var regReg= parseInt($('.tem1 input[name="refReg"]:checked').val()) //退费标准
+         var str= ''
+         switch(regReg){
+                case 1: str= '(默认)'; break;
+                case 2: str= '(时间)'; break;
+                case 3: str= '(电量)'; break;
+            }
+             $('#spanList').text(str)
+        $('#popover').fadeOut(regReg)
     })
 
     // =============
@@ -111,10 +120,14 @@ $(function () {
 
             var temNmae= $(target).parent().parent().find('p').eq(0).find('span').html().trim()
             var brandName= $(target).parent().parent().find('p').eq(1).find('span').html().trim()
-            var telephone= $(target).parent().parent().find('p').eq(2).find('span').html().trim()
-            var isRef= $(target).parent().parent().find('p').eq(3).find('span').html().trim() === '是' ? true : false
+            var telephone= $(target).parent().parent().find('p').eq(2).find('span').html().trim()  
+            var isRef= $(target).parent().parent().find('p').eq(3).find('span').eq(0).html().trim() === '是' ? true : false //添加eq(0)
             var isWalletPay= $(target).parent().parent().find('p').eq(4).find('span').html().trim() === '是' ? true : false
-            console.log(temNmae,brandName,telephone,isRef,isWalletPay)
+            var regVal= ''
+            if(isRef){
+                 regVal=  parseInt($(target).parent().parent().find('p').eq(3).find('span').eq(1).attr('data-val'))
+            }
+            console.log(regVal)
 
             var obj2= {
                 title: '修改充电模板',
@@ -122,7 +135,8 @@ $(function () {
                 brandName: brandName,
                 telephone: telephone,
                 isRef: isRef,
-                isWalletPay: isWalletPay
+                isWalletPay: isWalletPay,
+                regVal: regVal
             }
             renderList2(obj2)
         }else if(target.nodeName.toLowerCase() === 'button' && $(target).hasClass('addTemplate')){ 
@@ -132,7 +146,8 @@ $(function () {
                 brandName: '',
                 telephone: '',
                 isRef: true,
-                isWalletPay: false
+                isWalletPay: false,
+                regVal: 1 //默认是1 ======================
             }
             renderList2(obj2)
         }else if(target.nodeName.toLowerCase() === 'button' && $(target).hasClass('tem-title-delete')){
@@ -260,7 +275,14 @@ $(function () {
         var isRefVal= $('.tem1 .list-center2 input[name="isRef"]:checked').val()
         var isWalletPayVal= $('.tem1 .list-center2 input[name="isWalletPay"]:checked').val()
         var refReg= $('.tem1 input[name="refReg"]:checked').val() //退费标准
-        console.log(refReg)
+        
+         var str1= ''
+            switch(parseInt(refReg)){
+                case 1: str1= '(默认)'; break;
+                case 2: str1= '(时间)'; break;
+                case 3: str1= '(电量)'; break;
+            }
+
         var permit= parseInt(isRefVal) === 0 ? 2 :  parseInt(isRefVal)
         var walletpay = parseInt(isWalletPayVal) === 0 ? 2 :  parseInt(isWalletPayVal)
         if(temNmaeVal.length <= 0){
@@ -304,12 +326,22 @@ $(function () {
             parentEle.find('p').eq(1).find('span').html(brandNameseVal)
             parentEle.find('p').eq(2).find('span').html(telephoneVal)
             var isRefHtml= parseInt(isRefVal) ? '是' : '否'
-            parentEle.find('p').eq(3).find('span').html(isRefHtml)
-            parentEle.find('p').eq(3).find('span').removeClass('span-green span-red')
+            parentEle.find('p').eq(3).find('span').eq(0).html(isRefHtml)
+            // =====
+                 parentEle.find('p').eq(3).find('span').eq(1).text(str1)
+                 parentEle.find('p').eq(3).find('span').eq(1).attr('data-val',refReg)
+                 console.log(isRefVal)
+                 if(!parseInt(isRefVal)){
+                    parentEle.find('p').eq(3).find('span').eq(1).fadeOut()
+                 }else{
+                     parentEle.find('p').eq(3).find('span').eq(1).fadeIn()
+                 }
+            // ===========
+            parentEle.find('p').eq(3).find('span').eq(0).removeClass('span-green span-red')
             if(parseInt(isRefVal)){
-                parentEle.find('p').eq(3).find('span').addClass('span-green')
+                parentEle.find('p').eq(3).find('span').eq(0).addClass('span-green')
             }else {
-                parentEle.find('p').eq(3).find('span').addClass('span-red')
+                parentEle.find('p').eq(3).find('span').eq(0).addClass('span-red')
             }
 
             var isWalletPayHtml= parseInt(isWalletPayVal) ? '是' : '否'
@@ -345,14 +377,15 @@ $(function () {
             var isWalletPayHtml= parseInt(isWalletPayVal) ? '是' : '否'
             var isRefClass= parseInt(isRefVal) ? 'span-green' : 'span-red'
             var isWalletPayClass= parseInt(isWalletPayVal) ? 'span-green' : 'span-red'
-            var str= `
+            if(!parseInt(isRefVal)){ //当为否定是
+                 var str= `
                 <li>
                 <div class="title">
                 <p>模板名称：<span>${temNmaeVal}</span></p>
             <p>品牌名称：<span>${temNmaeVal}</span></p>
             <p>售后电话：<span>${brandNameseVal}</span></p>
-            <p>是否支持退费：<span class="${isRefClass}">${isRefHtml}</span></p>
-            <p>是否钱包强制支付：<span class="${isWalletPayClass}">${isWalletPayHtml}</span></p>
+            <p>是否支持退费：<span class="${isRefClass}">${isRefHtml}</span><span></span></p>
+            <p>是否钱包强制支付：<span class="${isWalletPayClass}">${isWalletPayHtml}</p>
             <div>
             <button type="button" class="mui-btn mui-btn-success tem-title-edit">编辑</button>
                 <button type="button" class="mui-btn mui-btn-success tem-title-delete">删除</button>
@@ -365,6 +398,29 @@ $(function () {
                 </ul>
                 </li>
                 `
+            }else{
+                 var str= `
+                <li>
+                <div class="title">
+                <p>模板名称：<span>${temNmaeVal}</span></p>
+            <p>品牌名称：<span>${temNmaeVal}</span></p>
+            <p>售后电话：<span>${brandNameseVal}</span></p>
+            <p>是否支持退费：<span class="${isRefClass}">${isRefHtml}</span><span data-val= ${refReg} >${str1}</span></p>
+            <p>是否钱包强制支付：<span class="${isWalletPayClass}">${isWalletPayHtml}</p>
+            <div>
+            <button type="button" class="mui-btn mui-btn-success tem-title-edit">编辑</button>
+                <button type="button" class="mui-btn mui-btn-success tem-title-delete">删除</button>
+                </div>
+                </div>
+                <ul class="mui-table-view">
+                <li class="mui-table-view-cell bottom">
+                <button type="button" class="mui-btn mui-btn-success mui-btn-outlined addBut">添加</button>
+                </li>
+                </ul>
+                </li>
+                `
+            }
+           
             var div= $('<div class="list-div"></div>')
             div.html(str)
             $('.tem1 .tem')[0].insertBefore(div[0],$('.tem nav')[0])
@@ -388,7 +444,15 @@ $(function () {
         $('.tem1 .list-center2 input[name=telephone]').val(obj.telephone)
         if(obj.isRef){
             $('.tem1 .list-center2 input[name=isRef]').eq(0).prop('checked',true)
+            var str= ''
+            switch(obj.regVal){
+                case 1: str= '(默认)'; break;
+                case 2: str= '(时间)'; break;
+                case 3: str= '(电量)'; break;
+            }
+            $('#spanList').text(str)
         }else{
+             $('#spanList').text('')
             $('.tem1 .list-center2 input[name=isRef]').eq(1).prop('checked',true)
         }
         if(obj.isWalletPay){

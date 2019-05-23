@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title>离线卡模板管理</title>
+    <link rel="stylesheet" href="./static/css/base.css"/>
+    <link rel="stylesheet" href="./static/css/tem.css"/>
+    <link rel="stylesheet" href="./static/dist/css/mui.min.css"/>
+    <script src="./static/js/jquery.js"></script>
+    <script src="./static/dist/js/mui.min.js"></script>
+    <script src="./static/js/tem.js"></script>
+</head>
+<body class="tem2">
+    <div class="tem">
+        <div class="list-div">
+            <li>
+                <div class="title">
+                    <p>模板名称：<span>系统模板</span></p>
+                </div>
+                <ul class="mui-table-view">
+                    <li class="mui-table-view-cell">
+                        <p>子模板名称：<span>10元</span></p>
+                        <p>付款金额：<span>10 <b>元</b></span></p>
+                        <p>充卡金额：<span>10 <b>元</b></span></p>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <p>子模板名称：<span>20元</span></p>
+                        <p>付款金额：<span>20 <b>元</b></span></p>
+                        <p>充卡金额：<span>20 <b>元</b></span></p>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <p>子模板名称：<span>30元</span></p>
+                        <p>付款金额：<span>30 <b>元</b></span></p>
+                        <p>充卡金额：<span>30 <b>元</b></span></p>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <p>子模板名称：<span>50元</span></p>
+                        <p>付款金额：<span>50 <b>元</b></span></p>
+                        <p>充卡金额：<span>50 <b>元</b></span></p>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <p>子模板名称：<span>100元</span></p>
+                        <p>付款金额：<span>100 <b>元</b></span></p>
+                        <p>充卡金额：<span>100 <b>元</b></span></p>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <ol class="ol-red">注:</ol>
+                        <ol><span>充卡金额：</span> 该金额为向卡内实际充值的金额（即用户卡中增加的金额）</ol>
+                        <ol><span>付款金额：</span> 该金额为用户实际支付的金额（即商户收到的金额）</ol>
+                    </li>
+                </ul>
+            </li>
+        </div>
+        <div class="list-div">
+            <li>
+                <div class="title">
+                    <p>模板名称：<span>离线自定义模板一</span></p>
+                    <p>品牌名称：<span>测试</span></p>
+                    <p>售后电话：<span>15666666666</span></p>
+                    <div>
+                        <button type="button" class="mui-btn mui-btn-success tem-title-edit" data-id="55612">编辑</button>
+                        <button type="button" class="mui-btn mui-btn-success tem-title-delete" data-id="55612">删除</button>
+                    </div>
+                </div>
+                <ul class="mui-table-view">
+                    <li class="mui-table-view-cell">
+                        <p>显示名称：<span>30元送1</span></p>
+                        <p>付款金额：<span>30<b>元</b></span></p>
+                        <p>充卡金额：<span>31 <b>元</b></span></p>
+                        <div>
+                            <button type="button" class="mui-btn mui-btn-success tem-edit" data-id="123455">编辑</button>
+                            <button type="button" class="mui-btn mui-btn-success tem-delete" data-id="123455">删除</button>
+                        </div>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <p>显示名称：<span>50元送2</span></p>
+                        <p>付款金额：<span>50<b>元</b></span></p>
+                        <p>充卡金额：<span>52 <b>元</b></span></p>
+                        <div>
+                            <button type="button" class="mui-btn mui-btn-success tem-edit" data-id="123456">编辑</button>
+                            <button type="button" class="mui-btn mui-btn-success tem-delete" data-id="123456">删除</button>
+                        </div>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <p>显示名称：<span>100元送3</span></p>
+                        <p>付款金额：<span>100<b>元</b></span></p>
+                        <p>充卡金额：<span>103 <b>元</b></span></p>
+                        <div>
+                            <button type="button" class="mui-btn mui-btn-success tem-edit" data-id="123456">编辑</button>
+                            <button type="button" class="mui-btn mui-btn-success tem-delete" data-id="123456">删除</button>
+                        </div>
+                    </li>
+                    <li class="mui-table-view-cell bottom">
+                        <button type="button" class="mui-btn mui-btn-success mui-btn-outlined addBut" data-id="55612">添加</button>
+                    </li>
+                </ul>
+            </li>
+        </div>
+
+        <nav class="mui-bar mui-bar-tab">
+            <div>
+                <button type="button" class="mui-btn mui-btn-success">首页</button>
+                <button type="button" class="mui-btn mui-btn-success addTemplate">添加模板</button>
+            </div>
+        </nav>
+    </div>
+    <div class="tem-mask2">
+        <div class="list-center2">
+            <span class="mui-icon mui-icon-closeempty close"></span>
+            <h3>新增离线模板</h3>
+            <form action="#">
+                <div class="inp">
+                    <label for="temNmae">模板名称</label>
+                    <br/>
+                    <input type="text" id="temNmae" name="temNmae" placeholder="请填写模板名称"/>
+                </div>
+                <div class="inp">
+                    <label for="brandName">品牌名称</label>
+                    <br/>
+                    <input type="text" id="brandName" name="brandName" placeholder="请填写品牌名称"/>
+                </div>
+                <div class="inp">
+                    <label for="telephone">售后电话</label>
+                    <br/>
+                    <input type="text" id="telephone" name="telephone" placeholder="请填写售后电话"/>
+                </div>
+            </form>
+            <div class="bottom">
+                <button type="button" class="mui-btn mui-btn-success close2">关闭</button>
+                <button type="button" class="mui-btn mui-btn-success submit">提交</button>
+            </div>
+        </div>
+    </div>
+    <div class="tem-mask1">
+        <div class="list-center1">
+            <span class="mui-icon mui-icon-closeempty close"></span>
+            <h3>修改离线子模板</h3>
+            <form action="#">
+                <div class="inp">
+                    <label for="name2">显示名称</label>
+                    <br/>
+                    <input type="text" id="name2" name="name" placeholder="请填写显示名称"/>
+                </div>
+                <div class="inp">
+                    <label for="parse2">付款金额</label>
+                    <br/>
+                    <input type="text" id="parse2" name="parse" placeholder="请填写付款金额"/>
+                    <div class="btn">元</div>
+                </div>
+                <div class="inp">
+                    <label for="totalParse">充卡金额</label>
+                    <br/>
+                    <input type="text" id="totalParse" name="totalParse" placeholder="请填写充卡金额"/>
+                    <div class="btn">元</div>
+                </div>
+                <div class="inp">
+                    <ol class="ol-red">注:</ol>
+                    <ol><span>充卡金额：</span> 该金额为向卡内实际充值的金额（即用户卡中增加的金额）</ol>
+                    <ol><span>付款金额：</span> 该金额为用户实际支付的金额（即商户收到的金额）</ol>
+                </div>
+
+            </form>
+            <div class="bottom">
+                <button type="button" class="mui-btn mui-btn-success close2">关闭</button>
+                <button type="button" class="mui-btn mui-btn-success submit">提交</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -20,7 +20,7 @@
                     <p>模板名称：<span>1元1小时</span></p>
                     <p>品牌名称：<span>测试</span></p>
                     <p>售后电话：<span>15666666666</span></p>
-                    <p>是否支持退费：<span class="span-green">是</span></p>
+                    <p>是否支持退费：<span class="span-green">是</span><span data-val="1">(默认)</span></p> <!-- 1是默认， 2是时间，3是电量 -->
                     <p>是否钱包强制支付：<span class="span-red">否</span></p>
                     <div>
                         <button type="button" class="mui-btn mui-btn-success tem-title-edit" data-id="156563">编辑</button> 
@@ -70,7 +70,7 @@
                     <p>模板名称：<span>1元1小时</span></p>
                     <p>品牌名称：<span>测试</span></p>
                     <p>售后电话：<span>15666666666</span></p>
-                    <p>是否支持退费：<span class="span-green">是</span></p>
+                    <p>是否支持退费：<span class="span-green">是</span><span data-val="2">(时间)</span></p>
                     <p>是否钱包强制支付：<span class="span-red">否</span></p>
                     <div>
                         <button type="button" class="mui-btn mui-btn-success tem-title-edit">编辑</button>
@@ -146,8 +146,9 @@
                     <h5>是否支持退费</h5>
                     <br/>
                     <label>
-                        <input type="radio" name="isRef" value="1" id="isRefInp"/>是
+                        <input type="radio" name="isRef" value="1" id="isRefInp"/>是 
                     </label>
+                    <span style="font-size: 12px; line-height: 24px; margin-left: 5px; color: #54C1F0;" id="spanList">(默认)</span>
                     <label>
                         <input type="radio" name="isRef" value="0" />否
                     </label>
@@ -211,7 +212,7 @@
         </li>
         <li class="mui-table-view-cell">
             <label>
-                 <input type="radio" name="refReg" value="1" checked  id="refReg1"/>时间和电量最小
+                 <input type="radio" name="refReg" value="1" checked='checked'  id="refReg1"/>时间和电量最小
             </label>
         </li>
         <li class="mui-table-view-cell">

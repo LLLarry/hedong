@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title>收费模板管理</title>
+    <link rel="stylesheet" href="./static/css/base.css"/>
+    <link rel="stylesheet" href="./static/css/tem.css"/>
+    <link rel="stylesheet" href="./static/dist/css/mui.min.css"/>
+    <script src="./static/js/jquery.js"></script>
+    <script src="./static/dist/js/mui.min.js"></script>
+    <script src="./static/js/tem.js"></script>
+</head>
+<body class="tem1">
+    <div class="tem">
+        <div class="list-div">
+            <li>
+                <div class="title">
+                    <p>模板名称：<span>1元1小时</span></p>
+                    <p>品牌名称：<span>测试</span></p>
+                    <p>售后电话：<span>15666666666</span></p>
+                    <p>是否支持退费：<span class="span-green">是</span></p>
+                    <p>是否钱包强制支付：<span class="span-red">否</span></p>
+                    <div>
+                        <button type="button" class="mui-btn mui-btn-success tem-title-edit" data-id="156563">编辑</button> 
+                        <button type="button" class="mui-btn mui-btn-success tem-title-delete" data-id="156563">删除</button>
+                    </div>
+                </div>
+                <ul class="mui-table-view">
+                    <li class="mui-table-view-cell">
+                        <p>显示名称：<span>1元1小时</span></p>
+                        <p>充电价格：<span>1 <b>元</b></span></p>
+                        <p>充电时间：<span>60 <b>分钟</b></span></p>
+                        <p>消耗电量：<span>1 <b>度</b></span></p>
+                        <div>
+                            <button type="button" class="mui-btn mui-btn-success tem-edit" data-id="123456">编辑</button>
+                            <button type="button" class="mui-btn mui-btn-success tem-delete" data-id="123456">删除</button>
+                        </div>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <p>显示名称：<span>2元2小时</span></p>
+                        <p>充电价格：<span>2 <b>元</b></span></p>
+                        <p>充电时间：<span>120 <b>分钟</b></span></p>
+                        <p>消耗电量：<span>2 <b>度</b></span></p>
+                        <div>
+                            <button type="button" class="mui-btn mui-btn-success tem-edit" data-id="55323">编辑</button>
+                            <button type="button" class="mui-btn mui-btn-success tem-delete"  data-id="55323">删除</button>
+                        </div>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <p>显示名称：<span>3元3小时</span></p>
+                        <p>充电价格：<span>3 <b>元</b></span></p>
+                        <p>充电时间：<span>180 <b>分钟</b></span></p>
+                        <p>消耗电量：<span>3 <b>度</b></span></p>
+                        <div>
+                            <button type="button" class="mui-btn mui-btn-success tem-edit" data-id="553">编辑</button>
+                            <button type="button" class="mui-btn mui-btn-success tem-delete" data-id="553">删除</button>
+                        </div>
+                    </li>
+                    <li class="mui-table-view-cell bottom">
+                        <div class="isChecked">
+                            <button type="button" class="mui-btn mui-btn-success selectTem" data-id="156563">选择模板</button>
+                        </div>
+                        <p>此模板已被选中</p>
+                        <button type="button" class="mui-btn mui-btn-success mui-btn-outlined addBut" data-id="156563">添加</button>
+                    </li>
+                </ul>
+            </li>
+        </div>
+        <div class="list-div">
+            <li>
+                <div class="title">
+                    <p>模板名称：<span>1元1小时</span></p>
+                    <p>品牌名称：<span>测试</span></p>
+                    <p>售后电话：<span>15666666666</span></p>
+                    <p>是否支持退费：<span class="span-green">是</span></p>
+                    <p>是否钱包强制支付：<span class="span-red">否</span></p>
+                    <div>
+                        <button type="button" class="mui-btn mui-btn-success tem-title-edit">编辑</button>
+                        <button type="button" class="mui-btn mui-btn-success tem-title-delete">删除</button>
+                    </div>
+                </div>
+                <ul class="mui-table-view">
+                    <li class="mui-table-view-cell">
+                        <p>显示名称：<span>1元1小时</span></p>
+                        <p>充电价格：<span>1 <b>元</b></span></p>
+                        <p>充电时间：<span>60 <b>分钟</b></span></p>
+                        <p>消耗电量：<span>1 <b>度</b></span></p>
+                        <div>
+                            <button type="button" class="mui-btn mui-btn-success tem-edit">编辑</button>
+                            <button type="button" class="mui-btn mui-btn-success tem-delete">删除</button>
+                        </div>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <p>显示名称：<span>2元2小时</span></p>
+                        <p>充电价格：<span>2 <b>元</b></span></p>
+                        <p>充电时间：<span>120 <b>分钟</b></span></p>
+                        <p>消耗电量：<span>2 <b>度</b></span></p>
+                        <div>
+                            <button type="button" class="mui-btn mui-btn-success tem-edit">编辑</button>
+                            <button type="button" class="mui-btn mui-btn-success tem-delete">删除</button>
+                        </div>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <p>显示名称：<span>3元3小时</span></p>
+                        <p>充电价格：<span>3 <b>元</b></span></p>
+                        <p>充电时间：<span>180 <b>分钟</b></span></p>
+                        <p>消耗电量：<span>3 <b>度</b></span></p>
+                        <div>
+                            <button type="button" class="mui-btn mui-btn-success tem-edit">编辑</button>
+                            <button type="button" class="mui-btn mui-btn-success tem-delete">删除</button>
+                        </div>
+                    </li>
+                    <li class="mui-table-view-cell bottom">
+                        <div class="isChecked">
+                           <button type="button" class="mui-btn mui-btn-success selectTem">选择模板</button>
+                        </div>
+                        <p>此模板已被选中</p>
+                        <button type="button" class="mui-btn mui-btn-success mui-btn-outlined addBut">添加</button>
+                    </li>
+                </ul>
+            </li>
+        </div>
+          <div class="list-div">
+            <li>
+                <div class="title">
+                    <p>模板名称：<span>1元1小时</span></p>
+                    <p>品牌名称：<span>测试</span></p>
+                    <p>售后电话：<span>15666666666</span></p>
+                    <p>是否支持退费：<span class="span-green">是</span></p>
+                    <p>是否钱包强制支付：<span class="span-red">否</span></p>
+                    <div>
+                        <button type="button" class="mui-btn mui-btn-success tem-title-edit">编辑</button>
+                        <button type="button" class="mui-btn mui-btn-success tem-title-delete">删除</button>
+                    </div>
+                </div>
+                <ul class="mui-table-view">
+                    <li class="mui-table-view-cell">
+                        <p>显示名称：<span>1元1小时</span></p>
+                        <p>充电价格：<span>1 <b>元</b></span></p>
+                        <p>充电时间：<span>60 <b>分钟</b></span></p>
+                        <p>消耗电量：<span>1 <b>度</b></span></p>
+                        <div>
+                            <button type="button" class="mui-btn mui-btn-success tem-edit">编辑</button>
+                            <button type="button" class="mui-btn mui-btn-success tem-delete">删除</button>
+                        </div>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <p>显示名称：<span>2元2小时</span></p>
+                        <p>充电价格：<span>2 <b>元</b></span></p>
+                        <p>充电时间：<span>120 <b>分钟</b></span></p>
+                        <p>消耗电量：<span>2 <b>度</b></span></p>
+                        <div>
+                            <button type="button" class="mui-btn mui-btn-success tem-edit">编辑</button>
+                            <button type="button" class="mui-btn mui-btn-success tem-delete">删除</button>
+                        </div>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <p>显示名称：<span>3元3小时</span></p>
+                        <p>充电价格：<span>3 <b>元</b></span></p>
+                        <p>充电时间：<span>180 <b>分钟</b></span></p>
+                        <p>消耗电量：<span>3 <b>度</b></span></p>
+                        <div>
+                            <button type="button" class="mui-btn mui-btn-success tem-edit">编辑</button>
+                            <button type="button" class="mui-btn mui-btn-success tem-delete">删除</button>
+                        </div>
+                    </li>
+                    <li class="mui-table-view-cell bottom">
+                        <div class="isChecked">
+                           <button type="button" class="mui-btn mui-btn-success selectTem">选择模板</button>
+                        </div>
+                        <p>此模板已被选中</p>
+                        <button type="button" class="mui-btn mui-btn-success mui-btn-outlined addBut">添加</button>
+                    </li>
+                </ul>
+            </li>
+        </div>
+
+        <nav class="mui-bar mui-bar-tab">
+            <div>
+                <button type="button" class="mui-btn mui-btn-success">首页</button>
+                <button type="button" class="mui-btn mui-btn-success addTemplate">添加模板</button>
+            </div>
+        </nav>
+    </div>
+    <div class="tem-mask2">
+        <div class="list-center2">
+            <span class="mui-icon mui-icon-closeempty close"></span>
+            <h3>修改电子模板</h3>
+            <form action="#">
+                <div class="inp">
+                    <label for="temNmae">模板名称</label>
+                    <br/>
+                    <input type="text" id="temNmae" name="temNmae" placeholder="请填写模板名称"/>
+                </div>
+                <div class="inp">
+                    <label for="brandName">品牌名称</label>
+                    <br/>
+                    <input type="text" id="brandName" name="brandName" placeholder="请填写品牌名称"/>
+                </div>
+                <div class="inp">
+                    <label for="telephone">售后电话</label>
+                    <br/>
+                    <input type="text" id="telephone" name="telephone" placeholder="请填写售后电话"/>
+                </div>
+                <div class="inp radio-inp">
+                    <h5>是否支持退费</h5>
+                    <br/>
+                    <label>
+                        <input type="radio" name="isRef" value="1" id="isRefInp"/>是
+                    </label>
+                    <label>
+                        <input type="radio" name="isRef" value="0" />否
+                    </label>
+                </div>
+                <div class="inp radio-inp">
+                    <h5>是否钱包强制支付</h5>
+                    <br/>
+                    <label>
+                        <input type="radio" name="isWalletPay" value="1" />是
+                    </label>
+                    <label>
+                        <input type="radio" name="isWalletPay" value="0" />否
+                    </label>
+                </div>
+            </form>
+            <div class="bottom">
+                <button type="button" class="mui-btn mui-btn-success close2">关闭</button>
+                <button type="button" class="mui-btn mui-btn-success submit">提交</button>
+            </div>
+        </div>
+    </div>
+    <div class="tem-mask1">
+        <div class="list-center1">
+            <span class="mui-icon mui-icon-closeempty close"></span>
+            <h3>修改电子模板</h3>
+            <form action="#">
+                <div class="inp">
+                    <label for="name2">显示名称</label>
+                    <br/>
+                    <input type="text" id="name2" name="name" placeholder="请填写显示名称"/>
+                </div>
+                <div class="inp">
+                    <label for="parse2">充电价格</label>
+                    <br/>
+                    <input type="text" id="parse2" name="parse" placeholder="请填写充电价格"/>
+                    <div class="btn">元</div>
+                </div>
+                <div class="inp">
+                    <label for="time2">充电时间</label>
+                    <br/>
+                    <input type="text" id="time2" name="time" placeholder="请填写充电时间"/>
+                    <div class="btn">分钟</div>
+                </div>
+                <div class="inp">
+                    <label for="power2">消耗电量</label>
+                    <br/>
+                    <input type="text" id="power2" name="power" placeholder="请填写消耗电量"/>
+                    <div class="btn">度</div>
+                </div>
+            </form>
+            <div class="bottom">
+                <button type="button" class="mui-btn mui-btn-success close2">关闭</button>
+                <button type="button" class="mui-btn mui-btn-success submit">提交</button>
+            </div>
+        </div>
+    </div>
+    <div id="popover">
+      <ul class="mui-table-view">
+        <li class="mui-table-view-cell">
+           退费标准
+        </li>
+        <li class="mui-table-view-cell">
+            <label>
+                 <input type="radio" name="refReg" value="1" checked  id="refReg1"/>时间和电量最小
+            </label>
+        </li>
+        <li class="mui-table-view-cell">
+            <label>
+                 <input type="radio" name="refReg" value="2" id="refReg2"/>根据时间
+            </label>
+        </li>
+        <li class="mui-table-view-cell">
+            <label>
+                 <input type="radio" name="refReg" value="3" id="refReg3" />根据电量
+            </label>
+        </li>
+         <li class="mui-table-view-cell lastButton">
+           <button type="button" class="mui-btn mui-btn-success" id="exitBut">关闭</button>
+           <button type="button" class="mui-btn mui-btn-success" id="confirmBut">确定</button>
+        </li>
+      </ul>
+    </div>
+</body>
+</html>
