@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+	<title>设备管理</title>
+	<link rel="stylesheet" type="text/css" href="./static/dist/css/mui.min.css">
+    <link rel="stylesheet" type="text/css" href="./static/dist/css/mui.picker.css">
+    <link rel="stylesheet" type="text/css" href="./static/dist/css/mui.poppicker.css">
+	<link rel="stylesheet" type="text/css" href="./static/css/base.css">
+	<link rel="stylesheet" type="text/css" href="./static/css/index.css">
+    <script type="text/javascript" src="./static/dist/js/mui.min.js"></script>
+    <script type="text/javascript" src="./static/dist/js/mui.picker.js"></script>
+    <script type="text/javascript" src="./static/dist/js/mui.poppicker.js"></script>
+	
+	<script type="text/javascript" src="./static/js/jquery.js"></script>
+</head>
+<body>
+	<div class="dm">
+        <input type="hidden" id="wolfparam" value="456"> 
+        <input type="hidden" id="uid" value="123">
+		<div class="top">
+			<header>
+				<ul class="clearfix">
+					<li class="active">在线设备（12）</li>
+					<li>离线设备（12）</li>
+					<li>全部设备（12）</li>
+				</ul>
+			</header>
+			<!-- <div class="ceil"></div> -->
+			<div class="search">
+				<ol class="clearfix">
+					<li class="deviceName"><span class="name">设备名称</span> <span class="mui-icon mui-icon-arrowright"></span></li>
+					<li class="searchInp"><input type="search" name="" placeholder="请输入查询设备"><button type="button" class="mui-btn mui-btn-success searchBut">搜索</button></li>
+				</ol>
+			</div>
+		</div>
+		<!-- <div class="ceil"></div> -->
+		<main>
+			<div class="content clearfix">
+				<ul class="ul1">
+				<div class="divLi">
+                    <li class="active">
+                        <p>设备编号：<span>000001</span></p>
+                        <p>线上收益：<span>7 <b>元</b></span></p>
+                        <p>投币收益：<span>10 <b>元</b></span></p>
+                        <p>设备名称：<span>和动小区智能充电桩</span></p>
+                        <p>小区名称：<span>回忆小区</span></p>
+                        <div class="bottomBut">
+                          <!--   <button type="button" class="mui-btn mui-btn-success statisticBut">统计</button>
+                            <button type="button" class="mui-btn mui-btn-success manageBut">管理</button>
+                            <button type="button" class="mui-btn mui-btn-success remoteBut">远程</button>
+                            <button type="button" class="mui-btn mui-btn-danger"><i class="iconfont icon-wifi-off-outline"></i></button>
+                            <button type="button" class="mui-btn mui-btn-success">统计</button>
+                            <button type="button" class="mui-btn mui-btn-success">订单</button> -->
+                            <a href="javascript:;" class="statisticBut">统计</a>
+                            <a href="javascript:;" class="manageBut">管理</a>
+                            <a href="javascript:;" class="remoteBut">远程</a>
+                            <a href="javascript:;" class="wifi"><i class="iconfont icon-wifi-off-outline"></i></a>
+                            <a href="javascript:;">统计</a>
+                           <a href="javascript:;">订单</a>
+                        </div>
+                    </li>
+
+
+                <li>
+                    <p>设备编号：<span>000001</span></p>
+                    <p>线上收益：<span>7 <b>元</b></span></p>
+                    <p>投币收益：<span>10 <b>元</b></span></p>
+                    <p>设备名称：<span>和动小区智能充电桩</span></p>
+                    <p>小区名称：<span>回忆小区</span></p>
+                    <div class="bottomBut">
+                          <a href="javascript:;" class="statisticBut">统计</a>
+                            <a href="javascript:;" class="manageBut">管理</a>
+                            <a href="javascript:;" class="remoteBut">远程</a>
+                            <a href="javascript:;" class="wifi"><i class="iconfont icon-wifi-off-outline"></i></a>
+                            <a href="javascript:;">统计</a>
+                           <a href="javascript:;">订单</a>
+                    </div>
+                </li>
+               
+
+                </div>
+                <div class="mui-pull-bottom-pocket mui-block mui-visibility" id="showTip">
+                    <div class="mui-pull">
+                        <div class="mui-pull-loading mui-icon mui-spinner mui-hidden"></div>
+                        <div class="mui-pull-caption mui-pull-caption-nomore" >没有更多数据了</div>
+                    </div>
+                </div>
+
+			 </ul>
+			<ul class="ul2">
+				 <div class="divLi">
+                    <li class="clearfix">
+                    <p>设备编号：<span>000001</span></p>
+                    <p>线上收益：<span>7 <b>元</b></span></p>
+                    <p>投币收益：<span>10 <b>元</b></span></p>
+                    <p>设备名称：<span>和动小区智能充电桩</span></p>
+                    <p>小区名称：<span>回忆小区</span></p>
+                    <div class="bottomBut">
+                         <button type="button" class="mui-btn mui-btn-success statisticBut">统计</button>
+                        <button type="button" class="mui-btn mui-btn-success manageBut">管理</button>
+                        <button type="button" class="mui-btn mui-btn-success remoteBut">远程</button>
+                        <button type="button" class="mui-btn mui-btn-danger"><i class="iconfont icon-wifi-off-outline"></i></button>
+                        <button type="button" class="mui-btn mui-btn-success">统计</button>
+                        <button type="button" class="mui-btn mui-btn-success">订单</button>
+                    </div>
+                </li>
+
+                <li>
+                    <p>设备编号：<span>000001</span></p>
+                    <p>线上收益：<span>7 <b>元</b></span></p>
+                    <p>投币收益：<span>10 <b>元</b></span></p>
+                    <p>设备名称：<span>和动小区智能充电桩</span></p>
+                    <p>小区名称：<span>回忆小区</span></p>
+                    <div class="bottomBut">
+                        <button type="button" class="mui-btn mui-btn-success">统计</button>
+                        <button type="button" class="mui-btn mui-btn-success">订单</button>
+                    </div>
+                </li>
+                <li>
+                    <p>设备编号：<span>000001</span></p>
+                    <p>线上收益：<span>7 <b>元</b></span></p>
+                    <p>投币收益：<span>10 <b>元</b></span></p>
+                    <p>设备名称：<span>和动小区智能充电桩</span></p>
+                    <p>小区名称：<span>回忆小区</span></p>
+                    <div class="bottomBut">
+                        <button type="button" class="mui-btn mui-btn-success">统计</button>
+                        <button type="button" class="mui-btn mui-btn-success">订单</button>
+                    </div>
+                </li>
+                <li>
+                    <p>设备编号：<span>000001</span></p>
+                    <p>线上收益：<span>7 <b>元</b></span></p>
+                    <p>投币收益：<span>10 <b>元</b></span></p>
+                    <p>设备名称：<span>和动小区智能充电桩</span></p>
+                    <p>小区名称：<span>回忆小区</span></p>
+                    <div class="bottomBut">
+                        <button type="button" class="mui-btn mui-btn-success">统计</button>
+                        <button type="button" class="mui-btn mui-btn-success">订单</button>
+                    </div>
+                </li>
+                <li>
+                    <p>设备编号：<span>000001</span></p>
+                    <p>线上收益：<span>7 <b>元</b></span></p>
+                    <p>投币收益：<span>10 <b>元</b></span></p>
+                    <p>设备名称：<span>和动小区智能充电桩</span></p>
+                    <p>小区名称：<span>回忆小区</span></p>
+                    <div class="bottomBut">
+                        <button type="button" class="mui-btn mui-btn-success">统计</button>
+                        <button type="button" class="mui-btn mui-btn-success">订单</button>
+                    </div>
+                </li>
+                <li>
+                    <p>设备编号：<span>000001</span></p>
+                    <p>线上收益：<span>7 <b>元</b></span></p>
+                    <p>投币收益：<span>10 <b>元</b></span></p>
+                    <p>设备名称：<span>和动小区智能充电桩</span></p>
+                    <p>小区名称：<span>回忆小区</span></p>
+                    <div class="bottomBut">
+                        <button type="button" class="mui-btn mui-btn-success">统计</button>
+                        <button type="button" class="mui-btn mui-btn-success">订单</button>
+                    </div>
+                </li>
+             </div>
+              <div class="mui-pull-bottom-pocket mui-block mui-visibility" id="showTip">
+                    <div class="mui-pull">
+                        <div class="mui-pull-loading mui-icon mui-spinner mui-hidden"></div>
+                        <div class="mui-pull-caption mui-pull-caption-nomore" >没有更多数据了</div>
+                    </div>
+                </div>
+			</ul>
+			<ul class="ul3">
+				     <div class="divLi">
+                    <li class="clearfix">
+                    <p>设备编号：<span>000001</span></p>
+                    <p>线上收益：<span>7 <b>元</b></span></p>
+                    <p>投币收益：<span>10 <b>元</b></span></p>
+                    <p>设备名称：<span>和动小区智能充电桩</span></p>
+                    <p>小区名称：<span>回忆小区</span></p>
+                    <div class="bottomBut">
+                        <button type="button" class="mui-btn mui-btn-success statisticBut">统计</button>
+                        <button type="button" class="mui-btn mui-btn-success manageBut">管理</button>
+                        <button type="button" class="mui-btn mui-btn-success remoteBut">远程</button>
+                        <button type="button" class="mui-btn mui-btn-danger"><i class="iconfont icon-wifi-off-outline"></i></button>
+                        <button type="button" class="mui-btn mui-btn-success">统计</button>
+                        <button type="button" class="mui-btn mui-btn-success">订单</button>
+                    </div>
+                </li>
+
+                <li>
+                    <p>设备编号：<span>000001</span></p>
+                    <p>线上收益：<span>7 <b>元</b></span></p>
+                    <p>投币收益：<span>10 <b>元</b></span></p>
+                    <p>设备名称：<span>和动小区智能充电桩</span></p>
+                    <p>小区名称：<span>回忆小区</span></p>
+                    <div class="bottomBut">
+                        <button type="button" class="mui-btn mui-btn-success">统计</button>
+                        <button type="button" class="mui-btn mui-btn-success">订单</button>
+                    </div>
+                </li>
+                <li>
+                    <p>设备编号：<span>000001</span></p>
+                    <p>线上收益：<span>7 <b>元</b></span></p>
+                    <p>投币收益：<span>10 <b>元</b></span></p>
+                    <p>设备名称：<span>和动小区智能充电桩</span></p>
+                    <p>小区名称：<span>回忆小区</span></p>
+                    <div class="bottomBut">
+                        <button type="button" class="mui-btn mui-btn-success">统计</button>
+                        <button type="button" class="mui-btn mui-btn-success">订单</button>
+                    </div>
+                </li>
+                <li>
+                    <p>设备编号：<span>000001</span></p>
+                    <p>线上收益：<span>7 <b>元</b></span></p>
+                    <p>投币收益：<span>10 <b>元</b></span></p>
+                    <p>设备名称：<span>和动小区智能充电桩</span></p>
+                    <p>小区名称：<span>回忆小区</span></p>
+                    <div class="bottomBut">
+                        <button type="button" class="mui-btn mui-btn-success">统计</button>
+                        <button type="button" class="mui-btn mui-btn-success">订单</button>
+                    </div>
+                </li>
+                <li>
+                    <p>设备编号：<span>000001</span></p>
+                    <p>线上收益：<span>7 <b>元</b></span></p>
+                    <p>投币收益：<span>10 <b>元</b></span></p>
+                    <p>设备名称：<span>和动小区智能充电桩</span></p>
+                    <p>小区名称：<span>回忆小区</span></p>
+                    <div class="bottomBut">
+                        <button type="button" class="mui-btn mui-btn-success">统计</button>
+                        <button type="button" class="mui-btn mui-btn-success">订单</button>
+                    </div>
+                </li>
+                <li>
+                    <p>设备编号：<span>000001</span></p>
+                    <p>线上收益：<span>7 <b>元</b></span></p>
+                    <p>投币收益：<span>10 <b>元</b></span></p>
+                    <p>设备名称：<span>和动小区智能充电桩</span></p>
+                    <p>小区名称：<span>回忆小区</span></p>
+                    <div class="bottomBut">
+                        <button type="button" class="mui-btn mui-btn-success">统计</button>
+                        <button type="button" class="mui-btn mui-btn-success">订单</button>
+                    </div>
+                </li>
+                </div>
+                 <div class="mui-pull-bottom-pocket mui-block mui-visibility" id="showTip">
+                    <div class="mui-pull">
+                        <div class="mui-pull-loading mui-icon mui-spinner mui-hidden"></div>
+                        <div class="mui-pull-caption mui-pull-caption-nomore" >没有更多数据了</div>
+                    </div>
+                </div>
+			</ul>
+			</div>
+		</main>
+	</div>
+	<script type="text/javascript" src="./static/js/main.js" ></script>
+</body>
+</html>

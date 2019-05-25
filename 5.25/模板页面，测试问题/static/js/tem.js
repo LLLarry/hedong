@@ -3,19 +3,35 @@
 
 $(function () {
    function tem1(){
-         var targetEle= null
-         $('#isRefInp').click(function(){
-        // $('#popover input').removeAttr('checked')
-        // $('#refReg3').attr('checked','checked')
-           $('#popover').fadeIn()
-        })
-        $('#exitBut').click(function(){
-            $('#popover').fadeOut()
-        })
-         $('#confirmBut').click(function(){
-            $('#popover').fadeOut()
-        })
-    // =============
+	   var targetEle= null
+	    $('#isRefInp').click(function(){
+//	    	var common2= parseInt($(targetEle).parent().parent().parent().parent().find('.common2').val().trim())
+	    	var common2= parseInt($(targetEle).parent().parent().find('p').eq(3).find('span').eq(1).attr('data-val'))
+	    	$('#popover input').removeAttr('checked')
+	    	if(common2 === 2){
+	    		$('#refReg2').prop('checked',true)
+	    	}else if(common2 === 3){
+	    		$('#refReg3').prop('checked',true)
+	    	}else {
+	    		$('#refReg1').prop('checked',true)
+	    	}
+
+	        $('#popover').fadeIn()
+	     })
+	     $('#exitBut').click(function(){
+	         $('#popover').fadeOut()
+	     })
+	      $('#confirmBut').click(function(){
+	    	  var regReg= parseInt($('.tem1 input[name="refReg"]:checked').val()) //退费标准
+	          var str= ''
+	          switch(regReg){
+	                 case 1: str= '(默认)'; break;
+	                 case 2: str= '(时间)'; break;
+	                 case 3: str= '(电量)'; break;
+	             }
+	              $('#spanList').text(str)
+	         $('#popover').fadeOut()
+	     })
     $('.tem1 .tem').click(function (e) {
         e =e || window.event
         var target= e.target || e.srcElement
@@ -35,21 +51,21 @@ $(function () {
             }
             renderList(obj)
         }else if(target.nodeName.toLowerCase() === 'button' && $(target).hasClass('tem-delete')){
-             var isSelectTem= $(target).parent().parent().parent().parent().parent().hasClass('borShadow')
-           if(isSelectTem){
-             mui.toast('被选择的子模板不能删除',{ duration:'1500', type:'div' })
-             return false
-           }
+        	   var isSelectTem= $(target).parent().parent().parent().parent().parent().hasClass('borShadow')
+               if(isSelectTem){
+                 mui.toast('被选择的子模板不能删除',{ duration:'1500', type:'div' })
+                 return false
+               }
             mui.confirm('确定删除?', function (type) {
                 if(type.index){ //删除子模板
                     $(target).parent().parent().remove()
                     // =============================发送 ajax 提交数据 提交删除元素的数据
                     var id= parseInt($(targetEle).attr('data-id'))
-                    $.ajax({  //添加子模板
+                    $.ajax({
                         data:{
                             id: id
                         },
-                        url : "${hdpath}/wctemplate/deleteSonTempmanage",
+                        url : "./deletesubclasscharge",
                         type : "POST",
                         cache : false,
                         success : function(e){
@@ -85,7 +101,7 @@ $(function () {
                 var nextName= nextParse+'元'+houer+'小时'
             }
             var id= parseInt($(targetEle).attr('data-id'))
-           
+          
             $.ajax({  //添加子模板
                 data:{
                     id: id,
@@ -94,7 +110,7 @@ $(function () {
                     chargeTime: nextTime, 
                     chargeQuantity: nextPower
                 },
-                url : "${hdpath}/wctemplate/addSonTempmanage",
+                url : "./addsubclasscharge",
                 type : "POST",
                 cache : false,
                 success : function(e){
@@ -118,15 +134,19 @@ $(function () {
             var telephone= $(target).parent().parent().find('p').eq(2).find('span').html().trim()
             var isRef= $(target).parent().parent().find('p').eq(3).find('span').html().trim() === '是' ? true : false
             var isWalletPay= $(target).parent().parent().find('p').eq(4).find('span').html().trim() === '是' ? true : false
-            console.log(temNmae,brandName,telephone,isRef,isWalletPay)
-
+            var regVal= ''
+            if(isRef){
+                regVal=  parseInt($(target).parent().parent().find('p').eq(3).find('span').eq(1).attr('data-val'))
+             }
+            
             var obj2= {
                 title: '修改充电模板',
                 temNmae: temNmae,
                 brandName: brandName,
                 telephone: telephone,
                 isRef: isRef,
-                isWalletPay: isWalletPay
+                isWalletPay: isWalletPay,
+                regVal: regVal
             }
             renderList2(obj2)
         }else if(target.nodeName.toLowerCase() === 'button' && $(target).hasClass('addTemplate')){ 
@@ -136,15 +156,16 @@ $(function () {
                 brandName: '',
                 telephone: '',
                 isRef: true,
-                isWalletPay: false
+                isWalletPay: false,
+                regVal: 1 //默认是1 ======================
             }
             renderList2(obj2)
         }else if(target.nodeName.toLowerCase() === 'button' && $(target).hasClass('tem-title-delete')){
-            var isSelectTem= $(target).parent().parent().parent().parent().hasClass('borShadow')
-           if(isSelectTem){
-             mui.toast('被选择的模板不能删除',{ duration:'1500', type:'div' })
-             return false
-           }
+        	 var isSelectTem= $(target).parent().parent().parent().parent().hasClass('borShadow')
+             if(isSelectTem){
+               mui.toast('被选择的模板不能删除',{ duration:'1500', type:'div' })
+               return false
+             }
             mui.confirm('确定删除模板?', function (type) {
                 if(type.index){ //删除
                     $(target).parent().parent().parent().parent().remove()
@@ -154,7 +175,7 @@ $(function () {
                         data:{
                             id: id
                         },
-                        url : "${hdpath}/wctemplate/deleteTempmanage",
+                        url : "./deletestaircharge",
                         type : "POST",
                         cache : false,
                         success : function(e){
@@ -170,29 +191,33 @@ $(function () {
             if(!parent.hasClass('borShadow')){
                 // 发送ajax，成功之后执行下面的 ()
                 // 数据来源
-                
-                 $.ajax({
-                        data:{
-                            id: id
-                        },
-                        url : "./templatechoice",
-                        type : "POST",
-                        cache : false,
-                        success : function(e){
-                           if(e == 1){
+                var arecode= $('body').attr('data-arecode').trim()
+                var source= $('body').attr('data-source').trim()
+                var id= $(target).attr('data-id').trim() //模板id
+                  $.ajax({
+                         data:{
+                             source: source,
+                             obj:arecode,
+                        	 temid: id
+                         },
+                         url : "./templatechoice",
+                         type : "POST",
+                         cache : false,
+                         success : function(e){
+                            if(e == 1){
                                 parent.siblings().removeClass('borShadow') //移除所有的兄弟节点的选择
                                 parent.siblings().find('.bottom p').fadeOut()
                                 parent.siblings().find('.selectTem').removeClass('active')
                                 parent.addClass('borShadow')  //给当前元素添加节点
                                 $(target).parent().parent().find('p').fadeIn()
                                 $(target).addClass('active')
-                                 // mui.toast('已选择当前模板',{ duration:'1500', type:'div' })
-                           }
-                        },//返回数据填充
-                        error: function(){
-                            mui.toast('选择模板失败，请稍后再试！',{ duration:'1500', type:'div' })
-                        }
-                    });
+                                 //mui.toast('已选择当前模板',{ duration:'1500', type:'div' })
+                            }
+                         },//返回数据填充
+                         error: function(){
+                             mui.toast('选择模板失败，请稍后再试！',{ duration:'1500', type:'div' })
+                         }
+                     });
 
                
              }else{
@@ -200,7 +225,6 @@ $(function () {
              }
             
         } 
-
     })
 
     $('.tem1 .list-center1').click(function(e){
@@ -278,7 +302,7 @@ $(function () {
                     chargeTime: timeVal,
                     chargeQuantity: powerVal
                 },
-                url : "${hdpath}/wctemplate/updateSonTempmanage",
+                url : "./updatesubclasscharge",
                 type : "POST",
                 cache : false,
                 success : function(e){
@@ -304,27 +328,42 @@ $(function () {
         var telephoneVal= $('.tem1 .list-center2 input[name=telephone]').val().trim()
         var isRefVal= $('.tem1 .list-center2 input[name="isRef"]:checked').val()
         var isWalletPayVal= $('.tem1 .list-center2 input[name="isWalletPay"]:checked').val()
+        
         var refReg= $('.tem1 input[name="refReg"]:checked').val() //退费标准
-        console.log(refReg)
+        
+//        var str1= ''
+//            switch(parseInt(refReg)){
+//                case 1: str1= '(默认)'; break;
+//                case 2: str1= '(时间)'; break;
+//                case 3: str1= '(电量)'; break;
+//            }
+        var str1= ''
+            switch(parseInt(refReg)){
+                case 1: str1= '(退费标准：时间和电量最小)'; break;
+                case 2: str1= '(退费标准：根据时间)'; break;
+                case 3: str1= '(退费标准：根据电量)'; break;
+            }
+       
         var permit= parseInt(isRefVal) === 0 ? 2 :  parseInt(isRefVal)
         var walletpay = parseInt(isWalletPayVal) === 0 ? 2 :  parseInt(isWalletPayVal)
         if(temNmaeVal.length <= 0){
             mui.toast('请输入模板名称',{ duration:'1500', type:'div' })
             return false
         }
-        if(brandNameseVal.length <= 0){
+        
+        
+        /*if(brandNameseVal.length <= 0){
             mui.toast('请输入品牌名称',{ duration:'1500', type:'div' })
             return false
         }
         if(telephoneVal.length <= 0){
             mui.toast('请输入售后电话',{ duration:'1500', type:'div' })
             return false
-        }
+        }*/
         var flag= $('.list-center2 h3').html().trim() === '修改充电模板' ? true : false
         if(flag){ // 修改充电模板
             //发送ajax将修改的数据传输到服务器=====================
             // 获取id
-           // 在这里判断下,知否支持退费，支持退费的话，再决定是否上传
             var id= parseInt($(targetEle).attr('data-id'))
             $.ajax({
                 data:{
@@ -333,9 +372,10 @@ $(function () {
                     remark: brandNameseVal,
                     permit: permit,
                     walletpay: walletpay,
-                    common1: telephoneVal
+                    common1: telephoneVal,
+                    common2	: refReg
                 },
-                url : "${hdpath}/wctemplate/updateTempmanage",
+                url : "./updatestaircharge",
                 type : "POST",
                 cache : false,
                 success : function(e){
@@ -349,12 +389,22 @@ $(function () {
             parentEle.find('p').eq(1).find('span').html(brandNameseVal)
             parentEle.find('p').eq(2).find('span').html(telephoneVal)
             var isRefHtml= parseInt(isRefVal) ? '是' : '否'
-            parentEle.find('p').eq(3).find('span').html(isRefHtml)
-            parentEle.find('p').eq(3).find('span').removeClass('span-green span-red')
+            parentEle.find('p').eq(3).find('span').eq(0).html(isRefHtml)
+            
+            parentEle.find('p').eq(3).find('span').eq(1).text(str1)
+            parentEle.find('p').eq(3).find('span').eq(1).attr('data-val',refReg)
+            console.log(isRefVal)
+            if(!parseInt(isRefVal)){
+               parentEle.find('p').eq(3).find('span').eq(1).fadeOut()
+            }else{
+                parentEle.find('p').eq(3).find('span').eq(1).fadeIn()
+            }
+            
+            parentEle.find('p').eq(3).find('span').eq(0).removeClass('span-green span-red')
             if(parseInt(isRefVal)){
-                parentEle.find('p').eq(3).find('span').addClass('span-green')
+                parentEle.find('p').eq(3).find('span').eq(0).addClass('span-green')
             }else {
-                parentEle.find('p').eq(3).find('span').addClass('span-red')
+                parentEle.find('p').eq(3).find('span').eq(0).addClass('span-red')
             }
 
             var isWalletPayHtml= parseInt(isWalletPayVal) ? '是' : '否'
@@ -375,46 +425,73 @@ $(function () {
                     remark: brandNameseVal,
                     permit: permit,
                     walletpay: walletpay,
-                    common1: telephoneVal
+                    common1: telephoneVal,
+                    common2	: refReg
                 },
-                url : "${hdpath}/wctemplate/addTempmanage",
+                url : "./addstaircharge",
                 type : "POST",
                 cache : false,
                 success : function(e){
-                   
+                	if(e==1){
+                  	  window.location.href= window.location.href
+                     }
                 },//返回数据填充
             });
 
-
+            
             var isRefHtml= parseInt(isRefVal) ? '是' : '否'
             var isWalletPayHtml= parseInt(isWalletPayVal) ? '是' : '否'
             var isRefClass= parseInt(isRefVal) ? 'span-green' : 'span-red'
             var isWalletPayClass= parseInt(isWalletPayVal) ? 'span-green' : 'span-red'
-            var str= `
-                <li>
-                <div class="title">
-                <p>模板名称：<span>${temNmaeVal}</span></p>
-            <p>品牌名称：<span>${temNmaeVal}</span></p>
-            <p>售后电话：<span>${brandNameseVal}</span></p>
-            <p>是否支持退费：<span class="${isRefClass}">${isRefHtml}</span></p>
-            <p>是否钱包强制支付：<span class="${isWalletPayClass}">${isWalletPayHtml}</span></p>
-            <div>
-            <button type="button" class="mui-btn mui-btn-success tem-title-edit">编辑</button>
-                <button type="button" class="mui-btn mui-btn-success tem-title-delete">删除</button>
-                </div>
-                </div>
-                <ul class="mui-table-view">
-                <li class="mui-table-view-cell bottom">
-                <button type="button" class="mui-btn mui-btn-success mui-btn-outlined addBut">添加</button>
-                </li>
-                </ul>
-                </li>
-                `
+            	if(!parseInt(isRefVal)){ //当为否定是
+                    var str= `
+                   <li>
+                   <div class="title">
+                   <p>模板名称：<span>${temNmaeVal}</span></p>
+               <p>品牌名称：<span>${temNmaeVal}</span></p>
+               <p>售后电话：<span>${brandNameseVal}</span></p>
+               <p>是否支持退费：<span class="${isRefClass}">${isRefHtml}</span><span></span></p>
+               <p>是否钱包强制支付：<span class="${isWalletPayClass}">${isWalletPayHtml}</p>
+               <div>
+               <button type="button" class="mui-btn mui-btn-success tem-title-edit">编辑</button>
+                   <button type="button" class="mui-btn mui-btn-success tem-title-delete">删除</button>
+                   </div>
+                   </div>
+                   <ul class="mui-table-view">
+                   <li class="mui-table-view-cell bottom">
+                   <button type="button" class="mui-btn mui-btn-success mui-btn-outlined addBut">添加</button>
+                   </li>
+                   </ul>
+                   </li>
+                   `
+               }else{
+                    var str= `
+                   <li>
+                   <div class="title">
+                   <p>模板名称：<span>${temNmaeVal}</span></p>
+               <p>品牌名称：<span>${temNmaeVal}</span></p>
+               <p>售后电话：<span>${brandNameseVal}</span></p>
+               <p>是否支持退费：<span class="${isRefClass}">${isRefHtml}</span><span data-val= ${refReg} >${str1}</span></p>
+               <p>是否钱包强制支付：<span class="${isWalletPayClass}">${isWalletPayHtml}</p>
+               <div>
+               <button type="button" class="mui-btn mui-btn-success tem-title-edit">编辑</button>
+                   <button type="button" class="mui-btn mui-btn-success tem-title-delete">删除</button>
+                   </div>
+                   </div>
+                   <ul class="mui-table-view">
+                   <li class="mui-table-view-cell bottom">
+                   <button type="button" class="mui-btn mui-btn-success mui-btn-outlined addBut">添加</button>
+                   </li>
+                   </ul>
+                   </li>
+                   `
+               }
             var div= $('<div class="list-div"></div>')
             div.html(str)
             $('.tem1 .tem')[0].insertBefore(div[0],$('.tem nav')[0])
         }
         $('.tem1 .tem-mask2').fadeOut()
+//        window.location.href= window.location.href
     })
 
 
@@ -433,7 +510,16 @@ $(function () {
         $('.tem1 .list-center2 input[name=telephone]').val(obj.telephone)
         if(obj.isRef){
             $('.tem1 .list-center2 input[name=isRef]').eq(0).prop('checked',true)
+            console.log( $('.tem1 input[name=refReg]').eq(0))
+            var str= ''
+                switch(obj.regVal){
+                    case 1: str= '(默认)'; break;
+                    case 2: str= '(时间)'; break;
+                    case 3: str= '(电量)'; break;
+                }
+                $('#spanList').text(str)
         }else{
+        	 $('#spanList').text('')
             $('.tem1 .list-center2 input[name=isRef]').eq(1).prop('checked',true)
         }
         if(obj.isWalletPay){
@@ -453,6 +539,7 @@ $(function () {
         e =e || window.event
         var target= e.target || e.srcElement
         targetEle= target
+      
         if(target.nodeName.toLowerCase() === 'button' && $(target).hasClass('tem-edit')){ //点击编辑
             //这一步发送ajax获取数据,或者在元素身上找到绑定的数据，讲数据处理为下面的obj格式的，并将数据穿进去
             var name= $(target).parent().parent().find('p').eq(0).find('span').html().trim()
@@ -465,8 +552,8 @@ $(function () {
                 totalParse: totalParse
            }
             renderList(obj)
-        }else if(target.nodeName.toLowerCase() === 'button' && $(target).hasClass('tem-delete')){ //选择模板 tem2--
-               var isSelectTem= $(target).parent().parent().parent().parent().parent().hasClass('borShadow')
+        }else if(target.nodeName.toLowerCase() === 'button' && $(target).hasClass('tem-delete')){
+        	   var isSelectTem= $(target).parent().parent().parent().parent().parent().hasClass('borShadow')
                if(isSelectTem){
                  mui.toast('被选择的子模板不能删除',{ duration:'1500', type:'div' })
                  return false
@@ -481,7 +568,7 @@ $(function () {
                         data:{
                             id: id
                         },
-                        url : "删除离线子模板",
+                        url : "./deletesubclassoffline",
                         type : "POST",
                         cache : false,
                         success : function(e){
@@ -519,7 +606,7 @@ $(function () {
                     money: nextParse,
                     remark: nextTotalParse
                 },
-                url : "添加离线子模板",
+                url : "./addsubclassoffline",
                 type : "POST",
                 cache : false,
                 success : function(e){
@@ -556,13 +643,12 @@ $(function () {
                 telephone: ''
             }
             renderList2(obj2)
-        }else if(target.nodeName.toLowerCase() === 'button' && $(target).hasClass('tem-title-delete')){ //选择模板 tem2--
-            var isSelectTem= $(target).parent().parent().parent().parent().hasClass('borShadow')
-            console.log(isSelectTem)
-           if(isSelectTem){
-             mui.toast('被选择的模板不能删除',{ duration:'1500', type:'div' })
-             return false
-           }
+        }else if(target.nodeName.toLowerCase() === 'button' && $(target).hasClass('tem-title-delete')){
+        	 var isSelectTem= $(target).parent().parent().parent().parent().hasClass('borShadow')
+             if(isSelectTem){
+               mui.toast('被选择的模板不能删除',{ duration:'1500', type:'div' })
+               return false
+             }
             mui.confirm('确定删除模板?', function (type) {
                 if(type.index){ //删除
                     $(target).parent().parent().parent().parent().remove()
@@ -573,7 +659,7 @@ $(function () {
                         data:{
                             id: id
                         },
-                        url : "./offLineTemDelete",
+                        url : "./deletestairoffline",
                         type : "POST",
                         cache : false,
                         success : function(e){
@@ -585,33 +671,38 @@ $(function () {
             })
         }else if(target.nodeName.toLowerCase() === 'button' && $(target).hasClass('selectTem')){
             // 点击选择模板
+        	console.log(11)
             var parent= $(target).parent().parent().parent().parent().parent()
             if(!parent.hasClass('borShadow')){
                 // 发送ajax，成功之后执行下面的 ()
                 // 数据来源
-                
-                 // $.ajax({
-                 //        data:{
-                 //            id: id
-                 //        },
-                 //        url : "./templatechoice",
-                 //        type : "POST",
-                 //        cache : false,
-                 //        success : function(e){
-                 //           if(e == 1){
+                var arecode= $('body').attr('data-arecode').trim()
+                var source= $('body').attr('data-source').trim()
+                var id= $(target).attr('data-id').trim() //模板id
+                  $.ajax({
+                         data:{
+                             source: source,
+                             obj:arecode,
+                        	 temid: id
+                         },
+                         url : "./templatechoice",
+                         type : "POST",
+                         cache : false,
+                         success : function(e){
+                            if(e == 1){
                                 parent.siblings().removeClass('borShadow') //移除所有的兄弟节点的选择
                                 parent.siblings().find('.bottom p').fadeOut()
                                 parent.siblings().find('.selectTem').removeClass('active')
                                 parent.addClass('borShadow')  //给当前元素添加节点
                                 $(target).parent().parent().find('p').fadeIn()
                                 $(target).addClass('active')
-                                 // mui.toast('已选择当前模板',{ duration:'1500', type:'div' })
-                    //        }
-                    //     },//返回数据填充
-                    //     error: function(){
-                    //         mui.toast('选择模板失败，请稍后再试！',{ duration:'1500', type:'div' })
-                    //     }
-                    // });
+                                 //mui.toast('已选择当前模板',{ duration:'1500', type:'div' })
+                            }
+                         },//返回数据填充
+                         error: function(){
+                             mui.toast('选择模板失败，请稍后再试！',{ duration:'1500', type:'div' })
+                         }
+                     });
 
                
              }else{
@@ -687,7 +778,7 @@ $(function () {
                     money: parseVal,
                     remark: totalParseVal
                 },
-                url : "修改离线子模板",
+                url : "./updatesubclassoffline",
                 type : "POST",
                 cache : false,
                 success : function(e){
@@ -714,14 +805,14 @@ $(function () {
             mui.toast('请输入模板名称',{ duration:'1500', type:'div' })
             return false
         }
-        if(brandNameseVal.length <= 0){
+        /*if(brandNameseVal.length <= 0){
             mui.toast('请输入品牌名称',{ duration:'1500', type:'div' })
             return false
         }
         if(telephoneVal.length <= 0){
             mui.toast('请输入售后电话',{ duration:'1500', type:'div' })
             return false
-        }
+        }*/
         var flag= $('.tem2 .list-center2 h3').html().trim() === '修改离线模板' ? true : false
         if(flag){ // 修改离线模板
             //发送ajax将修改的数据传输到服务器=====================
@@ -733,7 +824,7 @@ $(function () {
                     remark: brandNameseVal,
                     common1: telephoneVal
                 },
-                url : "修改离线主模板",
+                url : "./updatestairoffline",
                 type : "POST",
                 cache : false,
                 success : function(e){
@@ -754,11 +845,13 @@ $(function () {
                     remark: brandNameseVal,
                     common1: telephoneVal
                 },
-                url : "添加离线主模板",
+                url : "./addstairoffline",
                 type : "POST",
                 cache : false,
                 success : function(e){
-                   
+                	if(e==1){
+                  	  window.location.href= window.location.href
+                     }
                 },//返回数据填充
             });
             
@@ -810,6 +903,11 @@ function tem3(){
             }
             renderList(obj)
         }else if(target.nodeName.toLowerCase() === 'button' && $(target).hasClass('tem-delete')){
+        	   var isSelectTem= $(target).parent().parent().parent().parent().parent().hasClass('borShadow')
+               if(isSelectTem){
+                 mui.toast('被选择的子模板不能删除',{ duration:'1500', type:'div' })
+                 return false
+               }
             mui.confirm('确定删除?', function (type) {
                 if(type.index){ //删除
                     $(target).parent().parent().remove()
@@ -820,7 +918,7 @@ function tem3(){
                         data:{
                             id: id
                         },
-                        url : "删除脉冲子模板",
+                        url : "./deletesubclassincoins",
                         type : "POST",
                         cache : false,
                         success : function(e){
@@ -861,7 +959,7 @@ function tem3(){
                     money: nextCoinNum,
                     remark: nextTotalParse,
                 },
-                url : "添加脉冲子模板",
+                url : "./addsubclassincoins",
                 type : "POST",
                 cache : false,
                 success : function(e){
@@ -880,9 +978,12 @@ function tem3(){
             var temNmae= $(target).parent().parent().find('p').eq(0).find('span').html().trim()
             var brandName= $(target).parent().parent().find('p').eq(1).find('span').html().trim()
             var telephone= $(target).parent().parent().find('p').eq(2).find('span').html().trim()
+            var isRef= 1;
+            var isWalletPay= 2;
+            /*
             var isRef= $(target).parent().parent().find('p').eq(3).find('span').html().trim() === '是' ? true : false
             var isWalletPay= $(target).parent().parent().find('p').eq(4).find('span').html().trim() === '是' ? true : false
-            
+            */
             var obj2= {
                 title: '修改投币模板',
                 temNmae,
@@ -904,6 +1005,11 @@ function tem3(){
             }
             renderList2(obj2)
         }else if(target.nodeName.toLowerCase() === 'button' && $(target).hasClass('tem-title-delete')){
+        	 var isSelectTem= $(target).parent().parent().parent().parent().hasClass('borShadow')
+             if(isSelectTem){
+               mui.toast('被选择的模板不能删除',{ duration:'1500', type:'div' })
+               return false
+             }
             mui.confirm('确定删除模板?', function (type) {
                 if(type.index){ //删除
                     $(target).parent().parent().parent().parent().remove()
@@ -913,7 +1019,7 @@ function tem3(){
                     data:{
                         id: id
                     },
-                    url : "删除脉冲主模板",
+                    url : "./deletestairincoins",
                     type : "POST",
                     cache : false,
                     success : function(e){
@@ -922,7 +1028,46 @@ function tem3(){
                 });
                 }
             })
-        }
+        }else if(target.nodeName.toLowerCase() === 'button' && $(target).hasClass('selectTem')){
+            // 点击选择模板
+            var parent= $(target).parent().parent().parent().parent().parent()
+            if(!parent.hasClass('borShadow')){
+                // 发送ajax，成功之后执行下面的 ()
+                // 数据来源
+                var arecode= $('body').attr('data-arecode').trim()
+                var source= $('body').attr('data-source').trim()
+                var id= $(target).attr('data-id').trim() //模板id
+                  $.ajax({
+                         data:{
+                             source: source,
+                             obj:arecode,
+                        	 temid: id
+                         },
+                         url : "./templatechoice",
+                         type : "POST",
+                         cache : false,
+                         success : function(e){
+                            if(e == 1){
+                                parent.siblings().removeClass('borShadow') //移除所有的兄弟节点的选择
+                                parent.siblings().find('.bottom p').fadeOut()
+                                parent.siblings().find('.selectTem').removeClass('active')
+                                parent.addClass('borShadow')  //给当前元素添加节点
+                                $(target).parent().parent().find('p').fadeIn()
+                                $(target).addClass('active')
+                                 //mui.toast('已选择当前模板',{ duration:'1500', type:'div' })
+                            }
+                         },//返回数据填充
+                         error: function(){
+                             mui.toast('选择模板失败，请稍后再试！',{ duration:'1500', type:'div' })
+                         }
+                     });
+
+               
+             }else{
+                mui.toast('你已选择当前模板',{ duration:'1500', type:'div' })
+             }
+            
+        } 
     })
 
     $('.tem3 .list-center1').click(function(e){
@@ -990,7 +1135,7 @@ function tem3(){
                     money: coinNumVal,
                     remark: totalParseVal,
                 },
-                url : "修改脉冲子模板",
+                url : "./updatesubclassincoins",
                 type : "POST",
                 cache : false,
                 success : function(e){
@@ -1012,24 +1157,24 @@ function tem3(){
         var temNmaeVal= $('.tem3 .list-center2 input[name=temNmae]').val().trim()
         var brandNameseVal= $('.tem3 .list-center2 input[name=brandName]').val().trim()
         var telephoneVal= $('.tem3 .list-center2 input[name=telephone]').val().trim()
-        var isRefVal= $('.tem3 .list-center2 input[name="isRef"]:checked').val()
+        /*var isRefVal= $('.tem3 .list-center2 input[name="isRef"]:checked').val()
         var isWalletPayVal= $('.tem3 .list-center2 input[name="isWalletPay"]:checked').val()
         
         var permit= parseInt(isRefVal) === 0 ? 2 :  parseInt(isRefVal)
-        var walletpay = parseInt(isWalletPayVal) === 0 ? 2 :  parseInt(isWalletPayVal)
+        var walletpay = parseInt(isWalletPayVal) === 0 ? 2 :  parseInt(isWalletPayVal)*/
         
         if(temNmaeVal.length <= 0){
             mui.toast('请输入模板名称',{ duration:'1500', type:'div' })
             return false
         }
-        if(brandNameseVal.length <= 0){
+        /*if(brandNameseVal.length <= 0){
             mui.toast('请输入品牌名称',{ duration:'1500', type:'div' })
             return false
         }
         if(telephoneVal.length <= 0){
             mui.toast('请输入售后电话',{ duration:'1500', type:'div' })
             return false
-        }
+        }*/
         var flag= $('.list-center2 h3').html().trim() === '修改投币模板' ? true : false
         if(flag){ // 修改主模板
             //发送ajax将修改的数据传输到服务器=====================
@@ -1040,11 +1185,11 @@ function tem3(){
                     id: id,
                     name:temNmaeVal,
                     remark: brandNameseVal,
-                    permit: permit,
-                    walletpay: walletpay,
+                    permit: 1,
+                    walletpay: 2,
                     common1: telephoneVal
                 },
-                url : "${hdpath}/wctemplate/updateTempmanage",
+                url : "./updatestairincoins",
                 type : "POST",
                 cache : false,
                 success : function(e){
@@ -1056,7 +1201,7 @@ function tem3(){
             parentEle.find('p').eq(0).find('span').html(temNmaeVal)
             parentEle.find('p').eq(1).find('span').html(brandNameseVal)
             parentEle.find('p').eq(2).find('span').html(telephoneVal)
-            var isRefHtml= parseInt(isRefVal) ? '是' : '否'
+           /* var isRefHtml= parseInt(isRefVal) ? '是' : '否'
             parentEle.find('p').eq(3).find('span').html(isRefHtml)
             parentEle.find('p').eq(3).find('span').removeClass('span-green span-red')
             if(parseInt(isRefVal)){
@@ -1072,7 +1217,7 @@ function tem3(){
                 parentEle.find('p').eq(4).find('span').addClass('span-green')
             }else {
                 parentEle.find('p').eq(4).find('span').addClass('span-red')
-            }
+            }*/
         }else { //添加主模板
             //发送ajax将新增的数据传输到服务器=====================
             
@@ -1080,30 +1225,30 @@ function tem3(){
                 data:{
                     name:temNmaeVal,
                     remark: brandNameseVal,
-                    permit: permit,
-                    walletpay: walletpay,
+                    permit: 1,
+                    walletpay: 2,
                     common1: telephoneVal
                 },
-                url : "添加脉冲主模板",
+                url : "./addstairincoins",
                 type : "POST",
                 cache : false,
                 success : function(e){
-                   
+                   if(e==1){
+                	  window.location.href= window.location.href
+                   }
                 },//返回数据填充
             });
             
-            var isRefHtml= parseInt(isRefVal) ? '是' : '否'
+            /*var isRefHtml= parseInt(isRefVal) ? '是' : '否'
             var isWalletPayHtml= parseInt(isWalletPayVal) ? '是' : '否'
             var isRefClass= parseInt(isRefVal) ? 'span-green' : 'span-red'
-            var isWalletPayClass= parseInt(isWalletPayVal) ? 'span-green' : 'span-red'
+            var isWalletPayClass= parseInt(isWalletPayVal) ? 'span-green' : 'span-red'*/
             var str= `
                 <li>
                 <div class="title">
                 <p>模板名称：<span>${temNmaeVal}</span></p>
             <p>品牌名称：<span>${temNmaeVal}</span></p>
             <p>售后电话：<span>${brandNameseVal}</span></p>
-            <p>是否支持退费：<span class="${isRefClass}">${isRefHtml}</span></p>
-            <p>是否钱包强制支付：<span class="${isWalletPayClass}">${isWalletPayHtml}</span></p>
             <div>
             <button type="button" class="mui-btn mui-btn-success tem-title-edit">编辑</button>
                 <button type="button" class="mui-btn mui-btn-success tem-title-delete">删除</button>
@@ -1136,16 +1281,6 @@ function tem3(){
         $('.tem3 .list-center2 input[name=temNmae]').val(obj.temNmae)
         $('.tem3 .list-center2 input[name=brandName]').val(obj.brandName)
         $('.tem3 .list-center2 input[name=telephone]').val(obj.telephone)
-        if(obj.isRef){
-            $('.tem3 .list-center2 input[name=isRef]').eq(0).prop('checked',true)
-        }else{
-            $('.tem3 .list-center2 input[name=isRef]').eq(1).prop('checked',true)
-        }
-        if(obj.isWalletPay){
-            $('.tem3 .list-center2 input[name=isWalletPay]').eq(0).prop('checked',true)
-        }else{
-            $('.tem3 .list-center2 input[name=isWalletPay]').eq(1).prop('checked',true)
-        }
         $('.tem3 .tem-mask2').fadeIn()
     }
 }
@@ -1154,6 +1289,7 @@ function tem3(){
  function wallet (){
          var targetEle= null
     $('.wallet .tem').click(function (e) {
+    	console.log(256)
         e =e || window.event
         var target= e.target || e.srcElement
         targetEle= target
@@ -1170,6 +1306,11 @@ function tem3(){
            }
             renderList(obj)
         }else if(target.nodeName.toLowerCase() === 'button' && $(target).hasClass('tem-delete')){
+        	   var isSelectTem= $(target).parent().parent().parent().parent().parent().hasClass('borShadow')
+               if(isSelectTem){
+                 mui.toast('被选择的子模板不能删除',{ duration:'1500', type:'div' })
+                 return false
+               }
             mui.confirm('确定删除?', function (type) {
                 if(type.index){ //删除
                     $(target).parent().parent().remove()
@@ -1180,7 +1321,7 @@ function tem3(){
                         data:{
                             id: id
                         },
-                        url : "删除钱包子模板",
+                        url : "./deletesubclasswwallet",
                         type : "POST",
                         cache : false,
                         success : function(e){
@@ -1206,7 +1347,13 @@ function tem3(){
                 var nextParse= parse * 2
                 var nextSendParse= (TotalParse- parse) * 2
                 var nextTotalParse= nextParse+ nextSendParse
-                var nextName= nextParse+'元送'+nextSendParse
+                // var nextName= nextParse+'元送'+nextSendParse
+                var nextName= ''
+                if(nextSendParse){
+                     nextName= nextParse+'元'+'送'+nextSendParse
+                }else{
+                     nextName= nextParse+'元'
+                }
             }
             //发送ajax将新增的数据传输到服务器=====================
             
@@ -1218,7 +1365,7 @@ function tem3(){
                     money: nextParse,
                     remark: nextTotalParse
                 },
-                url : "添加钱包子模板",
+                url : "./addsubclasswwallet",
                 type : "POST",
                 cache : false,
                 success : function(e){
@@ -1226,7 +1373,7 @@ function tem3(){
                 }
             });
             
-            var str= '<p>显示名称：<span>'+ nextName +'</span></p> <p>付款金额：<span>'+nextParse+'<b>元</b></span></p> <p>充卡金额：<span>'+nextTotalParse+'<b>元</b></span></p> <div> <button type="button" class="mui-btn mui-btn-success tem-edit">编辑</button> <button type="button" class="mui-btn mui-btn-success tem-delete">删除</button> </div>'
+            var str= '<p>显示名称：<span>'+ nextName +'</span></p> <p>付款金额：<span>'+nextParse+'<b>元</b></span></p> <p>到账金额：<span>'+nextTotalParse+'<b>元</b></span></p> <div> <button type="button" class="mui-btn mui-btn-success tem-edit">编辑</button> <button type="button" class="mui-btn mui-btn-success tem-delete">删除</button> </div>'
             var list= $('<li class="mui-table-view-cell"></li>')
             list.html(str)
             $(targetEle).parent().parent()[0].insertBefore(list[0],$(targetEle).parent()[0])
@@ -1256,6 +1403,11 @@ function tem3(){
             }
             renderList2(obj2)
         }else if(target.nodeName.toLowerCase() === 'button' && $(target).hasClass('tem-title-delete')){
+        	 var isSelectTem= $(target).parent().parent().parent().parent().hasClass('borShadow')
+             if(isSelectTem){
+               mui.toast('被选择的模板不能删除',{ duration:'1500', type:'div' })
+               return false
+             }
             mui.confirm('确定删除模板?', function (type) {
                 if(type.index){ //删除
                     $(target).parent().parent().parent().parent().remove()
@@ -1266,7 +1418,7 @@ function tem3(){
                         data:{
                             id: id
                         },
-                        url : "./offLineTemDelete",
+                        url : "./deletestairwallet",
                         type : "POST",
                         cache : false,
                         success : function(e){
@@ -1276,7 +1428,46 @@ function tem3(){
                     
                 }
             })
-        }
+        }else if(target.nodeName.toLowerCase() === 'button' && $(target).hasClass('selectTem')){
+            // 点击选择模板
+            var parent= $(target).parent().parent().parent().parent().parent()
+            if(!parent.hasClass('borShadow')){
+                // 发送ajax，成功之后执行下面的 ()
+                // 数据来源
+                var arecode= $('body').attr('data-arecode').trim()
+                var source= $('body').attr('data-source').trim()
+                var id= $(target).attr('data-id').trim() //模板id
+                  $.ajax({
+                         data:{
+                             source: source,
+                             obj:arecode,
+                        	 temid: id
+                         },
+                         url : "./templatechoice",
+                         type : "POST",
+                         cache : false,
+                         success : function(e){
+                            if(e == 1){
+                                parent.siblings().removeClass('borShadow') //移除所有的兄弟节点的选择
+                                parent.siblings().find('.bottom p').fadeOut()
+                                parent.siblings().find('.selectTem').removeClass('active')
+                                parent.addClass('borShadow')  //给当前元素添加节点
+                                $(target).parent().parent().find('p').fadeIn()
+                                $(target).addClass('active')
+                                 //mui.toast('已选择当前模板',{ duration:'1500', type:'div' })
+                            }
+                         },//返回数据填充
+                         error: function(){
+                             mui.toast('选择模板失败，请稍后再试！',{ duration:'1500', type:'div' })
+                         }
+                     });
+
+               
+             }else{
+                mui.toast('你已选择当前模板',{ duration:'1500', type:'div' })
+             }
+            
+        } 
     })
 
     $('.wallet .list-center1').click(function(e){
@@ -1326,15 +1517,14 @@ function tem3(){
             return false
         }
         if(totalParseVal.length <= 0){
-            mui.toast('请输入充卡金额',{ duration:'1500', type:'div' })
+            mui.toast('请输入到账金额',{ duration:'1500', type:'div' })
             return false
         }
         if(!reg.test(totalParseVal)){
-            mui.toast('充卡金额请输入数字',{ duration:'1500', type:'div' })
+            mui.toast('到账金额请输入数字',{ duration:'1500', type:'div' })
             return false
         }
         var flag= $('.wallet .list-center1 h3').html().trim() === '新增钱包子模板' ? true : false
-        //修改离线子模板
             //发送ajax讲修改之后的数据传输到服务器=====================
             
             var id= parseInt($(targetEle).attr('data-id'))
@@ -1345,7 +1535,7 @@ function tem3(){
                     money: parseVal,
                     remark: totalParseVal
                 },
-                url : "修改钱包子模板",
+                url : "./updatesubclasswwallet",
                 type : "POST",
                 cache : false,
                 success : function(e){
@@ -1372,15 +1562,15 @@ function tem3(){
             mui.toast('请输入模板名称',{ duration:'1500', type:'div' })
             return false
         }
-        if(brandNameseVal.length <= 0){
+        /*if(brandNameseVal.length <= 0){
             mui.toast('请输入品牌名称',{ duration:'1500', type:'div' })
             return false
         }
         if(telephoneVal.length <= 0){
             mui.toast('请输入售后电话',{ duration:'1500', type:'div' })
             return false
-        }
-        var flag= $('.wallet .list-center2 h3').html().trim() === '修改钱包模板' ? true : false
+        }*/
+        var flag= $('.wallet .list-center2 h3').html().trim() === '修改钱包主模板' ? true : false
         if(flag){ // 修改离线模板
             //发送ajax将修改的数据传输到服务器=====================
             var id= parseInt($(targetEle).attr('data-id'))
@@ -1391,7 +1581,7 @@ function tem3(){
                     remark: brandNameseVal,
                     common1: telephoneVal
                 },
-                url : "修改钱包主模板",
+                url : "./updatestairwallet",
                 type : "POST",
                 cache : false,
                 success : function(e){
@@ -1412,11 +1602,13 @@ function tem3(){
                     remark: brandNameseVal,
                     common1: telephoneVal
                 },
-                url : "添加钱包主模板",
+                url : "./addstairwallet",
                 type : "POST",
                 cache : false,
                 success : function(e){
-                   
+                	if(e==1){
+                  	  window.location.href= window.location.href
+                     }
                 },//返回数据填充
             });
             
@@ -1465,6 +1657,11 @@ wallet()
            }
             renderList(obj)
         }else if(target.nodeName.toLowerCase() === 'button' && $(target).hasClass('tem-delete')){
+        	   var isSelectTem= $(target).parent().parent().parent().parent().parent().hasClass('borShadow')
+               if(isSelectTem){
+                 mui.toast('被选择的子模板不能删除',{ duration:'1500', type:'div' })
+                 return false
+               }
             mui.confirm('确定删除?', function (type) {
                 if(type.index){ //删除
                     $(target).parent().parent().remove()
@@ -1475,7 +1672,7 @@ wallet()
                         data:{
                             id: id
                         },
-                        url : "删除在线卡子模板",
+                        url : "./deletesubclassonline",
                         type : "POST",
                         cache : false,
                         success : function(e){
@@ -1513,7 +1710,7 @@ wallet()
                     money: nextParse,
                     remark: nextTotalParse
                 },
-                url : "添加在线卡子模板",
+                url : "./addsubclassonline",
                 type : "POST",
                 cache : false,
                 success : function(e){
@@ -1521,7 +1718,7 @@ wallet()
                 }
             });
             
-            var str= '<p>显示名称：<span>'+ nextName +'</span></p> <p>付款金额：<span>'+nextParse+'<b>元</b></span></p> <p>充卡金额：<span>'+nextTotalParse+'<b>元</b></span></p> <div> <button type="button" class="mui-btn mui-btn-success tem-edit">编辑</button> <button type="button" class="mui-btn mui-btn-success tem-delete">删除</button> </div>'
+            var str= '<p>显示名称：<span>'+ nextName +'</span></p> <p>付款金额：<span>'+nextParse+'<b>元</b></span></p> <p>到账金额：<span>'+nextTotalParse+'<b>元</b></span></p> <div> <button type="button" class="mui-btn mui-btn-success tem-edit">编辑</button> <button type="button" class="mui-btn mui-btn-success tem-delete">删除</button> </div>'
             var list= $('<li class="mui-table-view-cell"></li>')
             list.html(str)
             $(targetEle).parent().parent()[0].insertBefore(list[0],$(targetEle).parent()[0])
@@ -1551,6 +1748,11 @@ wallet()
             }
             renderList2(obj2)
         }else if(target.nodeName.toLowerCase() === 'button' && $(target).hasClass('tem-title-delete')){
+        	 var isSelectTem= $(target).parent().parent().parent().parent().hasClass('borShadow')
+             if(isSelectTem){
+               mui.toast('被选择的模板不能删除',{ duration:'1500', type:'div' })
+               return false
+             }
             mui.confirm('确定删除模板?', function (type) {
                 if(type.index){ //删除
                     $(target).parent().parent().parent().parent().remove()
@@ -1561,7 +1763,7 @@ wallet()
                         data:{
                             id: id
                         },
-                        url : "./offLineTemDelete",
+                        url : "./deletestaironline",
                         type : "POST",
                         cache : false,
                         success : function(e){
@@ -1571,7 +1773,46 @@ wallet()
                     
                 }
             })
-        }
+        }else if(target.nodeName.toLowerCase() === 'button' && $(target).hasClass('selectTem')){
+            // 点击选择模板
+            var parent= $(target).parent().parent().parent().parent().parent()
+            if(!parent.hasClass('borShadow')){
+                // 发送ajax，成功之后执行下面的 ()
+                // 数据来源
+                var arecode= $('body').attr('data-arecode').trim()
+                var source= $('body').attr('data-source').trim()
+                var id= $(target).attr('data-id').trim() //模板id
+                  $.ajax({
+                         data:{
+                             source: source,
+                             obj:arecode,
+                        	 temid: id
+                         },
+                         url : "./templatechoice",
+                         type : "POST",
+                         cache : false,
+                         success : function(e){
+                            if(e == 1){
+                                parent.siblings().removeClass('borShadow') //移除所有的兄弟节点的选择
+                                parent.siblings().find('.bottom p').fadeOut()
+                                parent.siblings().find('.selectTem').removeClass('active')
+                                parent.addClass('borShadow')  //给当前元素添加节点
+                                $(target).parent().parent().find('p').fadeIn()
+                                $(target).addClass('active')
+                                 //mui.toast('已选择当前模板',{ duration:'1500', type:'div' })
+                            }
+                         },//返回数据填充
+                         error: function(){
+                             mui.toast('选择模板失败，请稍后再试！',{ duration:'1500', type:'div' })
+                         }
+                     });
+
+               
+             }else{
+                mui.toast('你已选择当前模板',{ duration:'1500', type:'div' })
+             }
+            
+        } 
     })
 
     $('.onlineCard .list-center1').click(function(e){
@@ -1640,7 +1881,7 @@ wallet()
                     money: parseVal,
                     remark: totalParseVal
                 },
-                url : "修改在线卡子模板",
+                url : "./updatesubclassonline",
                 type : "POST",
                 cache : false,
                 success : function(e){
@@ -1667,15 +1908,15 @@ wallet()
             mui.toast('请输入模板名称',{ duration:'1500', type:'div' })
             return false
         }
-        if(brandNameseVal.length <= 0){
+        /*if(brandNameseVal.length <= 0){
             mui.toast('请输入品牌名称',{ duration:'1500', type:'div' })
             return false
         }
         if(telephoneVal.length <= 0){
             mui.toast('请输入售后电话',{ duration:'1500', type:'div' })
             return false
-        }
-        var flag= $('.onlineCard .list-center2 h3').html().trim() === '修改在线卡模板' ? true : false
+        }*/
+        var flag= $('.onlineCard .list-center2 h3').html().trim() === '修改在线卡主模板' ? true : false
         if(flag){ // 修改离线模板
             //发送ajax将修改的数据传输到服务器=====================
             var id= parseInt($(targetEle).attr('data-id'))
@@ -1686,7 +1927,7 @@ wallet()
                     remark: brandNameseVal,
                     common1: telephoneVal
                 },
-                url : "修改在线卡主模板",
+                url : "./updatestaironline",
                 type : "POST",
                 cache : false,
                 success : function(e){
@@ -1707,11 +1948,13 @@ wallet()
                     remark: brandNameseVal,
                     common1: telephoneVal
                 },
-                url : "添加在线卡主模板",
+                url : "./addstaironline",
                 type : "POST",
                 cache : false,
                 success : function(e){
-                   
+                	if(e==1){
+                  	  window.location.href= window.location.href
+                     }
                 },//返回数据填充
             });
             
