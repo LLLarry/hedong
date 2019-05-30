@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>会员管理</title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		body {
+			background-color: #efeff4;
+		}
+		a {
+			text-decoration: none;
+			
+		}
+		.member {
+			font-size: 12px;
+			padding: 15px 10px;
+			color: #333;
+		}
+		.member .top {
+			display: flex;
+			padding-bottom: 20px;
+			border-bottom: 1px solid #ccc;
+
+		}
+		.member .top div:nth-child(1){
+			flex: 3;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.member .top div:nth-child(2){
+			flex: 8;
+		}
+		.member .top div:nth-child(3){
+			flex: 2;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.member .top input {
+			width: 90%;
+			height: 38px;
+			border: 1px solid #ccc;
+			border-radius: 6px;
+			display: block;
+			margin: 0 auto;
+			background-color: #f7f8f9;
+			outline: none;
+			text-align: center;
+		}
+		.member select {
+			width: 100%;
+			height: 30px;
+			border: none;
+			outline: none;
+			background-color: transparent;
+			border: 1px solid #D9D9D9;
+			border-radius: 5px;
+		}
+
+		.member .top div:nth-child(3) span {
+			display: block;
+			width: 100%;
+			height: 90%;
+			background-color: #4cd964;
+			color: #fff;
+			line-height: 30px;
+			text-align: center;
+			border-radius: 3px;
+		}
+
+		.member table {
+			width: 100%;
+			border-left: 1px solid #add9c0;
+			border-top: 1px solid #add9c0;
+			border-radius: 8px;
+			overflow: hidden;
+			margin-top: 15px;
+		}
+		.member table td {
+			text-align: center;
+			line-height: 35px;
+			border-bottom: 1px solid #add9c0;
+			border-right: 1px solid #add9c0;
+		}
+		.member table thead{
+			background-color: #C8EFD4;
+			color: #333;
+			font-weight: 600;
+		}
+		.member table tbody {
+			background-color: #f5f7fa;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="member">
+		<div class="top">
+			<div>
+				<select>
+				  <option  value="1">搜索会员</option>
+				  <option  value="2">搜索小区</option>
+				</select>
+			</div>
+			<div><input type="search" name="" placeholder="输入搜索内容"></div>
+			<div><span class="searchBut">搜索</span></div>
+		</div>
+		<div class="tb">
+			<table cellspacing="0">
+				<thead>
+					<tr>
+						<td>会员号</td>
+						<td>昵称</td>
+						<td>金额</td>
+						<td>小区名称</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>00001</td>
+						<td>测试名</td>
+						<td><a href="javascript:;">36.36</a></td>
+						<td>回忆小区</td>
+					</tr>
+					<tr>
+						<td>00001</td>
+						<td>测试名</td>
+						<td><a href="javascript:;">36.36</a></td>
+						<td>回忆小区</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script type="text/javascript">
+		
+		var searchBut= document.querySelector('.searchBut')
+		searchBut.addEventListener('click',function(){
+			var selectVal= document.querySelector('select').value.trim() //获取select的值 1 是会员  2 是小区
+			var inputVal= document.querySelector('.top input').value.trim() 
+			console.log(selectVal,inputVal)
+
+		})
+	</script>
+</body>
+</html>

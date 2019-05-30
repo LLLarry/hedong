@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>alert</title>
+	<script type="text/javascript" src="./jquery.js"></script>
+	<style type="text/css">
+
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		li {
+			list-style: none;
+		}
+		button.btn{
+			width: 50px;
+			height: 35px;
+			position: absolute;
+			bottom: 0;
+			z-index: 100;
+		}
+		.alert {
+			width: 100vw;
+			height: 100vh;
+			background-color: rgba(0,0,0,.4);
+			position: fixed;
+			left: 0;
+			right: 0
+			bottom: 0;
+			top: 0;
+			z-index: 99;
+			/*display: none;*/
+		}
+		.alert ul {
+			width: 80%;
+			background-color: #fff;
+			border-radius: 8px;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			padding: 10px 15px;
+			transform: translate(-50%,-50%);
+			-ms-transform: translate(-50%,-50%);
+			-moz-transform: translate(-50%,-50%);
+			-webkit-transform: translate(-50%,-50%);
+			-o-transform: translate(-50%,-50%);
+		}
+		.alert ul li {
+			padding: 0 15px;
+			line-height: 40px;
+			font-size: 12px;
+			color: #666;
+			margin-bottom: 15px;
+			
+		}
+		.alert ul li.firstLi {
+			text-align: center;
+			font-size: 14px;
+			font-weight: 600;
+		}
+		.alert ul li a {
+			display: block;
+			width: 50%;
+			height: 100%;
+			border: 1px solid #22B14C;
+			color: #22B14C;
+			text-align: center;
+			line-height: 40px;
+			margin: 0 auto;
+			border-radius: 8px;
+		}
+		.alert ul li a:active {
+			background-color: #22B14C;
+			color: #fff;
+		}
+		
+	
+
+		
+	</style>
+</head>
+<body>
+	sdasdasd
+	<div class="alert">
+		<ul>
+			<li class="firstLi">模板选择</li>
+			<li><a>钱包模板</a></li>
+			<li><a>在线卡模板</a></li>
+		</ul>
+		
+	</div>
+	<button class="btn">点击</button>
+	<script type="text/javascript">
+		$('.btn').click(function(){
+			$('.alert').fadeIn()
+		})
+		$('.alert').click(function(){
+			$('.alert').fadeOut()
+		})
+		$('.alert ul').click(function(e){ 
+			var e= e || window.event
+			e.stopPropagation()
+		})
+	</script>
+</body>
+</html>

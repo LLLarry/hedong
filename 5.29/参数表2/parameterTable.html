@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+   <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>设备系统参数</title>
+	<link rel="stylesheet" type="text/css" href="./static/css/base.css">
+	<link rel="stylesheet" type="text/css" href="./static/dist/css/mui.min.css">
+	<link rel="stylesheet" type="text/css" href="./static/css/parameterTable.css">
+	<script type="text/javascript" src="./static/dist/js/mui.min.js"></script>
+	<script type="text/javascript" src="./static/js/jquery.js"></script>
+</head>
+<body>
+	<div class="ptb">
+		<div class="switchContent">
+			<h3>功能开关</h3>
+			<ul class="mui-table-view">
+			    <li class="mui-table-view-cell">
+			    	<span>是否余额回收</span>
+				    <div class="mui-switch mui-switch-mini" id="isBalanceRec">
+					  <div class="mui-switch-handle"></div>
+					</div>
+			    </li>
+			    <li class="mui-table-view-cell">
+			    	<span>是否断电自停</span>
+				    <div class="mui-switch mui-switch-mini" id="isPowerFailure">
+					  <div class="mui-switch-handle"></div>
+					</div>
+			    </li>
+			</ul>
+		</div>
+		<div class="detail">
+			<h3>参数配置</h3>
+			<ul class="mui-table-view">
+			    <li class="mui-table-view-cell"> <a class="mui-navigate-right">刷卡投币规则</a></li>
+			   		<div class="icon-reg">
+			   			<ol>
+			   				<span>投币充电时间</span> 
+			   				<div class="ol-div">
+			   					<input type="search" name="" data-min="0" data-max="999" value=''>分钟
+			   				</div>
+			   			</ol>
+			   			<ol>
+			   				<span>刷卡充电时间</span> 
+			   				<div class="ol-div">
+			   					<input type="search" name="" data-min="0" data-max="999" value=''>分钟
+			   				</div>
+			   			</ol>
+			   			<ol>
+			   				<span>单次投币最用大电量</span> 
+			   				<div class="ol-div">
+			   					<input type="search" name="" data-min="0.1" data-max="15" value=''>度
+			   				</div>
+			   			</ol>
+			   			<ol>
+			   				<span>单次刷卡最大用电量</span> 
+			   				<div class="ol-div">
+			   					<input type="search" name="" data-min="0.1" data-max="15" value=''>度
+			   				</div>
+			   			</ol>
+			   			<ol>
+			   				<span>刷卡扣费金额</span> 
+			   				<div class="ol-div">
+			   					<input type="search" name="" data-min="0.1" data-max="15" value=''>元
+			   				</div>
+			   			</ol>
+			   			<!-- <ol class="last-ol"><div class="confirm">确认</div><div>取消</div></ol> -->
+			   		</div>
+			   <li class="mui-table-view-cell"> <a class="mui-navigate-right">功率档位匹配</a></li>
+			   		<div class="icon-reg">
+			   			<ol>
+			   				<span>是否初始显示电量</span> 
+			   				 <div class="mui-switch mui-switch-mini" data-min="0" data-max="1" id="isShowFirstPower">
+								 <div class="mui-switch-handle"></div>
+							 </div>
+			   			</ol>
+			   			<ol>
+			   				<span>最大浮充功率</span> 
+			   				<div class="ol-div">
+			   					<input type="search" name="" data-min="10" data-max="200" value=''>瓦
+			   				</div>
+			   			</ol>
+			   			<ol>
+			   				<span>浮充时间</span> 
+			   				<div class="ol-div">
+			   					<input type="search" name="" data-min="30" data-max="240" value=''>分钟
+			   				</div>
+			   			</ol>
+			   			
+			   			<!-- <ol class="last-ol"><div class="ol-div confirm">确认</div><div class="ol-div">取消</div></ol> -->
+			   		</div>
+			  <!--  <li class="mui-table-view-cell"> <a class="mui-navigate-right">收费模式</a></li>
+			   		<div class="icon-reg">
+			   			<ol>
+			   				<span>收费模式</span> 
+			   				<div class="radio-but">
+			   					<div class="mui-input-row mui-radio mui-left">
+									<label>时间</label>
+									<input name="radio1" type="radio">
+								</div>
+								<div class="mui-input-row mui-radio mui-left">
+									<label>电量</label>
+									<input name="radio1" type="radio">
+								</div>
+			   				</div>
+			   			</ol>
+			   			<ol>
+			   				<span>每度收费</span> 
+			   				<div class="ol-div">
+			   					<input type="search" name="">元
+			   				</div>
+			   			</ol>
+			   			
+			   			<ol class="last-ol"><div class="ol-div">确认</div><div class="ol-div">取消</div></ol>
+			   		</div> -->
+			   <li class="mui-table-view-cell"> <a class="mui-navigate-right">其他配置</a></li>
+			   		<div class="icon-reg">
+			   			<ol>
+			   				<span>一档最大充电功率</span> 
+			   				<div class="ol-div">
+			   					<input type="search" name="" data-min="50" data-max="3500" value=''>瓦
+			   				</div>
+			   			</ol>
+			   			<ol>
+			   				<span>二挡最大充电功率</span> 
+			   				<div class="ol-div">
+			   					<input type="search" name="" data-min="50" data-max="3500" value=''>瓦
+			   				</div>
+			   			</ol>
+			   			<ol>
+			   				<span>三挡最大充电功率</span> 
+			   				<div class="ol-div">
+			   					<input type="search" name="" data-min="50" data-max="3500" value=''>瓦
+			   				</div>
+			   			</ol>
+			   			<ol>
+			   				<span>四挡最大充电功率</span> 
+			   				<div class="ol-div">
+			   					<input type="search" name="" data-min="50" data-max="3500" value=''>瓦
+			   				</div>
+			   			</ol>
+			   			<ol>
+			   				<span>二挡充电时间百分比</span> 
+			   				<div class="ol-div">
+			   					<input type="search" name="" data-min="1" data-max="100" value=''>%
+			   				</div>
+			   			</ol>
+			   			<ol>
+			   				<span>三挡充电时间百分比</span> 
+			   				<div class="ol-div">
+			   					<input type="search" name="" data-min="1" data-max="100" value=''>%
+			   				</div>
+			   			</ol>
+			   			<ol>
+			   				<span>四挡充电时间百分比</span> 
+			   				<div class="ol-div">
+			   					<input type="search" name="" data-min="1" data-max="100" value=''>%
+			   				</div>
+			   			</ol>
+			   			<!-- <ol class="last-ol"><div class="confirm">确认</div><div>取消</div></ol> -->
+			   		</div>
+			  
+			</ul>
+		</div>
+	</div>
+	<footer>
+		<div class="getDataBut">获取数据</div>
+		<div class="setDataBut">设置数据</div>
+	</footer>	
+	<script type="text/javascript" src="./static/js/parameterTable.js"></script>
+</body>
+</html>

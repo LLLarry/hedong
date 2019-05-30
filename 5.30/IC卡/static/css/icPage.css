@@ -1,0 +1,122 @@
+
+/*icPage css 入口*/
+.icPage {
+	padding: 15px 10px;
+	width: 100%;
+	font-size: 12px;
+}
+
+.icPage header {
+	padding-bottom: 20px;
+	border-bottom: 1px solid #aaa;
+}
+
+.icPage header span{
+	display: inline-block;
+	width: 17%;
+	font-size: 14px;
+
+}
+.icPage header input{
+	/*float: left;*/
+	height: 38px;
+	width: 60%;
+	margin-bottom: 0;
+	background-color: #f7f8f9;
+	border: 1px solid #BFBFBF;
+
+}
+.icPage header input::-webkit-input-placeholder{
+	font-size: 12px;
+	}    /* 使用webkit内核的浏览器 */
+.icPage header input:-moz-placeholder{
+	font-size: 12px;
+	}                  /* Firefox版本4-18 */
+.icPage header input::-moz-placeholder{
+	font-size: 12px;
+	}                  /* Firefox版本19+ */
+.icPage header input:-ms-input-placeholder{
+	font-size: 12px;
+	}           /* IE浏览器 */
+
+.icPage header button{
+	float: right;
+	width: 20%;
+	margin-top: 3px;
+}
+.icPage main ul {
+	margin-top: 15px;
+	display: table;
+	width: 100%;
+	border-left: 1px solid #add9c0;
+	border-top: 1px solid #add9c0;
+	border-radius: 8px;
+	overflow: hidden;
+}
+.icPage main ul li{
+	display:table-row;
+	width: 100%;
+	background-color: #f5f7fa;
+}
+
+.icPage main ul li.title {
+	/*font-size: 14px;*/
+	font-weight: 600;
+	background-color: #C8EFD4;
+	/*background-color: #C8EBFA;*/
+	color: #333;
+}
+.icPage main ul li span {
+	display:table-cell;
+	text-align: center;
+	line-height: 35px;
+	border-bottom: 1px solid #add9c0;
+	border-right: 1px solid #add9c0;
+}
+.icPage main ul li span:nth-child(1){
+	width: 20%;
+}
+.icPage main ul li span:nth-child(2){
+	width: 17%;
+}
+.icPage main ul li span:nth-child(3){
+	width: 17%;
+}
+.icPage main ul li span:nth-child(4){
+	width: 17%;
+}
+.icPage main ul li span:nth-child(5){
+	width: auto;
+}
+.icPage main ul li span a {
+	height: 25px;
+	line-height: 25px;
+	text-decoration: none;
+	color: #fff;
+	display: inline-block;
+	background-color: #4cd964;
+	border: 1px solid #4cd964;
+	padding: 0 4px;
+	border-radius: 3px;
+}
+.icPage main ul li span a:active {
+	background-color: #2AC845;
+}
+.icPage main ul li span a:first-child(1){
+	float: left;
+}
+.icPage main ul li span a:first-child(2){
+	float: right;
+}
+.icPage main ul li span.normal {
+	color: #4cd964;
+}
+.icPage main ul li span.abnormal {
+	color: #E45C5C;
+}
+.icPage main ul li span:nth-child(2){
+	color: #94D8F6;
+}
+.icPage main ul li.title span {
+	color: #333;
+}
