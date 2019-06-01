@@ -39,31 +39,31 @@
 			   			<ol>
 			   				<span>投币充电时间</span> 
 			   				<div class="ol-div">
-			   					<input type="search" name="" data-min="0" data-max="999" value=''>分钟
+			   					<input type="search" name="coinMin" data-min="0" data-max="999" value=''>分钟
 			   				</div>
 			   			</ol>
 			   			<ol>
 			   				<span>刷卡充电时间</span> 
 			   				<div class="ol-div">
-			   					<input type="search" name="" data-min="0" data-max="999" value=''>分钟
+			   					<input type="search" name="cardMin" data-min="0" data-max="999" value=''>分钟
 			   				</div>
 			   			</ol>
 			   			<ol>
-			   				<span>单次投币最用大电量</span> 
+			   				<span>单次投币最大用电量</span> 
 			   				<div class="ol-div">
-			   					<input type="search" name="" data-min="0.1" data-max="15" value=''>度
+			   					<input type="search" name="coinElec" data-min="0.1" data-max="15" value=''>度
 			   				</div>
 			   			</ol>
 			   			<ol>
 			   				<span>单次刷卡最大用电量</span> 
 			   				<div class="ol-div">
-			   					<input type="search" name="" data-min="0.1" data-max="15" value=''>度
+			   					<input type="search" name="cardElec" data-min="0.1" data-max="15" value=''>度
 			   				</div>
 			   			</ol>
 			   			<ol>
 			   				<span>刷卡扣费金额</span> 
 			   				<div class="ol-div">
-			   					<input type="search" name="" data-min="0.1" data-max="15" value=''>元
+			   					<input type="search" name="cst" data-min="0.1" data-max="15" value=''>元
 			   				</div>
 			   			</ol>
 			   			<!-- <ol class="last-ol"><div class="confirm">确认</div><div>取消</div></ol> -->
@@ -79,84 +79,60 @@
 			   			<ol>
 			   				<span>最大浮充功率</span> 
 			   				<div class="ol-div">
-			   					<input type="search" name="" data-min="10" data-max="200" value=''>瓦
+			   					<input type="search" name="fullPowerMin" data-min="10" data-max="200" value=''>瓦
 			   				</div>
 			   			</ol>
 			   			<ol>
 			   				<span>浮充时间</span> 
 			   				<div class="ol-div">
-			   					<input type="search" name="" data-min="30" data-max="240" value=''>分钟
+			   					<input type="search" name="fullChargeTime" data-min="30" data-max="240" value=''>分钟
 			   				</div>
 			   			</ol>
 			   			
-			   			<!-- <ol class="last-ol"><div class="ol-div confirm">确认</div><div class="ol-div">取消</div></ol> -->
 			   		</div>
-			  <!--  <li class="mui-table-view-cell"> <a class="mui-navigate-right">收费模式</a></li>
-			   		<div class="icon-reg">
-			   			<ol>
-			   				<span>收费模式</span> 
-			   				<div class="radio-but">
-			   					<div class="mui-input-row mui-radio mui-left">
-									<label>时间</label>
-									<input name="radio1" type="radio">
-								</div>
-								<div class="mui-input-row mui-radio mui-left">
-									<label>电量</label>
-									<input name="radio1" type="radio">
-								</div>
-			   				</div>
-			   			</ol>
-			   			<ol>
-			   				<span>每度收费</span> 
-			   				<div class="ol-div">
-			   					<input type="search" name="">元
-			   				</div>
-			   			</ol>
-			   			
-			   			<ol class="last-ol"><div class="ol-div">确认</div><div class="ol-div">取消</div></ol>
-			   		</div> -->
+			
 			   <li class="mui-table-view-cell"> <a class="mui-navigate-right">其他配置</a></li>
 			   		<div class="icon-reg">
 			   			<ol>
 			   				<span>一档最大充电功率</span> 
 			   				<div class="ol-div">
-			   					<input type="search" name="" data-min="50" data-max="3500" value=''>瓦
+			   					<input type="search" name="powerMax1" data-min="50" data-max="3500" value=''>瓦
 			   				</div>
 			   			</ol>
 			   			<ol>
 			   				<span>二挡最大充电功率</span> 
 			   				<div class="ol-div">
-			   					<input type="search" name="" data-min="50" data-max="3500" value=''>瓦
+			   					<input type="search" name="powerMax2" data-min="50" data-max="3500" value=''>瓦
 			   				</div>
 			   			</ol>
 			   			<ol>
 			   				<span>三挡最大充电功率</span> 
 			   				<div class="ol-div">
-			   					<input type="search" name="" data-min="50" data-max="3500" value=''>瓦
+			   					<input type="search" name="powerMax3" data-min="50" data-max="3500" value=''>瓦
 			   				</div>
 			   			</ol>
 			   			<ol>
 			   				<span>四挡最大充电功率</span> 
 			   				<div class="ol-div">
-			   					<input type="search" name="" data-min="50" data-max="3500" value=''>瓦
+			   					<input type="search" name="powerMax4" data-min="50" data-max="3500" value=''>瓦
 			   				</div>
 			   			</ol>
 			   			<ol>
 			   				<span>二挡充电时间百分比</span> 
 			   				<div class="ol-div">
-			   					<input type="search" name="" data-min="1" data-max="100" value=''>%
+			   					<input type="search" name="powerTim2" data-min="1" data-max="100" value=''>%
 			   				</div>
 			   			</ol>
 			   			<ol>
 			   				<span>三挡充电时间百分比</span> 
 			   				<div class="ol-div">
-			   					<input type="search" name="" data-min="1" data-max="100" value=''>%
+			   					<input type="search" name="powerTim3" data-min="1" data-max="100" value=''>%
 			   				</div>
 			   			</ol>
 			   			<ol>
 			   				<span>四挡充电时间百分比</span> 
 			   				<div class="ol-div">
-			   					<input type="search" name="" data-min="1" data-max="100" value=''>%
+			   					<input type="search" name="powerTim4" data-min="1" data-max="100" value=''>%
 			   				</div>
 			   			</ol>
 			   			<!-- <ol class="last-ol"><div class="confirm">确认</div><div>取消</div></ol> -->
