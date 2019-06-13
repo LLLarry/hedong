@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>详细信息记录</title>
+	<link rel="stylesheet" href="./dist/css/bootstrap.min.css">
+	<script src="./dist/js/bootstrap.min.js"></script>
+	<style>
+
+	.admin {
+	    /*background: #f8f8f8;*/
+	    background-color: #efeff4;
+	    /*background-color: #fff;*/
+	    position: fixed;
+	    border-left: solid 1px #b5cfd9;
+	    right: 0;
+	    bottom: 0;
+	    top: 110px;
+	    left: 180px;
+	    padding: 15px;
+	    padding-right: 0px;
+	    padding-bottom: 0px;
+	    overflow: auto;
+	    border-top: 1px solid #b5cfd9;
+	    padding-right: 15px;
+	    font-size: 13px;
+	    color: #666;
+	}
+	.table {
+		margin-bottom: 0;
+	}
+	.tableDiv1::after , .tableDiv2::after ,.tableMidDiv::after,
+	.arguDiv::after,.modelDiv::after{
+		content: '';
+		display: block;
+		height: 65px;
+		width: 100%;
+		background-color: transparent;
+	}
+	.admin table td {
+		background-color: #F5F7FA;
+	}
+	.admin thead td{
+		background-color: #C8EFD4;
+	}
+	
+	.admin button {
+		padding: 4px 12px;
+		font-size: 13px;
+	}
+	.divTop .portNum {
+		padding-bottom: 10px;
+		border-bottom: 1px solid #ddd;
+	}
+	.divTop .portNum >span {
+		margin-left: 5%;
+	}
+	.divTop .portNum >span>span {
+		color: #6BD089;
+	}
+	.table-striped tbody tr:nth-of-type(odd){
+		background-color: rgba(226,233,229,.5);
+	}
+	#tableTop {
+		color: #666;
+		/*border: 1px solid #ccc;*/
+		/*margin: 25px 0;*/
+	}
+	.admin thead td{
+		height: 40px;
+		text-align: center;
+	}
+	.tableMidDiv .left tbody td,#arguTable tbody td {
+		height: 40px;
+	}
+	.admin td {
+		padding: 5px;
+		vertical-align: middle;
+		text-align: center;
+	}
+	#tableTop button {
+		font-size: 13px;
+		padding: 4px 12px;
+	}
+	/*#tableMid {
+		margin: 25px 0;
+	}*/
+	#tableMid td {
+		text-align: center;
+	
+	}
+	#tableMid input {
+		background-color: transparent;
+		border: 1px solid #999;
+		border-radius: 5px;
+		text-align: center;
+	}
+	#tableMid .firstTd td {
+		background-color: #f5f7fa;
+	}
+	.tableMidDiv {
+		width: 100%;
+
+	}
+	.tableMidDiv .left {
+		float: left;
+		width: 45%;
+	}
+	.tableMidDiv .right {
+		float: right;
+		width: 45%;
+	}
+	.form-control {
+		display: inline-block;
+		width: 50%;
+		background-color: transparent;
+		height: 30px;
+		font-size: 13px;
+
+	}
+
+	.modelDiv h3 , .arguDiv h3 {
+		font-size: 16px;
+		color: #333;
+		text-align: center;
+		line-height: 50px;
+	/*	margin-top: 25px;*/
+	}
+	.arguDiv td {
+		height: 42px;
+	}
+	.arguDiv input {
+		background-color: transparent;
+	    border: 1px solid #999;
+	    border-radius: 5px;
+	    text-align: center;
+	}
+	/*.arguDiv tbody tr td:first-child {
+		text-align: left;
+		padding-left: 10%;
+	}*/
+/*	.modelDiv {
+		margin-bottom: 30px;
+	}*/
+	</style>
+</head>
+<body>
+	<div class="admin">
+		<div class="divTop">
+			<div class="portNum">
+				<button type="button" class="btn btn-info">查询充电端口总数</button>
+				<span>总端口数： 
+					<span>默认为0</span>
+				</span>
+				<span>起始端口： 
+					<span>默认为0</span>
+				</span>
+			</div>
+			<div class="portNum" style="margin-top: 10px;">
+				<button type="button" class="btn btn-danger" style="margin-left: 20px;">强制解绑</button>
+				<span>绑定状态： 
+					<span>已绑定</span>
+				</span>
+				<span>绑定用户： 
+					<span>Roar Wolf</span>
+				</span>
+				<span>设备号： 
+					<span>---</span>
+				</span>
+				<span>所属小区 
+					<span>---</span>
+				</span>
+			</div>
+		</div>
+		<div class="tableDiv1">
+			<table class="table table-striped table-hover table-bordered" id="tableTop">
+				 <thead>
+				 	<tr>
+				 		<td>端口号</td>
+				 		<td>端口状态	</td>
+				 		<td>充电时间（分钟）	</td>
+				 		<td>充电功率（W）	</td>
+				 		<td>剩余电量（度）</td>
+				 		<td>可回收余额</td>
+				 		<td>实时更新</td>
+				 		<td>锁定</td>
+				 		<td>解锁</td>
+				 		<td>日志</td>
+				 	</tr>
+				 </thead>
+				  <tbody>
+				 	<tr>
+				 		<td>1</td>
+				 		<td>空闲	</td>
+				 		<td>0</td>
+				 		<td>0</td>
+				 		<td>0.0</td>
+				 		<td>0.0</td>
+				 		<td><button type="button" class="btn btn-success">更新</button></td>
+				 		<td><button type="button" class="btn btn-info">锁定</button></td>
+				 		<td><button type="button" class="btn btn-info">解锁</button></td>
+				 		<td><a href="javascript:;">查看</a></td>
+				 	</tr>
+				 	<tr>
+				 		<td>1</td>
+				 		<td>空闲	</td>
+				 		<td>0</td>
+				 		<td>0</td>
+				 		<td>0.0</td>
+				 		<td>0.0</td>
+				 		<td><button type="button" class="btn btn-success">更新</button></td>
+				 		<td><button type="button" class="btn btn-info">锁定</button></td>
+				 		<td><button type="button" class="btn btn-info">解锁</button></td>
+				 		<td><a href="javascript:;">查看</a></td>
+				 	</tr>
+				 	<tr>
+				 		<td>1</td>
+				 		<td>空闲	</td>
+				 		<td>0</td>
+				 		<td>0</td>
+				 		<td>0.0</td>
+				 		<td>0.0</td>
+				 		<td><button type="button" class="btn btn-success">更新</button></td>
+				 		<td><button type="button" class="btn btn-info">锁定</button></td>
+				 		<td><button type="button" class="btn btn-info">解锁</button></td>
+				 		<td><a href="javascript:;">查看</a></td>
+				 	</tr>
+				 </tbody>
+			</table>
+		</div>
+		
+		<div class="tableDiv2">
+			<table class="table table-striped table-hover table-bordered" id="tableMid">
+			<thead>
+				<tr class="firstTd">
+					<td colspan="3">
+						<button type="button" class="btn btn-info">查询空闲端口</button>
+					</td>
+					<td colspan="4">
+						<button type="button" class="btn btn-info">查询端口状态</button>
+					</td>
+				</tr>
+				<tr>
+					<td>端口号</td>
+					<td>端口状态</td>
+					<td>是否空闲</td>
+					<td>充电时间（分钟）</td>
+					<td>充电电量 （度）</td>
+					<td>操作</td>
+					<td>远程断电</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>空闲</td>
+					<td>是</td>
+					<td><input type="text" value="240" /></td>
+					<td><input type="text" value="1.0" /></td>
+					<td><button type="button" class="btn btn-info">开始</button></td>
+					<td><button type="button" class="btn btn-info">断电</button></td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>空闲</td>
+					<td>是</td>
+					<td><input type="text" value="240" /></td>
+					<td><input type="text" value="1.0" /></td>
+					<td><button type="button" class="btn btn-info">开始</button></td>
+					<td><button type="button" class="btn btn-info">断电</button></td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>空闲</td>
+					<td>是</td>
+					<td><input type="text" value="240" /></td>
+					<td><input type="text" value="1.0" /></td>
+					<td><button type="button" class="btn btn-info">开始</button></td>
+					<td><button type="button" class="btn btn-info">断电</button></td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>空闲</td>
+					<td>是</td>
+					<td><input type="text" value="240" /></td>
+					<td><input type="text" value="1.0" /></td>
+					<td><button type="button" class="btn btn-info">开始</button></td>
+					<td><button type="button" class="btn btn-info">断电</button></td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+		<div class="modelDiv"><!-- 系统参数 -->
+			<h3>模块信息（硬件，软件，IMEI, +CCID）</h3>
+			<table class="table table-striped table-hover table-bordered" id="arguTable">
+				<thead>
+					<tr>
+						<td>ccid</td>
+						<td>imei</td>
+						<td>硬件版本</td>
+						<td>硬件版本号</td>
+						<td>软件版本号</td>
+						<td>信号强度</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>8986043316187147164</td>
+						<td>868994034714761</td>
+						<td>02</td>
+						<td>00</td>
+						<td>03</td>
+						<td>0</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="tableMidDiv clearfix">
+			<div class="left">
+				<table class="table table-striped table-hover table-bordered" id="tableMid">
+					<thead>
+						<tr class="firstTd">
+							<td colspan="2">
+								<button type="button" class="btn btn-info">查询消费总金额</button>
+							</td>
+						</tr>
+						<tr>
+							<td>类型</td>
+							<td>金额</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>刷卡总金额</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>投币总金额</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="right">
+				<table class="table table-striped table-hover table-bordered" id="tableMid">
+					<thead>
+						<tr class="firstTd">
+							<td colspan="3">
+								设置IC卡、投币器是否可用
+							</td>
+						</tr>
+						<tr>
+							<td>类型</td>
+							<td>解锁</td>
+							<td>锁定</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>投币器</td>
+							<td colspan="2">
+								<select class="form-control input-sm" >
+									<option value="1">锁定</option>
+									<option value="2">解锁</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>IC卡</td>
+							<td colspan="2">
+								<select class="form-control input-sm" >
+									<option value="1">锁定</option>
+									<option value="2">解锁</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td><button class="btn btn-info">设置</button></td>
+							<td colspan="2">
+								<span></span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<div class="arguDiv"><!-- 系统参数 -->
+			<h3>系统参数表</h3>
+			<table class="table table-striped table-hover table-bordered" id="arguTable">
+				<thead>
+					<tr>
+						<td>含义</td>
+						<td>数值</td>
+						<td>单位</td>
+						<td>最大值</td>
+						<td>最小值</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>设置投币充电时间(单位为分钟)</td>
+						<td><input type="text"></td>
+						<td>分钟</td>
+						<td>999</td>
+						<td>0</td>
+					</tr>
+					<tr>
+						<td>设置刷卡充电时间 (单位为分钟)</td>
+						<td><input type="text"></td>
+						<td>分钟</td>
+						<td>999</td>
+						<td>0</td>
+					</tr>
+					<tr>
+						<td>设置单次投币最大用电量(单位为度,KWH)</td>
+						<td><input type="text"></td>
+						<td>0.1度</td>
+						<td>15</td>
+						<td>0.1</td>
+					</tr>
+					<tr>
+						<td>设置单次刷卡最大用电量(单位为度,KWH)</td>
+						<td><input type="text"></td>
+						<td>0.1度</td>
+						<td>15</td>
+						<td>0.1</td>
+					</tr>
+					<tr>
+						<td>设置刷卡扣费金额(单位为元)</td>
+						<td><input type="text"></td>
+						<td>角</td>
+						<td>15</td>
+						<td>0.1</td>
+					</tr>
+					<tr>
+						<td>设置第一档最大充电功率（最大功率以机器支持为准）</td>
+						<td><input type="text"></td>
+						<td>瓦</td>
+						<td>3500</td>
+						<td>50</td>
+					</tr>
+					<tr>
+						<td>设置第二档最大充电功率（最大功率以机器支持为准）</td>
+						<td><input type="text"></td>
+						<td>瓦</td>
+						<td>3500</td>
+						<td>50</td>
+					</tr>
+					<tr>
+						<td>设置第三档最大充电功率（最大功率以机器支持为准）</td>
+						<td><input type="text"></td>
+						<td>瓦</td>
+						<td>3500</td>
+						<td>50</td>
+					</tr>
+					<tr>
+						<td>设置第四档最大充电功率（最大功率以机器支持为准）</td>
+						<td><input type="text"></td>
+						<td>瓦</td>
+						<td>3500</td>
+						<td>50</td>
+					</tr>
+					<tr>
+						<td>设置第二档充电时间百分比</td>
+						<td><input type="text"></td>
+						<td>%</td>
+						<td>100</td>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>设置第三档充电时间百分比</td>
+						<td><input type="text"></td>
+						<td>%</td>
+						<td>100</td>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>设置第四档充电时间百分比</td>
+						<td><input type="text"></td>
+						<td>%</td>
+						<td>100</td>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>是否支持余额回收（1为支持 0为不支持)</td>
+						<td><input type="text"></td>
+						<td>无</td>
+						<td>1</td>
+						<td>0</td>
+					</tr>
+					<tr>
+						<td>是否支持断电自停（1为支持 0为不支持)</td>
+						<td><input type="text"></td>
+						<td>无</td>
+						<td>1</td>
+						<td>0</td>
+					</tr>
+					<tr>
+						<td>设置充电器最大浮充功率 （功率为瓦，当充电器功率低于这个值的话，可视为充电器已充满)</td>
+						<td><input type="text"></td>
+						<td>瓦</td>
+						<td>200</td>
+						<td>0</td>
+					</tr>
+					<tr>
+						<td>设置浮充时间 （充电器充满变绿灯之后的，继续浮充时间，单位为分钟）</td>
+						<td><input type="text"></td>
+						<td>分钟</td>
+						<td>240</td>
+						<td>30</td>
+					</tr>
+					<tr>
+						<td>是否初始显示电量 （此功能是否支持和设备相关）</td>
+						<td><input type="text"></td>
+						<td>无</td>
+						<td>1</td>
+						<td>0</td>
+					</tr>
+					<tr>
+						<td>
+							<button class="btn btn-info">读取参数</button>
+						</td>
+						<td colspan="4">
+							<button class="btn btn-info">保存参数</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		
+	</div>	
+</body>
+</html>

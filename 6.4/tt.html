@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>IC卡充值</title>
+	<link rel="stylesheet" href="./dist/css/mui.min.css">
+	<script src="./dist/js/mui.min.js"></script>
+	<style>
+		html,body,header,section,div,ul,li,p,button,h1,h2,h3 {margin: 0; padding: 0;}
+		li { list-style: none; }
+		a { text-decoration: none; }
+		body {
+			background-color: #efeff4;
+		}
+		.icPage {
+			padding: 15px 10px;
+			font-size: 12px;
+			color: #666;
+		}
+		.icPage header div {
+			text-align: center;
+			padding: 10px 0 20px;
+			border-bottom: 1px solid #D9D9D9;
+		}
+		.icPage header div span {
+			color: #999;
+		}
+		.icPage section {
+			padding-top: 20px; 
+		}
+		.icPage section h3 {
+			font-size: 14px;
+			font-weight: 400;
+			color: #999;
+		}
+		.icPage section .selectDiv {
+			margin-top: 15px;
+			border-bottom: 1px solid #D9D9D9;
+   			padding-bottom: 15px;
+
+		}
+		.icPage section .selectDiv ul {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-start;
+		}
+		.icPage section .selectDiv li {
+			height: 11vw;
+			width: 18%;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+			border-radius: 5px;
+			margin-bottom: 15px;
+			text-align: center;
+			line-height: 11vw;
+			margin-left: 2vw;
+			font-size: 14px;
+			background-color: #f5f7fa;
+		}
+		.icPage section .selectDiv li:nth-child(3n-2){
+			margin-left: 1.5vw;
+		}
+		.icPage section .displayDiv {
+			margin-top: 32px;
+			text-align: center;
+			font-size: 35px;
+		}
+		.icPage section .displayDiv .icon_yen {
+			margin-right: 10px;
+		}
+		.icPage section .btn {
+			width: 70%;
+			height: 10vw;
+			border: 1px solid #22B14C;
+			border-radius: 6px;
+			text-align: center;
+			line-height: 10vw;
+			margin: 15px auto;
+			background-color: #4cd964;
+			color: #fff;
+		}
+		.icPage section .btn:active {
+			background-color: #1EC63B;
+		}
+	</style>
+</head>
+<body>
+	<div class="icPage">
+		<header>
+			<div><span>卡号：</span> 456893365</div>
+		</header>
+		<section>
+			<h3>请选择充值金额</h3>
+			<div class="selectDiv">
+				<ul>
+					<li>50</li>
+					<li>100</li>
+					<li>200</li>
+					<li>300</li>
+					<li>400</li>
+					<li>500</li>
+				</ul>
+			</div>
+			<div class="displayDiv"><span class="icon_yen">¥</span><span>0元</span></div>
+			<div class="btn">确认充值</div>
+		</section>
+	</div>
+</body>
+</html>

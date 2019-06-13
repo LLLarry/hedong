@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta charset="UTF-8">
+	<title>areaMessage</title>
+
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		li {
+			list-style: none;
+		}
+		html,body {
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+		}
+		.areaDiv {
+			font-size: 12px;
+			width: 200%;
+			overflow: hidden;
+			/*transform: translate(-50%);*/
+		}
+		.left {
+			width: 50%;
+			padding: 15px 10px;
+			box-sizing: border-box;
+			float: left;
+		}
+		.areaDiv table {
+			width: 100%;
+			border-left: 1px solid #add9c0;
+			border-top: 1px solid #add9c0;
+			border-radius: 8px;
+			overflow: hidden;
+			/*margin-top: 15px;*/
+			word-break:break-all;
+		}
+		.areaDiv table td {
+			text-align: center;
+			line-height: 35px;
+			border-bottom: 1px solid #add9c0;
+			border-right: 1px solid #add9c0;
+		}
+		.areaDiv table thead{
+			background-color: #C8EFD4;
+			color: #333;
+			font-weight: 600;
+		}
+		.areaDiv table tbody {
+			background-color: #f5f7fa;
+		}
+		.areaDiv table tbody tr td:last-child{
+			position: relative;
+
+		}
+		.areaDiv table tbody tr td:last-child a {
+			display: block;
+			width: 80%;
+			min-width: 30px;
+			height: 25px;
+			background-color: #5cb85c;
+			text-align: center;
+			line-height: 25px;
+			border-radius: 4px;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%,-50%);
+			-ms-transform:  translate(-50%,-50%);
+			-moz-transform:  translate(-50%,-50%);
+			-webkit-transform:  translate(-50%,-50%);
+			-o-transform:  translate(-50%,-50%);
+			text-decoration: none;
+			color: #fff;
+		}
+
+		.right {
+			width: 50%;
+	
+			 box-sizing: border-box;
+			 float: right;
+		}
+		.right ul {
+			padding: 15px 10px;
+		}
+		.right ul li {
+			line-height: 36px
+		}
+		.right ul li input {
+			width: 50%;
+			height: 35px;
+			border: none;
+			float: right;
+			margin-right: 15%;
+			background: pink;
+			border-bottom: 1px solid #ccc;	
+		}
+		@media screen and (max-width: 348px){
+			.areaDiv table td {
+				width: 16.66%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="areaDiv">
+			<div class="left">
+				<table cellspacing="0">
+					<thead>
+						<tr>
+							<td>小区名称</td>
+							<td>设备数量</td>
+							<td>合伙人姓名</td>
+							<td>合伙人电话</td>
+							<td>分成比</td>
+							<td>操作</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>回忆小区</td>
+							<td>2</td>
+							<td>测试a，测试b</td>
+							<td>13886868686</td>
+							<td>1.0%</td>
+							<td><a href="javascript:;">点击</a></td>
+						</tr>
+						<tr>
+							<td>回忆小区</td>
+							<td>2</td>
+							<td>测试a，测试b</td>
+							<td>13886868686</td>
+							<td>1.0%</td>
+							<td><a href="javascript:;">点击</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="right">
+				<ul>
+					<li><span>小区名称</span><input type="text"></li>
+					<li><span>小区地址</span><input type="text"></li>
+					<li><span>合伙人电话</span><input type="text"></li>
+					<li><span>合伙人姓名</span><input type="text"></li>
+					<li><span>合伙人昵称</span><input type="text"></li>
+					<li><span>分成比</span><input type="text"></li>
+					<li><button>确认</button><button>取消</button></li>
+				</ul>
+			</div>
+	</div>
+</body>
+</html>

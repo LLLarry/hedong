@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="./dist/css/mui.min.css">
+	<link rel="stylesheet" href="./dist/css/mui.picker.css">
+	<!-- <link rel="stylesheet" href="./dist/css/mui.poppicker.css"> -->
+	<link rel="stylesheet" href="./dist/css/mui.dtpicker.css">
+	<script rel="stylesheet" src="./dist/js/mui.min.js"></script>
+	<script rel="stylesheet" src="./dist/js/mui.picker.js"></script>
+	<!-- <script rel="stylesheet" src="./dist/js/mui.poppicker.js"></script> -->
+	<script rel="stylesheet" src="./dist/js/mui.dtpicker.js"></script>
+	<script rel="stylesheet" src="./jquery.js"></script>
+	<title>收益统计</title>
+	<style>
+	@font-face {font-family: "iconfont";
+  src: url('//at.alicdn.com/t/font_1238088_sworkpymgxf.eot?t=1560310068939'); /* IE9 */
+  src: url('//at.alicdn.com/t/font_1238088_sworkpymgxf.eot?t=1560310068939#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAARAAAsAAAAACKgAAAPyAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDMgqEQIN5ATYCJAMUCwwABCAFhG0HUBuNB8iemjyJySprbn7mu09W6cxThtmDB34d9b5mZ//MkglMRpPSuik0+xD6NTg6qS3U1I6ed00/3fjaEaoMVdmNANKjXg9fLmOWBbIjx0LPfUCHzwPbzwP/h/v7RlPHssAGcJqmWRSlC2hqJ9UF8tcG+f93E/zummaB/4UNwPxewJssonws6wfYxeG4dR7YfIvKZcxlc1IbA+zCyVk2xrYxhQskTxB7iLe6zM0QwEpmZhi1dg+DJJreSwAxF3gEkhJKugIruBKnYGJGHBluXI2vwbb3efEuN7ggmYS+VeushQH1TwnPx9iZ/209acfccHqAnQYK5ABoiEWhcUxs4M4Ry8rN41QDWC5JDlUv++m8/Pj/PxF3Q2Jr/OGBokkCoogu9BFT7dG4TLDIULjMZhaJOkGOBNFHYF+L0DgTLAgEt8B7dHGK9zJFkFQtqCAiPjg8PF00+u+Tu2/r093WF7vBuN9f9tC+vcDeHu8d8P6+rPu3fZTFxp0GDMLadoJGD3jdTkDetJ6DY+gNh7PB2OwIbxkozS+vt3PQ788J/DfyOLqjB71/op7uv2F2H2DvAg/OeLx3/vy0vOz2becU/rO8KrgzmqkaCpxm5+xCocjzY29pYfvvelNW2uP1ZWelpeFCv/Lqpyq+xF1LpfNZ8sU7n+dnwaA5tECWrmeWn/aavnbU3wylvGtrUGjjf+u8/t543sQ39OlpaTmLLOUuSbsGzQ36kV3kkuhKetNTdm8CxzD2bX+V9tNUff+Zurj48cXp/d+PNMq2J/lZNedlsKOCelc1eQdQUfpNftNN3+inlPk77ymlA/Av9fbN5ps2xbef8T/Xz5/mQgpDHuUpVuchDbUFP4PjWAaA/z72Mc0CVE+GAf43WaoZj38ViRv+he/wsWrd6U+r/prkaQCO0tp8lP/3zY2zeKEiZNabT8kG+P9nyXF0lckSyxIFD0EcRpdY3D/2S05739ZwH4eRRt1Lr+CKikAKkKRXXIUFCI3JAcOTDw5XFVjZ2qZ7ImCxRA4EshwQEELdgBTsMSihniE05gMY0b6CIzQosLpD1oKetDBMNWEWEZaBrhUo0KrCmRpC+bGDLL8gIRzneLhRFuuCDTqs9rSvjVVYPMQQfZF3EsJBDqsybCXbsZKkQg2rHpYmVjchWqXNxhVdyUqrMqDUwVgIwWJALisgAU2l4Jz8BJV5/yAWb4EEwRVZZepRLEwn1A45WNkbINqESqOsS2muW8RzIgiO6sbBVDKoFfQsyXCrIK24nQeLRli5Ozg1lWyYi2sqtE4vlu9xEWDpzU2QQgktjHDwdt6pL8gaOYlV45cFJKEEoiq8R0h0CUhxIxUAAAA=') format('woff2'),
+  url('//at.alicdn.com/t/font_1238088_sworkpymgxf.woff?t=1560310068939') format('woff'),
+  url('//at.alicdn.com/t/font_1238088_sworkpymgxf.ttf?t=1560310068939') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('//at.alicdn.com/t/font_1238088_sworkpymgxf.svg?t=1560310068939#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-consumption:before {
+  content: "\e6f1";
+}
+
+.icon-xiala:before {
+  content: "\e654";
+}
+
+.icon-tongji:before {
+  content: "\e61b";
+}
+
+.icon-bianhao:before {
+  content: "\e62b";
+}
+
+
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		li {
+			list-style: none;
+		}
+		.content {
+			font-size: 12px;
+			color: #666;
+			margin-top: 60px; /*后加的*/
+		}
+		.content .topFir,.content .topSec {
+			background-color: #fff;
+			line-height: 40px;
+			height: 40px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0 10px;
+			border-bottom: 1px solid #ccc; 
+		}
+		.content .topFir i {
+			color: #999;
+		}
+		.content .topFir .icon-xiala {
+			font-size: 13px;
+			margin-right: 5vw;
+		}
+		.content .topFir>span {
+			/*font-size: 14px;*/
+		}
+		.content .topSec {
+			border-bottom: none;
+		}
+		.content .topSec button{
+			height: 30px;
+			padding: 3px 12px;
+			font-size: 12px;
+		}
+		.content .bottom {
+			padding: 0 10px;
+		}
+		
+		.content .bottom ul>li {
+			height: 80px;
+			display: flex;
+			justify-content: flex-start;
+			flex-wrap: wrap;
+			align-items: center;
+			padding: 0 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			background-color: #f5f7fa;
+			margin-top: 10px;
+		}
+		.content .bottom ul>li:active {
+			background-color: #f7f7f7;
+		}
+		.content .bottom ul>li p{
+			width: 49%;
+			font-size: 12px;
+			color: #333;
+			margin: 0;
+		}
+		.content .bottom ul>li p i {
+			margin-right: 5px;
+			color: #0abf3ff5;
+		}
+		.content .bottom ul>li .fp span {
+			display: inline-block;
+			background-color: #0abf3ff5;
+			border-radius: 3px;
+			padding: 0 5px;
+			color: #fff;
+			font-size: 12px;
+			margin-left: 5px;
+			height: 18px;
+			line-height: 18px;
+		}
+		.content .bottom ul>li p span.num {
+			/*display: inline-block;
+			background-color: #fff;
+			border: 1px solid #ddd;
+			border-radius: 3px;
+			padding: 0 5px;
+			color: #EF6B65;
+			font-size: 14px;
+			margin-left: 5px;
+			font-weight: 600;*/
+			color: #F47378;
+		}
+		.detailDiv {
+			border: 1px solid #ccc;
+			border-top: none;
+			/*border-radius: 0 0 5px 5px;*/
+			border-radius: 5px;
+			padding-top: 10px;
+			display: none;
+			background-color: rgba(255,255,255,.9);
+		}
+		.detailDiv li {
+			height: 45px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0 10px;
+			
+		}
+		.detailDiv li>p {
+			font-size: 12px;
+			margin-bottom: 0;
+		}
+		.detailDiv li .dsp span {
+			color: #EF6B65;
+		}
+		.detailDiv li .dsp i {
+			font-size: 15px;
+		}
+		.detailDiv li i {
+			color: #0abf3ff5;
+		}
+
+		.content .sub{
+			justify-content: center;
+		}
+		#submit {
+			height: 30px;
+		    padding: 3px 12px;
+		    font-size: 12px;
+		    width: 50%;
+		    border-radius: 30px;
+		}
+		.noDevice {
+			line-height: 40px;
+			text-align: center;
+			color: #999;
+		}
+	/*下面是新添加的*/
+
+	.content h3 {
+		font-size: 14px;
+		font-weight: 400;
+		text-align: center;
+		line-height: 44px;
+		margin: 0;
+	}
+	
+	</style>
+</head>
+<body>
+	<div class="content">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h3>2019-06月份设备收益统计</h3>
+		</header>
+		
+		
+		<div class="bottom">
+			<ul>
+				<li>
+					<p><i class="iconfont icon-bianhao"></i>设备号： <span>0569983</span></p>
+					<!-- <p><i class="iconfont icon-consumption"></i>合计： <span class="num">+2.00元</span></p> -->
+					<p><i class="iconfont icon-consumption"></i>线上收益： <span class="num">+1.00元</span></p>
+					<p><i class="iconfont icon-consumption"></i>投币收益： <span class="num">+1.00元</span></p>
+				</li>
+				<!-- <div class="detailDiv">
+					 当没有设备的时候显示 noDevice-->
+					<!-- <div class="noDevice">暂无设备</div> --> 
+			<!-- 		<li>
+						<p class="dfp">
+							<i class="iconfont icon-bianhao"></i>
+							设备编号： Ec563565
+						</p> 
+						<p class="dsp">
+							<i class="iconfont icon-consumption"></i>
+							合计：<span>+1.00元</span>
+						</p>
+					</li>
+					<li>
+						<p class="dfp">
+							<i class="iconfont icon-bianhao"></i>
+						设备编号： Ec563565
+						</p> 
+						<p class="dsp">
+							<i class="iconfont icon-consumption"></i>
+							合计：<span>+1.00元</span>
+						</p>
+					</li>
+				</div> -->
+				<li>
+					<p><i class="iconfont icon-bianhao"></i>设备号： <span>0569983</span></p>
+					<!-- <p><i class="iconfont icon-consumption"></i>合计： <span class="num">+2.00元</span></p> -->
+					<p><i class="iconfont icon-consumption"></i>线上收益： <span class="num">+1.00元</span></p>
+					<p><i class="iconfont icon-consumption"></i>投币收益： <span class="num">+1.00元</span></p>
+				</li>
+				
+				<li>
+					<p><i class="iconfont icon-bianhao"></i>设备号： <span>0569983</span></p>
+					<!-- <p><i class="iconfont icon-consumption"></i>合计： <span class="num">+2.00元</span></p> -->
+					<p><i class="iconfont icon-consumption"></i>线上收益： <span class="num">+1.00元</span></p>
+					<p><i class="iconfont icon-consumption"></i>投币收益： <span class="num">+1.00元</span></p>
+				</li>
+				
+				<li>
+					<p><i class="iconfont icon-bianhao"></i>设备号： <span>0569983</span></p>
+					<!-- <p><i class="iconfont icon-consumption"></i>合计： <span class="num">+2.00元</span></p> -->
+					<p><i class="iconfont icon-consumption"></i>线上收益： <span class="num">+1.00元</span></p>
+					<p><i class="iconfont icon-consumption"></i>投币收益： <span class="num">+1.00元</span></p>
+				</li>
+			
+
+			</ul>
+
+		</div>
+	</div>
+
+	<!-- <script>
+		$(function(){
+			//初始化日期组件
+			var m= (new Date().getMonth()+1) >= 10 ?  (new Date().getMonth()+1) : '0'+ (new Date().getMonth()+1)
+			var d= new Date().getDate() >= 10 ?  new Date().getDate() : '0'+ new Date().getDate()
+			var str= new Date().getFullYear()+'-'+m+'-'+d
+			var dateDiv1Date = new Date(str).getTime() //初始dateDiv1的日期为0
+			var dateDiv2Date = new Date(str).getTime() //初始dateDiv1的日期为0
+			var index //定义个空索引
+			$('#dateDiv1 .time').text(str)
+			$('#dateDiv2 .time').text(str)
+			$('#dateDiv1').click(function(){
+				this.dtPicker = new mui.DtPicker({
+					type: "date",
+					endDate: new Date()
+				}); 
+				handleDate(this,0)
+			})
+			$('#dateDiv2').click(function(){
+				this.dtPicker = new mui.DtPicker({
+					type: "date",
+					endDate: new Date()
+				});
+				handleDate(this,1)
+			})
+			$('#submit').click(function(){
+				if(dateDiv1Date > dateDiv2Date){
+					mui.toast('结束日期不能小于起始日期',{ duration:'long', type:'div' })
+				}
+			})
+
+			$('.bottom ul li').click(function(){
+				if(index == $(this).index()){
+					$(this).parent().children().eq($(this).index()+1).slideToggle(300)
+					return false
+				}
+				index=$(this).index()
+				$(this).parent().find('.detailDiv').slideUp(300)
+				$(this).parent().children().eq(index+1).slideDown(300)
+			})
+
+			function handleDate(Dom,index){
+				var timeStr= ''
+				 Dom.dtPicker.show(function (selectItems) { 
+			        timeStr= selectItems.y.value+'-'+selectItems.m.value+'-'+selectItems.m.value
+			        if(index === 0){
+			        	dateDiv1Date= new Date(timeStr).getTime()
+			        }else{
+			        	dateDiv2Date= new Date(timeStr).getTime()
+			        }
+			        $(Dom).find('.time').eq(0).text(timeStr)
+			    })
+			}
+
+		})
+	</script> -->
+</body>
+</html>

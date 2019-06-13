@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="./dist/css/mui.min.css">
+	<script rel="stylesheet" src="./dist/js/mui.min.js"></script>
+	<script rel="stylesheet" src="./jquery.js"></script>
+	<title>tatistics</title>
+	<style>
+	* {
+		padding: 0;
+		margin: 0;
+	}
+	li {
+		list-style: none;
+	}
+	.statistics {
+		padding: 15px 0;
+		font-size: 12px;
+		color: #666;
+	}
+	.statistics main ul {
+	margin-top: 15px;
+	display: table;
+	width: 100%;
+	border-left: 1px solid #add9c0;
+	border-top: 1px solid #add9c0;
+	border-radius: 8px;
+	overflow: hidden;
+}
+.select {
+	display: flex;
+	justify-content: space-around;
+	border: 1px solid #2BBE56;
+	border-radius: 5px;
+	margin: 0 10px;
+}
+.select span {
+	display: block;
+	color: #fff;
+	color: #2BBE56;
+	width: 50%;
+	text-align: center;
+	line-height: 25px;
+	transition: all .5s;
+}
+.select span:first-child {
+	border-right: 1px solid #2BBE56;
+}
+.select span.active {
+	background-color: #2BBE56;
+	color: #fff;
+}
+.statistics main {
+	position: relative;
+	overflow: hidden;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 15px;
+}
+.statistics main section{
+	width: 50%;
+	padding: 0 10px;
+	float: left;
+}
+
+.statistics main ul li{
+	display:table-row;
+	width: 100%;
+	background-color: #f5f7fa;
+	height: 35px;
+}
+
+.statistics main ul li.title {
+	height: 35px;
+	font-weight: 600;
+	background-color: #C8EFD4;
+	/*background-color: #C8EBFA;*/
+	color: #333;
+}
+.statistics main ul li span {
+	display:table-cell;
+	text-align: center;
+	border-bottom: 1px solid #add9c0;
+	border-right: 1px solid #add9c0;
+	vertical-align:middle;
+}
+.content {
+	width: 200%;
+	overflow: hidden;
+	position: absolute;
+
+}
+
+	</style>
+</head>
+<body>
+	<div class="statistics">
+		<main>
+			<div class="select">
+				<span class="active">按月统计</span>
+				<span>按周统计</span>
+			</div>
+			<div class="content">
+				<section class="left active">
+					<ul>
+						<li class="title">
+							<span>时间</span>
+							<span>脉冲金额</span>
+							<span>电轿款</span>
+							<span>十路智慧款</span>
+							<span>离线充值</span>
+						</li>
+						<li>
+							<span>2019-05</span>
+							<span>156.0</span>
+							<span>136.9</span>
+							<span>23.3</span>
+							<span>123.5</span>
+						</li>
+						<li>
+							<span>2019-05</span>
+							<span>156.0</span>
+							<span>136.9</span>
+							<span>23.3</span>
+							<span>123.5</span>
+						</li>
+						<li>
+							<span>2019-05</span>
+							<span>156.0</span>
+							<span>136.9</span>
+							<span>23.3</span>
+							<span>123.5</span>
+						</li>
+					</ul>
+				</section>
+				<section class="right">
+					<ul>
+						<li class="title">
+							<span>时间</span>
+							<span>脉冲金额</span>
+							<span>电轿款</span>
+							<span>十路智慧款</span>
+							<span>离线充值</span>
+						</li>
+						<li>
+							<span>2019-05-06至 <br>2019-05-13</span>
+							<span>156.0</span>
+							<span>136.9</span>
+							<span>23.3</span>
+							<span>123.5</span>
+						</li>
+						<li>
+							<span>2019-05-06至 <br>2019-05-13</span>
+							<span>156.0</span>
+							<span>136.9</span>
+							<span>23.3</span>
+							<span>123.5</span>
+						</li>
+						<li>
+							<span>2019-05-06至 <br>2019-05-13</span>
+							<span>156.0</span>
+							<span>136.9</span>
+							<span>23.3</span>
+							<span>123.5</span>
+						</li>
+					</ul>
+				</section>
+			</div>
+		</main>
+	</div>
+	<script>
+		$(function(){
+			var left 
+			$('.select span').click(function(){
+				$(this).siblings().removeClass('active')
+				$(this).addClass('active')
+				var index= $(this).index()
+				var otherIndex
+				if( index=== 0){
+					$('main .left').siblings().removeClass('active')
+					$('main .left').addClass('active')
+					otherIndex= 1
+				}else{
+					$('main .right').siblings().removeClass('active')
+					$('main .right').addClass('active')
+					otherIndex= 0
+				}
+				
+				var width= $(document).width()
+				left=  index === 0 ? 0 : -width
+				$('main .content').animate({
+					'left': left
+				})
+			})
+		})
+	</script>
+</body>
+</html>
