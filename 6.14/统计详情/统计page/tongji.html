@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="./dist/css/mui.min.css">
+	<link rel="stylesheet" href="./dist/css/mui.picker.css">
+	<link rel="stylesheet" href="./dist/css/mui.poppicker.css">
+	<script rel="stylesheet" src="./dist/js/mui.min.js"></script>
+	<script rel="stylesheet" src="./dist/js/mui.picker.js"></script>
+	<script rel="stylesheet" src="./dist/js/mui.poppicker.js"></script>
+	<script rel="stylesheet" src="./jquery.js"></script>
+	<title>tatistics</title>
+	<style>
+	* {
+		padding: 0;
+		margin: 0;
+	}
+	li {
+		list-style: none;
+	}
+	.statistics {
+		padding: 15px 0;
+		font-size: 12px;
+		color: #666;
+	}
+	.statistics main ul {
+	margin-top: 15px;
+	display: table;
+	width: 100%;
+	border-left: 1px solid #add9c0;
+	border-top: 1px solid #add9c0;
+	border-radius: 8px;
+	overflow: hidden;
+}
+.select {
+	display: flex;
+	justify-content: space-around;
+	border: 1px solid #2BBE56;
+	border-radius: 5px;
+	margin: 0 10px;
+}
+.select span {
+	display: block;
+	color: #fff;
+	color: #2BBE56;
+	width: 50%;
+	text-align: center;
+	line-height: 25px;
+	transition: all .5s;
+}
+.select span:first-child {
+	border-right: 1px solid #2BBE56;
+}
+.select span.active {
+	background-color: #2BBE56;
+	color: #fff;
+}
+.statistics main {
+	position: relative;
+	overflow: hidden;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 15px;
+}
+.statistics main section{
+	width: 50%;
+	padding: 0 10px;
+	float: left;
+}
+
+.statistics main ul li{
+	display:table-row;
+	width: 100%;
+	background-color: #f5f7fa;
+	height: 35px;
+}
+
+.statistics main ul li.title {
+	height: 35px;
+	font-weight: 600;
+	background-color: #C8EFD4;
+	/*background-color: #C8EBFA;*/
+	color: #333;
+}
+.statistics main ul li span {
+	display:table-cell;
+	text-align: center;
+	border-bottom: 1px solid #add9c0;
+	border-right: 1px solid #add9c0;
+	vertical-align:middle;
+}
+.content {
+	width: 200%;
+	overflow: hidden;
+	position: absolute;
+
+}
+
+.statistics .search {
+	padding:0 10px 18px 10px;
+}
+.statistics .search ol{
+	height: 34px;
+	line-height: 34px;
+}
+.statistics .search .deviceName {
+	float: left;
+	width: 25%;
+	text-align: center;
+	/*background-color: rgba(225,225,225,.3);*/
+}
+.statistics .search .deviceName .mui-icon {
+	font-size: 17px;
+}
+.statistics .search .searchInp {
+	float: right;
+	width: 74%;
+}
+.statistics .search .searchInp input {
+	width: 70%;
+	margin-right: 5%;
+	margin-bottom: 0;
+	background-color: transparent;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.statistics .search .searchInp input::-webkit-input-placeholder{
+	font-size: 12px;
+	color: #999;
+}    /* 娴ｈ法鏁ebkit閸愬懏鐗抽惃鍕セ鐟欏牆娅� */
+.statistics .search .searchInp input:-moz-placeholder{
+	font-size: 12px;
+	color: #999;
+	}                  /* Firefox閻楀牊婀�4-18 */
+.statistics .search .searchInp input::-moz-placeholder{
+	font-size: 12px;
+	color: #999;
+	}                  /* Firefox閻楀牊婀�19+ */
+.statistics .search .searchInp input:-ms-input-placeholder{
+	font-size: 12px;
+	color: #999;
+	}           /* IE濞村繗顫嶉崳锟� */
+.statistics .search .searchInp button {
+	font-size: 12px;
+	margin-top: 1px;
+}
+@media screen and (max-width: 320px) {
+    .statistics .search .deviceName {
+    	width: 70px;
+    }
+    .statistics .search .searchInp {
+    	width: calc(100% - 70px);
+    }
+    .statistics .search .searchInp input {
+    	width: 64%;
+    }
+    .statistics .search .searchInp button {
+    	padding: 6px 12px;
+    }
+}
+h3 {
+	font-size: 14px;
+	color: #999;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	display: none;
+}
+
+
+	</style>
+</head>
+<body>
+	<div class="statistics">
+		<main>
+			<h3>收益统计</h3>
+			<div class="search">
+				<ol class="clearfix">
+					<li class="deviceName"><span class="name">所有</span> <span class="mui-icon mui-icon-arrowright"></span></li>
+					<li class="searchInp"><input type="search" name="" placeholder="请输入查询内容"><button type="button" class="mui-btn mui-btn-success searchBut">搜索</button></li>
+				</ol>
+			</div>
+			<div class="select">
+				<span class="active">按月统计</span>
+				<span>按日统计</span>
+			</div>
+			<div class="content">
+				<section class="left active">
+					<ul>
+						<li class="title">
+							<span>时间</span>
+							<span>线上收益（元）</span>
+							<span>线下收益（元）</span>
+							<span>详情</span>
+						</li>
+						<li>
+							<span>2019-05</span>
+							<span>75.7</span>
+							<span>96.8</span>
+							<span><a href="javascript:;">
+							查看</a></span>
+						</li>
+						<li>
+							<span>2019-04</span>
+							<span>68.2</span>
+							<span>156.0</span>
+							<span><a href="javascript:;">
+							查看</a></span>
+						</li>
+						<li>
+							<span>2019-03</span>
+							<span>76.6</span>
+							<span>189.3</span>
+							<span><a href="javascript:;">
+							查看</a></span>
+						</li>
+					</ul>
+				</section>
+				<section class="right">
+					<ul>
+						<li class="title">
+							<span>时间</span>
+							<span>线上收益（元）</span>
+							<span>线下收益（元）</span>
+							<span>详情</span>
+						</li>
+						<li>
+							<span>2019-05-06</span>
+							<span>15.3</span>
+							<span>22.8</span>
+							<span><a href="javascript:;">
+							查看</a></span>
+						</li>
+						<li>
+							<span>2019-05-05</span>
+							<span>29.2</span>
+							<span>15.0</span>
+							<span><a href="javascript:;">
+							查看</a></span>
+						</li>
+						<li>
+							<span>2019-05-04</span>
+							<span>45.3</span>
+							<span>32.3</span>
+							<span><a href="javascript:;">
+							查看</a></span>
+						</li>
+					</ul>
+				</section>
+			</div>
+		</main>
+	</div>
+	<script>
+		$(function(){
+			var left
+			var selectVal= 1 //选择搜索的值。是设备号，还是小区名称
+			$('.select span').click(function(){
+				$(this).siblings().removeClass('active')
+				$(this).addClass('active')
+				var index= $(this).index()
+				var otherIndex
+				if( index=== 0){
+					$('main .left').siblings().removeClass('active')
+					$('main .left').addClass('active')
+					otherIndex= 1
+				}else{
+					$('main .right').siblings().removeClass('active')
+					$('main .right').addClass('active')
+					otherIndex= 0
+				}
+				
+				var width= $(document).width()
+				left=  index === 0 ? 0 : -width
+				$('main .content').animate({
+					'left': left
+				})
+			})
+			var picker = new mui.PopPicker(); //初始化mui选项框
+				 picker.setData([
+				 	{value:1,text:'所有'},
+				 	{value:2,text:'设备号'},
+				 	{value:3,text:'小区名称'}
+				 ]);
+			$('.deviceName').click(function(){
+				 picker.show(function (selectItems) {
+				    selectVal= selectItems[0].value
+				    $('.deviceName').find('.name').text(selectItems[0].text)
+				  })
+			})
+
+			$('.searchBut').click(function(){
+				var inputVal= $('input').val().trim()
+				console.log(selectVal,inputVal)
+				// 发送ajax
+			})
+		})
+	</script>
+</body>
+</html>

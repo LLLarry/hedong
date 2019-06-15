@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="./base.css">
+	<link rel="stylesheet" href="./dist/css/mui.min.css">
+<link rel="stylesheet" href="./dist/css/mui.picker.css">
+	<link rel="stylesheet" href="./dist/css/mui.poppicker.css">
+	<script rel="stylesheet" src="./dist/js/mui.min.js"></script>
+	<script rel="stylesheet" src="./dist/js/mui.picker.js"></script>
+	<script rel="stylesheet" src="./dist/js/mui.poppicker.js"></script>
+	<script rel="stylesheet" src="./jquery.js"></script>
+	<title>小区管理</title>
+	<style>
+	@font-face {font-family: "iconfont";
+  src: url('//at.alicdn.com/t/font_1221168_a2sbmjqs6uf.eot?t=1559285176791'); /* IE9 */
+  src: url('//at.alicdn.com/t/font_1221168_a2sbmjqs6uf.eot?t=1559285176791#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAWIAAsAAAAACoAAAAU5AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDXgqHQIYxATYCJAMcCxAABCAFhG0HcBsZCRGVpAuQ/Rxw26OnvuTLqV9/TmxhZyauG1XUSUoyM0PQf43pvuP8CxSIZMaXxgM6Wc1G16gaw7IsVHUOctODUAupmDrZHKrqL3t3aq85PFS3f3t7GKchRRaHCdVE/hdMpID7v7V2qCdIg8UzrVhVndv7szvrb/bvWUMTTUM6iEQInUc7riGe8OnvVc1YOID2IorZ+1l7cS6UC1AuNM9zARq7c9gCKmgLUq6oVgF2toQ/gQ9DAAYzoAIEGzsXHygQQNULbSmJ8ZFQIg4IBQRBMaeMC0mcqsEAhfi8XADcOz+vj2gRmAEHEQH1UQdxtjGw/Ybzo4hQfgqEIAsedOcD2MvAA2wBEAA9yQxcAuIVtgABk/8mCU4A2lDAQXrT/x56t9/gb75/FNHpRDvVQUFb+wcPAiTwEMGBADECDE0KfVFMwC+nwUMAfrUUWcYM2PAw4rARYfwOHhzwV6Q6QkO2LmgD9AFIBVAz1bTlGNwh4wP498IEBll1x8VYOPowLnENcBSXX/ncvPa9e+t/+yZkRMnvBB+n8frWUKRRIPo3vyWFx0cjNz5+c9c8p3N2B9e8J7ca5Vtf9PrJ5+bG/+bO//Y2gNZIaUBRMEnUJgIBTePNZDIFdWbjb2agbnCtraaWav6afVfP4NeGztc60ntjy378Kl2pFKNtF2qwbtQVAZR6wBZewdh5yrIP3+JM+BVB2+zZoG7h24kNDTxY01Cb8ZWftXHhJTTMKEaN4smsNGNxp4oBEoEotS2X20cB6nJ+Z4SneHOAKhd1hsv701GacvTcIMUvITtIkz8afU6TjSxRxBCLcxIbG+lcAxZkaoIbzb7Fl5sbzwWkBFoqKhfZOKc42RZdXUtU+zztZtDSdlUTatTn8L/PNSzjetjAYzk05N/ob9RmxfCp93XfaOkl0lBmv/Y9ggYs4FmzIXH78FDs8/hXa1kL65exr7aWCfsy/tn6sH+I8Utbo0NSCrgxx5fTH2jArvkZ0o/SowuhqkddyuCgwlVoYwt8ick1NcmmlsgAROE0HM9YeiB6fE2q7Lynv298h1bcB+GvAUbz7r0JGcKTDoNSzPYSthd7oYhdB+q3H9/WQEdirVlaSArh7HJpcxHzyP97Wmf+Y0KVPtPaQ0ffVTq5taFjgoau9bcU5hCOB+T+AxnJUcsxigCY2hG8UPTymsnr4TR6PVj1nXt+gVVrUmvHY7pTqv3GojpeA1Fhs1aIrvY4zAA31SzcN5FKRIUbxGmHbVgTdlxrZExQlaXWW40ZANAr8wuJO2QKMp4U8gPkJ7JA/u5rkqM0inz25m/vNq6Ovv7dYDf5L+QPeuSd7+uKjPfKFKqnmeIVNFJZ+a4ma9bj+UD7UJ25ZnUYPWOgqBjMTiVFd3OMgTc0MuAe7mFdl6QYDuhONk33iiV4QG/Ro6qbTIqltoLZNIHLq0FCDdUGsGGPoEufC7rT9kj3+tzAA/qOHo34pCd9UUM3Z9Fzw2olePOIAIqQIekC4ZJlMt2NzW77NMiuTkVY7ZDmQTg8TYK+QLw8ASaILk44WTmEyAgTlkHGiceBrlvEFpYKEvoURDvl97OsT/JJluFptkcAFAIZRFoBwUksJmYNR82J758GZC4dJQq6ytLzgODgixNBPoEK8AmDWanrVFY7smQhCDFqFyNYDMQ4fEDXChbCzt6kAhLkozTI2VL8ZD9W1eAb3mSc5xnAqK/I4eQVFJWUVSgD5QWXmqGWQ8g5rmHjoZzoLFimrLhe5NSUlEBfe0S5BkfhasLXVFRK18lIuccDAAAA') format('woff2'),
+  url('//at.alicdn.com/t/font_1221168_a2sbmjqs6uf.woff?t=1559285176791') format('woff'),
+  url('//at.alicdn.com/t/font_1221168_a2sbmjqs6uf.ttf?t=1559285176791') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('//at.alicdn.com/t/font_1221168_a2sbmjqs6uf.svg?t=1559285176791#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-laiyuan2:before {
+  content: "\e77a";
+}
+
+.icon-consumption:before {
+  content: "\e6f1";
+}
+
+.icon-yonghu-tianchong:before {
+  content: "\e670";
+}
+
+.icon-icon:before {
+  content: "\e611";
+}
+
+.icon-shijian:before {
+  content: "\e681";
+}
+
+.icon-zhuangtai:before {
+  content: "\e632";
+}
+		body {
+			padding: 0 10px;
+		}
+		p {
+			margin-bottom: 0 !important;
+		}
+		body {
+			font-size: 12px;
+			color: #666;
+		}
+		.areaBelongInfo2 ,
+		.areaBelongInfo3{
+			display: none;
+		}
+		
+		header h3 {
+			text-align: center;
+			line-height: 40px;
+			font-size: 14px;
+			margin: 0;
+		}
+		.areaBelongInfo1 .container h3,.container h4 {
+			font-size: 14px;
+		}
+		.areaBelongInfo1 .container h4 {
+			color: #999;
+			margin-bottom: 10px;
+		}
+		.areaBelongInfo1 .container ul li {
+			border: 1px solid #22B14C;
+			overflow: hidden;
+			padding:10px;
+			border-radius: 5px;
+			background-color: #f8f8f8;
+			margin-bottom: 15px;
+			box-shadow: 3px 3px 5px #aeaeae;
+		}
+		
+		.areaBelongInfo1 .container ul li .listDiv div{
+			min-width: 50%;
+			float: left;	
+		}
+		
+		.areaBelongInfo1 .container ul li .listDiv div span {
+			line-height: 30px;
+		}
+		.areaBelongInfo1 .container ul li .listDiv div .title{
+			color: #999;
+		}
+		.areaBelongInfo1 .container ul li .listDiv div span i {
+			color: #22B14C;
+			font-size: 15px;
+			margin-right: 5px;
+		}
+		.areaBelongInfo1 .container ul li .listDiv div >a {
+			display: block;
+			width: 50%;
+			height: 28px;
+			line-height: 28px;
+			border: 1px solid #ec232a;
+			overflow: hidden;
+			text-align: center;
+			color: #fff;
+			border-radius: 28px;
+			/*margin: auto;*/
+			background-color: #f31b1bd4;
+			text-decoration: none;
+		}
+		.areaBelongInfo1 .container ul li .listDiv >a:active {
+			color: #fff;
+			background-color: #22B14C;
+		}
+		/*=====*/
+.areaBelongInfo1 .deviceList2 ul {
+	margin-top: 15px;
+	display: table;
+	width: 100%;
+	border-left: 1px solid #add9c0;
+	border-top: 1px solid #add9c0;
+	border-radius: 8px;
+	overflow: hidden;
+}
+.areaBelongInfo1 .deviceList2 ul li{
+	display:table-row;
+	width: 100%;
+	background-color: #f5f7fa;
+}
+
+.areaBelongInfo1 .deviceList2 ul li.title {
+	/*font-size: 14px;*/
+	font-weight: 600;
+	background-color: #C8EFD4;
+	/*background-color: #C8EBFA;*/
+	color: #333;
+}
+.areaBelongInfo1 .deviceList2 ul li span {
+	display:table-cell;
+	text-align: center;
+	line-height: 35px;
+	border-bottom: 1px solid #add9c0;
+	border-right: 1px solid #add9c0;
+}
+.areaBelongInfo1 .deviceList2 ul li span:nth-child(1){
+	width: 23%;
+}
+.areaBelongInfo1 .deviceList2 ul li span:nth-child(2){
+	width: 15%;
+}
+.areaBelongInfo1 .deviceList2 ul li span:nth-child(3){
+	width: 15%;
+}
+.areaBelongInfo1 .deviceList2 ul li span:nth-child(4){
+	width: 17%;
+}
+.areaBelongInfo1 .deviceList2 ul li span:nth-child(5){
+	width: auto;
+}
+/*.areaBelongInfo1 .deviceList2 ul li span a {
+	height: 25px;
+	line-height: 25px;
+	text-decoration: none;
+	color: #fff;
+	display: inline-block;
+	background-color: #4cd964;
+	border: 1px solid #4cd964;
+	padding: 0 4px;
+	border-radius: 3px;
+}*/
+.areaBelongInfo1 .deviceList2 ul li span a {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.areaBelongInfo1 .deviceList2 ul li span a button {
+	width: 65%;
+	height:70%;
+	margin-top: 3px;
+	border-radius: 29px;
+	padding: 4px 7px;
+	background-color: #4cd964;
+	border: 1px solid #4cd964;
+	color: #fff;
+}
+.areaBelongInfo1 .deviceList2 h4 {
+	margin-top: 20px;
+}
+
+.areaBelongInfo1 .deviceList2 ul li span button {
+	padding: 3px 12px;
+	vertical-align: middle;
+}
+.areaBelongInfo1 .deviceList2 ul li span.offLine {
+	color: #dd524d;
+}
+.areaBelongInfo1 .deviceList2 ul li span.onLine {
+	color: rgb(0, 128, 0);
+}
+.areaBelongInfo1 .unbindDevice {
+	display: block;
+	margin-top: 15px;
+	text-align: center;
+	font-size: 14px;
+}
+.mui-bar-tab {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.mui-bar-tab a {
+	padding: 2px 12px;
+}
+.mui-bar-tab a {
+			display: block;
+			/*width: 20%;*/
+			height: 30px;
+			line-height: 30px;
+			border: 1px solid #4cd964;
+			text-align: center;
+			color: #fff;
+			border-radius: 6px;
+			text-decoration: none;
+			background-color: #4cd964;
+			padding: 0 10px;
+		}
+.mui-bar-tab a:active {
+	background-color: #2AC845;
+}
+
+@media screen and (min-width: 350px) {
+	.mui-bar-tab a{
+		padding: 0 15px;
+	}
+}
+/*areaBelongInfo2开始*/
+
+.areaBelongInfo2 input::-webkit-input-placeholder,
+.areaBelongInfo3 input::-webkit-input-placeholder{
+	font-size: 12px;
+	color: #777;
+}
+.areaBelongInfo2 input:-moz-placeholder,
+.areaBelongInfo3 input:-moz-placeholder{
+	font-size: 12px;
+	color: #777;
+}
+.areaBelongInfo2 input::-moz-placeholder,
+.areaBelongInfo3 input::-moz-placeholder{
+	font-size: 12px;
+	color: #777;
+}
+.areaBelongInfo2 input:-ms-input-placeholder,
+.areaBelongInfo3 input:-ms-input-placeholder {
+	font-size: 12px;
+	color: #777;
+}
+.areaBelongInfo2 .formBottom,
+.areaBelongInfo3 .formBottom {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.areaBelongInfo2 .formBottom button,
+.areaBelongInfo3 .formBottom button {
+	width: 30%;
+	border-radius: 8px;
+	font-size: 12px;
+}
+.areaBelongInfo2 form,.areaBelongInfo3 form{
+	padding: 10px 0;
+	border-radius: 8px;
+	overflow: hidden;
+}
+.areaBelongInfo2 .rate {
+	line-height: 40px;
+}
+.areaBelongInfo2 .rate .symbol {
+	float: right;
+	display: block;
+	width: 20%;
+	text-align: center;
+	font-size: 14px;
+}
+.areaBelongInfo2 .rate input {
+	width: 45%;
+	float: left;
+}
+.areaBelongInfo2 .toast,
+.areaBelongInfo3 .toast {
+	margin-top: 20px;
+	text-align: center;
+	color: #999;
+}
+
+/*alert弹框*/
+.alert {
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0,.4);
+	position: fixed;
+	left: 0;
+	right: 0
+	bottom: 0;
+	top: 0;
+	z-index: 99;
+	display: none;
+}
+.alert ul {
+	width: 80%;
+	background-color: #fff;
+	border-radius: 8px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	overflow: hidden;
+	background-color: #F2F2F2;
+	/*padding: 10px 15px;*/
+	transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+	-o-transform: translate(-50%,-50%);
+}
+.alert ul li {
+	padding: 0 15px;
+	line-height: 40px;
+	font-size: 12px;
+	color: #666;
+	margin-bottom: 35px;
+	overflow: hidden;
+	
+}
+.alert ul li.firstLi {
+	text-align: center;
+	font-size: 16px;
+	font-weight: 600;
+	background-color: #22B14C;
+	color: #fff;
+}
+.alert ul li>div {
+	float: right;
+	width: 50%;
+}
+.alert ul li>div span{
+	display: block;
+	line-height: 20px;
+	margin-left: 15%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.alert ul li>div span:nth-child(2){
+	color: #54C1F0;
+}
+.alert ul li a {
+	float: left;
+	display: block;
+	width: 50%;
+	height: 100%;
+	border: 1px solid #22B14C;
+	color: #22B14C;
+	text-align: center;
+	line-height: 40px;
+	margin: 0 auto;
+	border-radius: 8px;
+	box-sizing: border-box;
+}
+.alert ul li a:active {
+	background-color: #22B14C;
+	color: #fff;
+}
+</style>
+</head>
+<body>
+	<header>
+		<h3>回忆小区</h3>
+	</header>
+	<div class="areaBelongInfo1">
+		
+		<!-- <header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h3>小区管理列表</h3>
+		</header> -->
+		<div class="container">
+			<div class="personInfo">
+				<h4>合伙人信息</h4>
+				<ul>
+					<li>
+						<!-- <h3>小区名称： 回忆小区</h3> -->
+						<div class="listDiv clearfix">
+							<div>
+								<span><i class="iconfont icon-zhuangtai"></i></span>
+								昵称：<span>RoarWolf</span>
+							</div>
+							<div>
+								<span><i class="iconfont icon-zhuangtai"></i></span>
+								姓名：<span>测试名称</span></div>
+							<div>
+								<span><i class="iconfont icon-zhuangtai"></i></span>
+								手机号码：<span>15696325569</span>
+							</div>
+							<div>
+								<span><i class="iconfont icon-zhuangtai"></i></span>
+								分成比：<span>1.0%</span>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="deviceList2">
+				<h4>设备列表</h4>
+				<ul>
+					<li class="title">
+						<span>设备号</span>
+						<span>状态</span>
+						<span>信号</span>
+						<span>操作</span>
+					</li>
+					<li >
+						<span>000012</span>
+						<span class="offLine">离线</span>
+						<span>0</span>
+						<span>
+							<button type="button" class="mui-btn mui-btn-danger">删除</button>
+						</span>
+					</li>
+					<li >
+						<span>000015</span>
+						<span class="onLine">在线</span>
+						<span>0</span>
+						<span>
+							<button type="button" class="mui-btn mui-btn-danger">删除</button>
+						</span>
+					</li>
+				</ul>
+			</div>
+			<a href="javascript:void(0)" class="unbindDevice">未绑定设备(0)</a>
+		</div>
+	</div>
+	<!-- 编辑小区开始了 -->
+		<div class="areaBelongInfo2">
+				<form class="mui-input-group">
+					<div class="mui-input-row">
+						<label>小区名称</label>
+						<input type="text" placeholder="请输入小区名称">
+					</div>
+					<div class="mui-input-row">
+						<label>小区地址</label>
+						<input type="text" class="mui-input-clear" placeholder="请输入小区地址"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+					</div>
+
+					<div class="mui-input-row">
+						<label>合伙人电话</label>
+						<input type="text" class="mui-input-clear" placeholder="请输入合伙人电话"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+					</div>
+					<div class="mui-input-row">
+						<label>合伙人昵称</label>
+						<input type="text" class="mui-input-clear" placeholder="请输入合伙人昵称"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+					</div>
+					<div class="mui-input-row">
+						<label>合伙人姓名</label>
+						<input type="text" class="mui-input-clear" placeholder="请输入合伙人姓名"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+					</div>
+					<div class="mui-input-row rate" >
+						<label>分成比</label>
+						<input type="text" class="mui-input-clear" placeholder="请输入分成比"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+						<span class="symbol">%</span>
+					</div>
+					
+
+					<div class="mui-button-row formBottom">
+						<button type="button" class="mui-btn mui-btn-primary" onclick="return false;">确认</button>&nbsp;&nbsp;
+						<button type="button" class="mui-btn mui-btn-danger" onclick="return false;">取消</button>
+					</div>
+				</form>
+				<div class="toast">注： 昵称与姓名为自动填充，无需输入</div>
+		</div>
+
+		<div class="alert" >
+		<ul>
+			<li class="firstLi">模板选择</li>
+			<li>
+				<div>
+					<span>钱包默认模板：</span>
+					<span id="wallTem">未选择</span>
+				</div>
+			<a href="/merchant/areaWalletTemp?id=20">钱包模板</a></li>
+			<li>
+				<div>
+					<span>在线卡默认模板：</span>
+					<span id="onLineTem">未选择</span>
+				</div>
+				<a href="/merchant/areaOnlineCardTemp?id=20">在线卡模板</a>
+			</li>
+		</ul>
+		
+	</div>
+	<div class="areaBelongInfo3">
+		<form class="mui-input-group">
+			<div class="mui-input-row selectDeviceNum">
+				<label>设备编号</label>
+				<input type="text" id="deviceInp" placeholder="请选择设备编号" value="" disabled>
+			</div>
+			<div class="mui-button-row formBottom">
+				<button type="button" class="mui-btn mui-btn-primary" onclick="return false;">确认</button>&nbsp;&nbsp;
+				<button type="button" class="mui-btn mui-btn-danger" onclick="return false;">取消</button>
+			</div>
+		</form>
+		<div class="toast">选择设备后点击确认</div>
+	</div>
+	<nav class="mui-bar mui-bar-tab">
+		<a href="javascript:void(0)" id="edit">编辑小区</a>
+		<a href="javascript:void(0)" id="alertBtn">&nbsp;&nbsp;&nbsp;&nbsp;模板&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		<a href="javascript:void(0)" id="addBtn">添加设备</a>
+		<a href="javascript:void(0)" id="deleteBtn">删除小区</a>
+	</nav>
+	<script src="./areaBelongInfo.js"></script>
+</body>
+</html>
